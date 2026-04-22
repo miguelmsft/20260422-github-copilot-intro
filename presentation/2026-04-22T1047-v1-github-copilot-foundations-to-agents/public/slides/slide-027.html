@@ -1,16 +1,31 @@
 <article class="slide" data-number="27" data-type="boxes" data-section="Models">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Premium requests — the cost unit</h1>
-          <div class="code-block"><code>┌─────────────────────────────┬─────────────────────────────┐
-    │ **Multiplier** — per model  │ **Allowance** — per plan    │
-    │ 0× included (GPT-4.1, 4o,   │ Free 50, Pro 300, Pro+ 1500,│
-    │ GPT-5 mini)                 │ Business 300/u, Ent. 1000/u │
-    │ 0.25–1× most paid models    │                             │
-    │ 3× Opus 4.5/4.6             │ Overage: $0.04 / request    │
-    │ 30× Opus 4.6 &quot;fast mode&quot;    │                             │
-    │ preview                     │ Auto mode = 10% discount    │
-    └─────────────────────────────┴─────────────────────────────┘</code></div>
+    <h1 class="slide-title">Premium requests — the cost unit</h1>
+    <div class="tool-grid cols-2">
+      <div class="tool-card">
+        <div class="tool-card-title">Multiplier — per model</div>
+        <div class="tool-card-body">
+          <ul>
+            <li><strong>0×</strong> included (GPT-4.1, 4o, GPT-5 mini)</li>
+            <li><strong>0.25–1×</strong> most paid models</li>
+            <li><strong>3×</strong> Opus 4.5 / 4.6</li>
+            <li><strong>30×</strong> Opus 4.6 &quot;fast mode&quot; (preview)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">Allowance — per plan</div>
+        <div class="tool-card-body">
+          <ul>
+            <li><strong>Free</strong> 50 · <strong>Pro</strong> 300 · <strong>Pro+</strong> 1500</li>
+            <li><strong>Business</strong> 300/user · <strong>Enterprise</strong> 1000/user</li>
+            <li>Overage: <strong>$0.04 / request</strong></li>
+            <li>Auto mode = <strong>10% discount</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
   <aside class="speaker-notes" hidden>One user prompt = 1 request × multiplier. Tool calls the agent makes on its own are free. Cloud agent sessions are billed per session from a separate SKU.</aside>
 </article>

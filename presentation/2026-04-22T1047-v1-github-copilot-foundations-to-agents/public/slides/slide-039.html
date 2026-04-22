@@ -1,22 +1,35 @@
 <article class="slide" data-number="39" data-type="boxes" data-section="Customization">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">The four customization layers</h1>
-          <p class="slide-subtitle">Higher number = wins on conflict · all layers merge &amp; are sent to the model</p>
-          <div class="code-block"><code>┌─────────────────────┬─────────────────────┐
-    │ **1. Personal**     │ **2. Repository**   │
-    │ github.com/copilot  │ .github/copilot-    │
-    │ → Personal          │ instructions.md     │
-    │ instructions        │ + path-scoped       │
-    │                     │ .github/            │
-    │                     │ instructions/*      │
-    ├─────────────────────┼─────────────────────┤
-    │ **3. Agent files**  │ **4. Org / Ent.**   │
-    │ AGENTS.md /         │ Org settings →      │
-    │ CLAUDE.md /         │ Copilot → Custom    │
-    │ GEMINI.md           │ instructions        │
-    │                     │ (Business/Ent.)     │
-    └─────────────────────┴─────────────────────┘</code></div>
+    <h1 class="slide-title">The four customization layers</h1>
+    <p class="slide-subtitle">Higher number = wins on conflict · all layers merge &amp; are sent to the model</p>
+    <div class="tool-grid cols-2">
+      <div class="tool-card">
+        <div class="tool-card-title">1. Personal</div>
+        <div class="tool-card-body">
+          <code>github.com/copilot</code> → Personal instructions
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">2. Repository</div>
+        <div class="tool-card-body">
+          <code>.github/copilot-instructions.md</code>
+          <br>+ path-scoped <code>.github/instructions/*</code>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">3. Agent files</div>
+        <div class="tool-card-body">
+          <code>AGENTS.md</code> / <code>CLAUDE.md</code> / <code>GEMINI.md</code>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">4. Org / Enterprise</div>
+        <div class="tool-card-body">
+          Org settings → Copilot → Custom instructions <em>(Business / Enterprise)</em>
+        </div>
+      </div>
+    </div>
     <p class="slide-body">Plus a <strong>user-profile</strong> layer: VS Code <code>~/.copilot/instructions/</code> · CLI <code>~/.copilot/copilot-instructions.md</code>.</p>
   </div>
   <aside class="speaker-notes" hidden>~10 minutes on customization. All layers merge — nothing is dropped; numbering (1 &gt; 2 &gt; 3 &gt; 4) only matters on direct conflict. Path-specific uses <code>applyTo:</code> glob frontmatter — powerful for monorepos. Conflicting rules across layers are the #1 beginner pitfall. This is the single slide to photograph.</aside>

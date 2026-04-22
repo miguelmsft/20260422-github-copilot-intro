@@ -1,18 +1,36 @@
 <article class="slide" data-number="11" data-type="decision-tree" data-section="Agentic Foundations">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">When should I use an agent?</h1>
-          <div class="code-block"><code>Is the task one-shot &amp; well-defined?
-     ├─ Yes → Plain LLM call / autocomplete.  DONE.
-     └─ No ↓
-    Can you enumerate the steps up front?
-     ├─ Yes → Prompt chain / workflow.  DONE.
-     └─ No ↓
-    Do steps depend on what you discover at runtime?
-     ├─ Yes → **Single agent (ReAct / tool-calling loop).**
-     └─ No  → Go back one box.
-    Does the task have parallel specialized pieces?
-     └─ Yes → Multi-agent / orchestrator-workers.</code></div>
+    <h1 class="slide-title">When should I use an agent?</h1>
+    <div class="tree-container">
+      <div class="tree-node">
+        <div class="tree-question">Is the task one-shot &amp; well-defined?</div>
+        <div class="tree-branches">
+          <div class="tree-branch"><span class="tree-branch-label yes">Yes →</span><span class="tree-branch-text">Plain LLM call / autocomplete. <strong>Done.</strong></span></div>
+          <div class="tree-branch"><span class="tree-branch-label no">No ↓</span><span class="tree-branch-text">Continue.</span></div>
+        </div>
+      </div>
+      <div class="tree-node">
+        <div class="tree-question">Can you enumerate the steps up front?</div>
+        <div class="tree-branches">
+          <div class="tree-branch"><span class="tree-branch-label yes">Yes →</span><span class="tree-branch-text">Prompt chain / workflow. <strong>Done.</strong></span></div>
+          <div class="tree-branch"><span class="tree-branch-label no">No ↓</span><span class="tree-branch-text">Continue.</span></div>
+        </div>
+      </div>
+      <div class="tree-node">
+        <div class="tree-question">Do steps depend on what you discover at runtime?</div>
+        <div class="tree-branches">
+          <div class="tree-branch"><span class="tree-branch-label yes">Yes →</span><span class="tree-branch-text"><strong>Single agent (ReAct / tool-calling loop).</strong></span></div>
+          <div class="tree-branch"><span class="tree-branch-label no">No →</span><span class="tree-branch-text">Go back one box.</span></div>
+        </div>
+      </div>
+      <div class="tree-node">
+        <div class="tree-question">Does the task have parallel specialized pieces?</div>
+        <div class="tree-branches">
+          <div class="tree-branch"><span class="tree-branch-label yes">Yes →</span><span class="tree-branch-text"><strong>Multi-agent / orchestrator-workers.</strong></span></div>
+        </div>
+      </div>
+    </div>
     <blockquote class="slide-quote"><p>&quot;Find the simplest solution possible, and only increase complexity when needed.&quot; — Anthropic</p></blockquote>
   </div>
   <aside class="speaker-notes" hidden>This ladder is the single most important decision in practice. Most developers over-reach for &quot;agent mode&quot; on tasks that would be faster and cheaper as Ask + manual Apply.</aside>

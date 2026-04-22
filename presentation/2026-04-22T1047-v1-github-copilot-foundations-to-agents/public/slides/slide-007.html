@@ -1,22 +1,38 @@
 <article class="slide" data-number="7" data-type="diagram" data-section="Agentic Foundations">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">The agentic loop — Think · Act · Observe</h1>
-          <div class="code-block"><code>        ┌──────────────────────────────────────┐
-            │                                      │
-            ▼                                      │
-      ┌──────────┐   ┌──────────┐   ┌──────────┐   │
-      │ PERCEIVE │──▶│  REASON  │──▶│   ACT    │   │
-      │  (goal,  │   │  (LLM    │   │  (call   │   │
-      │  context)│   │  plans)  │   │  tool)   │   │
-      └──────────┘   └──────────┘   └────┬─────┘   │
-            ▲                             │         │
-            │                             ▼         │
-            │                      ┌──────────┐     │
-            └──────────────────────│ OBSERVE  │─────┘
-                                   │ (result) │
-                                   └──────────┘
-           (repeat until done, stopped, or max steps)</code></div>
+    <h1 class="slide-title">The agentic loop — Think · Act · Observe</h1>
+    <div class="agent-loop">
+      <svg class="agent-loop-svg" viewBox="0 0 900 520" preserveAspectRatio="none">
+        <!-- Curved arrows connecting nodes clockwise -->
+        <path d="M 600,90 Q 820,180 780,270" />
+        <path d="M 760,340 Q 640,460 500,430" />
+        <path d="M 400,430 Q 260,460 140,340" />
+        <path d="M 120,270 Q 80,180 300,90" />
+        <!-- arrow heads -->
+        <polygon class="arrow-head" points="775,265 790,275 782,290" />
+        <polygon class="arrow-head" points="505,432 492,420 495,438" />
+        <polygon class="arrow-head" points="140,336 127,325 124,343" />
+        <polygon class="arrow-head" points="295,92 308,80 312,98" />
+      </svg>
+      <div class="agent-loop-node n1">
+        <div class="agent-loop-title">PERCEIVE</div>
+        <div class="agent-loop-desc">goal · context</div>
+      </div>
+      <div class="agent-loop-node n2">
+        <div class="agent-loop-title">REASON</div>
+        <div class="agent-loop-desc">LLM plans next step</div>
+      </div>
+      <div class="agent-loop-node n3">
+        <div class="agent-loop-title">ACT</div>
+        <div class="agent-loop-desc">call a tool</div>
+      </div>
+      <div class="agent-loop-node n4">
+        <div class="agent-loop-title">OBSERVE</div>
+        <div class="agent-loop-desc">read the result</div>
+      </div>
+      <div class="agent-loop-caption">repeat until done,<br>stopped, or<br>max steps</div>
+    </div>
   </div>
   <aside class="speaker-notes" hidden>Memorize this. Every agent you&#x27;ll see today — Copilot agent mode, the CLI, the cloud agent, a custom agent, even GitHub Actions workflows — is some shape of this loop. The &quot;tools&quot; in Copilot&#x27;s case are things like <code>read_file</code>, <code>run_in_terminal</code>, <code>edit</code>, MCP tools, and so on.</aside>
 </article>

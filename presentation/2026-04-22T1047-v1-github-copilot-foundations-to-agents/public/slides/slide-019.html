@@ -1,15 +1,24 @@
 <article class="slide" data-number="19" data-type="boxes" data-section="Modes">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">The three built-in personas</h1>
-          <div class="code-block"><code>┌────────────────────┬────────────────────┬────────────────────┐
-    │  **Ask**           │  **Plan**          │  **Agent**         │
-    │  Q&amp;A, no edits.    │  Research &amp; write  │  Autonomous: edits │
-    │  &quot;Apply in Editor&quot; │  a structured      │  files, runs cmds, │
-    │  is manual.        │  plan. Hands off.  │  self-corrects.    │
-    │                    │  No code changes.  │  Multi-file.       │
-    │  Cheapest, safest. │  `/plan &lt;task&gt;`    │  Default for work. │
-    └────────────────────┴────────────────────┴────────────────────┘</code></div>
+    <h1 class="slide-title">The three built-in personas</h1>
+    <div class="tool-grid cols-3">
+      <div class="tool-card">
+        <div class="tool-card-title">Ask</div>
+        <div class="tool-card-body">Q&amp;A, no edits. &quot;Apply in Editor&quot; is manual.</div>
+        <div class="tool-card-footer">Cheapest, safest.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">Plan</div>
+        <div class="tool-card-body">Research &amp; write a structured plan. Hands off. No code changes.</div>
+        <div class="tool-card-footer"><code>/plan &lt;task&gt;</code></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">Agent</div>
+        <div class="tool-card-body">Autonomous: edits files, runs commands, self-corrects. Multi-file.</div>
+        <div class="tool-card-footer">Default for work.</div>
+      </div>
+    </div>
     <p class="slide-body"><strong>Edit</strong> mode is <strong>deprecated</strong> — its behavior folded into Agent. You can un-hide it with <code>chat.editMode.hidden</code>.</p>
   </div>
   <aside class="speaker-notes" hidden>Plan is the under-used hero. For anything touching more than one file, having Plan produce a checklist <em>before</em> Agent implements it drastically improves outcomes. Plan writes its result to <code>/memories/session/plan.md</code>.</aside>

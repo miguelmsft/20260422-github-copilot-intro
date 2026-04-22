@@ -1,17 +1,29 @@
 <article class="slide" data-number="10" data-type="boxes" data-section="Agentic Foundations">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Common agent patterns</h1>
-          <div class="code-block"><code>┌─────────────────────────┬─────────────────────────┐
-    │ **ReAct**               │ **Plan-and-Execute**    │
-    │ Interleave reasoning    │ Plan everything first,  │
-    │ and action, one step    │ then execute; re-plan   │
-    │ at a time               │ if reality drifts       │
-    ├─────────────────────────┼─────────────────────────┤
-    │ **Reflexion**           │ **Orchestrator-Workers**│
-    │ Verbal self-critique    │ One agent delegates to  │
-    │ stored between trials   │ specialized sub-agents  │
-    └─────────────────────────┴─────────────────────────┘</code></div>
+    <h1 class="slide-title">Common agent patterns</h1>
+    <div class="tool-grid cols-2">
+      <div class="tool-card">
+        <div class="tool-card-title">ReAct</div>
+        <div class="tool-card-body">Interleave reasoning and action, one step at a time.</div>
+        <div class="tool-card-footer">Copilot&#x27;s default Agent is ReAct-ish.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">Plan-and-Execute</div>
+        <div class="tool-card-body">Plan everything first, then execute; re-plan if reality drifts.</div>
+        <div class="tool-card-footer">Copilot&#x27;s Plan mode.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">Reflexion</div>
+        <div class="tool-card-body">Verbal self-critique stored between trials.</div>
+        <div class="tool-card-footer">Shows up when agents loop on test failures.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">Orchestrator-Workers</div>
+        <div class="tool-card-body">One agent delegates to specialized sub-agents.</div>
+        <div class="tool-card-footer">CLI <code>/fleet</code> command.</div>
+      </div>
+    </div>
   </div>
   <aside class="speaker-notes" hidden>Map to Copilot: the default Agent is ReAct-ish. Plan mode is Plan-and-Execute. The CLI <code>/fleet</code> command is Orchestrator-Workers. Reflexion shows up when agents loop on test failures.</aside>
 </article>
