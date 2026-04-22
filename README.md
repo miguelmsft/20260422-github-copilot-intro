@@ -160,5 +160,7 @@ See the [GitHub docs on custom agents](https://docs.github.com/en/copilot/how-to
 
 ## License
 
+Released under the [MIT License](./LICENSE).
+
 Content authored by Miguel Martinez. Research cites official Microsoft/GitHub documentation and reputable third-party sources — see individual research files for references.
 
