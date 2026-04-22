@@ -1,9 +1,22 @@
-<article class="slide" data-number="49" data-type="single-point" data-section="MCP">
+<article class="slide" data-number="49" data-type="code-example" data-section="MCP">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">The built-in GitHub MCP server</h1>
-          <p class="slide-body">Copilot ships pre-wired to <code>https://api.githubcopilot.com/mcp/</code> — exposing <strong>GitHub Issues, PRs, repos, Actions, code security, code scanning</strong> and more, grouped into <em>toolsets</em>.</p>
-    <p class="slide-body">&quot;List my open PRs&quot; · &quot;Merge PR #123&quot; just work out of the box.</p>
+          <h1 class="slide-title">Configure MCP — where each surface reads from</h1>
+          <div class="code-block"><code><span class="cmt">// VS Code — .vscode/mcp.json (workspace) or user settings</span>
+    {
+      <span class="prop">&quot;servers&quot;</span>: {
+        <span class="prop">&quot;playwright&quot;</span>: { <span class="prop">&quot;command&quot;</span>: <span class="str">&quot;npx&quot;</span>, <span class="prop">&quot;args&quot;</span>: [&quot;-y&quot;, &quot;@playwright/mcp&quot;] }
+      }
+    }</code></div>
+    <div class="code-block"><code><span class="cmt">// Copilot CLI — ~/.copilot/mcp-config.json</span>
+    <span class="cmt">// (or /mcp add in-session, or --mcp-config flag)</span>
+    {
+      <span class="prop">&quot;mcpServers&quot;</span>: {
+        <span class="prop">&quot;sentry&quot;</span>: { <span class="prop">&quot;url&quot;</span>: <span class="str">&quot;https:<span class="cmt">//mcp.sentry.dev&quot;</span>, <span class="prop">&quot;headers&quot;</span>: {...} }</span>
+      }
+    }</code></div>
+    <div class="code-block"><code># Cloud agent — repo Settings → Copilot → Coding agent → MCP configuration
+    # (stored as repository-scoped JSON, tools-only)</code></div>
   </div>
-  <aside class="speaker-notes" hidden>Toolsets let you widen/narrow what&#x27;s callable. Dynamic toolsets let the model discover new tools mid-session.</aside>
+  <aside class="speaker-notes" hidden>Emphasized per directive. Three surfaces, three config locations — but the server definition shape is nearly identical. <code>/mcp add</code> in the CLI has an interactive form (Tab navigates, Ctrl+S saves).</aside>
 </article>

@@ -1,8 +1,9 @@
-<article class="slide" data-number="50" data-type="list" data-section="MCP">
+<article class="slide" data-number="50" data-type="single-point" data-section="MCP">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Permission model &amp; the cloud-agent caveat</h1>
-          <ul class="slide-list"><li><strong>VS Code / CLI (interactive):</strong> per-tool approval prompt; you can session-approve</li><li><strong>Cloud agent (autonomous):</strong> <strong>no approval prompts</strong> — GitHub <em>strongly recommends</em> allowlisting only read-only tools</li><li>MCP servers run arbitrary code → treat them as <strong>security-sensitive config</strong> (see Hooks section for how to police this)</li><li>Business/Enterprise: the &quot;MCP servers in Copilot&quot; policy must be enabled (disabled by default)</li></ul>
+          <h1 class="slide-title">The built-in GitHub MCP server</h1>
+          <p class="slide-body">Copilot ships pre-wired to <code>https://api.githubcopilot.com/mcp/</code> — exposing <strong>GitHub Issues, PRs, repos, Actions, code security, code scanning</strong> and more, grouped into <em>toolsets</em>.</p>
+    <p class="slide-body">&quot;List my open PRs&quot; · &quot;Merge PR #123&quot; just work out of the box.</p>
   </div>
-  <aside class="speaker-notes" hidden>This is the one slide security teams care about. The cloud agent&#x27;s lack of approval prompts is by design — it&#x27;s async — but it pushes the burden onto allowlists and hooks.</aside>
+  <aside class="speaker-notes" hidden>Toolsets let you widen/narrow what&#x27;s callable. Dynamic toolsets let the model discover new tools mid-session.</aside>
 </article>

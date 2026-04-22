@@ -1,8 +1,10 @@
-<article class="slide" data-number="77" data-type="comparison" data-section="Security">
+<article class="slide" data-number="77" data-type="single-point" data-section="Security">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">CLI vs VS Code — governance gaps to know</h1>
-          <table class="slide-table"><thead><tr><th>Governance feature</th><th>VS Code</th><th>Copilot CLI</th></tr></thead><tbody><tr><td>Content exclusion (repo-level)</td><td>✅ inline + chat</td><td>❌ <strong>does not apply</strong></td></tr><tr><td>MCP policies</td><td>✅</td><td>❌ <strong>does not apply</strong></td></tr><tr><td>IDE policies</td><td>✅</td><td>❌</td></tr><tr><td>Public-code &quot;Block&quot; enforcement</td><td>✅ inline suggestions</td><td>⚠️ not enforced the same way</td></tr><tr><td>Hooks for enforcement</td><td>❌</td><td>✅ primary surface</td></tr></tbody></table>
+          <h1 class="slide-title">BYOK changes the data path</h1>
+          <p class="slide-body">Reminder: <strong>BYOK = Bring Your Own Key</strong> — you supply credentials to a provider GitHub doesn&#x27;t normally broker.</p>
+    <p class="slide-body"><strong>Chat:</strong> prompt still passes GitHub for safety filtering, not retained beyond session. <strong>CLI:</strong> prompt goes <strong>directly to your chosen provider</strong> — does not transit GitHub. Set <code>COPILOT_OFFLINE=true</code> to also disable GitHub telemetry.</p>
+    <p class="slide-body">Your BYOK provider&#x27;s privacy terms become the source of truth.</p>
   </div>
-  <aside class="speaker-notes" hidden>Emphasized per directive. The CLI is deliberately closer to the metal — governance on the CLI is done with Hooks + org policy (enable/disable the CLI entirely), not with content exclusion.</aside>
+  <aside class="speaker-notes" hidden>Important for EU/regulated teams evaluating CLI + BYOK (e.g., local Ollama, Azure OpenAI, Anthropic direct) as a &quot;no data leaves our network&quot; path.</aside>
 </article>

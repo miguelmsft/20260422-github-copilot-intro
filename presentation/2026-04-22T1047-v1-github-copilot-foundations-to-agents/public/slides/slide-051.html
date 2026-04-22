@@ -1,9 +1,8 @@
-<article class="slide" data-number="51" data-type="demo-placeholder" data-section="MCP">
+<article class="slide" data-number="51" data-type="list" data-section="MCP">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">🎬 Demo: MCP</h1>
-          <div class="demo-badge">🎬 LIVE DEMO</div>
-          <p class="demo-note">Presenter fills this in live — see speaker notes for suggestions.</p>
+          <h1 class="slide-title">Permission model &amp; the cloud-agent caveat</h1>
+          <ul class="slide-list"><li><strong>VS Code / CLI (interactive):</strong> per-tool approval prompt; you can session-approve</li><li><strong>Cloud agent (autonomous):</strong> <strong>no approval prompts</strong> — GitHub <em>strongly recommends</em> allowlisting only read-only tools</li><li>MCP servers run arbitrary code → treat them as <strong>security-sensitive config</strong> (see Hooks section for how to police this)</li><li>Business/Enterprise: the &quot;MCP servers in Copilot&quot; policy must be enabled (disabled by default)</li></ul>
   </div>
-  <aside class="speaker-notes" hidden>[To be filled in by presenter — e.g., add the Playwright or Notion MCP server in VS Code, watch Copilot list its tools, then call one through agent mode; contrast the same in the CLI with <code>/mcp add</code>.]</aside>
+  <aside class="speaker-notes" hidden>This is the one slide security teams care about. The cloud agent&#x27;s lack of approval prompts is by design — it&#x27;s async — but it pushes the burden onto allowlists and hooks.</aside>
 </article>

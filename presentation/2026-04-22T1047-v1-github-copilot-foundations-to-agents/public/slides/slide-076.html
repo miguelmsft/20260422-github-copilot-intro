@@ -1,10 +1,8 @@
-<article class="slide" data-number="76" data-type="single-point" data-section="Security">
+<article class="slide" data-number="76" data-type="list" data-section="Security">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">BYOK changes the data path</h1>
-          <p class="slide-body">Reminder: <strong>BYOK = Bring Your Own Key</strong> — you supply credentials to a provider GitHub doesn&#x27;t normally broker.</p>
-    <p class="slide-body"><strong>Chat:</strong> prompt still passes GitHub for safety filtering, not retained beyond session. <strong>CLI:</strong> prompt goes <strong>directly to your chosen provider</strong> — does not transit GitHub. Set <code>COPILOT_OFFLINE=true</code> to also disable GitHub telemetry.</p>
-    <p class="slide-body">Your BYOK provider&#x27;s privacy terms become the source of truth.</p>
+          <h1 class="slide-title">Four governance levers (admin-side)</h1>
+          <ul class="slide-list"><li><strong>Public-code matching filter</strong> — block suggestions matching ~150 chars of public code (or log them as code references)</li><li><strong>Content exclusion</strong> — Business/Enterprise: hide repos/paths from Copilot (inline + chat, not yet Edit/Agent)</li><li><strong>Data residency</strong> — GHE.com hosted in US, EU, or Australia; <strong>FedRAMP-Moderate</strong> (the US federal cloud-compliance framework) is available on a special policy with +10% multiplier for US gov workloads</li><li><strong>Telemetry controls</strong> — per-IDE; CLI supports <code>COPILOT_OFFLINE=true</code> to disable telemetry entirely</li></ul>
   </div>
-  <aside class="speaker-notes" hidden>Important for EU/regulated teams evaluating CLI + BYOK (e.g., local Ollama, Azure OpenAI, Anthropic direct) as a &quot;no data leaves our network&quot; path.</aside>
+  <aside class="speaker-notes" hidden>Name them; don&#x27;t drill. These are four separate switches in the admin console. FedRAMP-Moderate is the middle-tier US federal authorization level — relevant if you sell to US government agencies; most enterprises don&#x27;t need it.</aside>
 </article>

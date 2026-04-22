@@ -1,9 +1,8 @@
-<article class="slide" data-number="65" data-type="demo-placeholder" data-section="Hooks">
+<article class="slide" data-number="65" data-type="list" data-section="Hooks">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">🎬 Demo: Hooks</h1>
-          <div class="demo-badge">🎬 LIVE DEMO</div>
-          <p class="demo-note">Presenter fills this in live — see speaker notes for suggestions.</p>
+          <h1 class="slide-title">Real uses</h1>
+          <ul class="slide-list"><li><strong>Guardrails</strong> — block <code>rm -rf /</code>, <code>sudo</code>, <code>curl | bash</code>, edits outside <code>src/</code></li><li><strong>Audit &amp; compliance</strong> — JSONL of every prompt + tool call, forwarded to SIEM</li><li><strong>Cost &amp; usage tracking</strong> — per-tool metering CSVs</li><li><strong>Policy banner</strong> — &quot;This repo is regulated; edits must pass review&quot; at session start</li><li><strong>Subagent validation</strong> — test a subagent&#x27;s output before it returns to the parent</li></ul>
   </div>
-  <aside class="speaker-notes" hidden>[To be filled in by presenter — e.g., drop a repo-scoped preToolUse hook that blocks <code>rm -rf</code>, show it denying an attempted deletion in a CLI session, then show a postToolUse audit log being written.]</aside>
+  <aside class="speaker-notes" hidden>The guardrail + audit combo is what turns &quot;my devs use Copilot&quot; into &quot;my security team signs off on Copilot.&quot;</aside>
 </article>

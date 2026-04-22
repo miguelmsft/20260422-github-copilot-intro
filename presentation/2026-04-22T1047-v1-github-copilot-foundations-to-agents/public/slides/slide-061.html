@@ -1,25 +1,8 @@
-<article class="slide" data-number="61" data-type="code-example" data-section="Hooks">
+<article class="slide" data-number="61" data-type="table" data-section="Hooks">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Shape of a hooks config</h1>
-          <div class="code-block"><code><span class="cmt">// .github/hooks/guardrails.json  (repo scope — works in CLI + cloud agent)</span>
-    {
-      <span class="prop">&quot;version&quot;</span>: <span class="num">1</span>,
-      <span class="prop">&quot;hooks&quot;</span>: {
-        <span class="prop">&quot;preToolUse&quot;</span>: [
-          {
-            <span class="prop">&quot;type&quot;</span>: <span class="str">&quot;command&quot;</span>,
-            <span class="prop">&quot;bash&quot;</span>: <span class="str">&quot;./.github/hooks/block-rm.sh&quot;</span>,
-            <span class="prop">&quot;powershell&quot;</span>: <span class="str">&quot;.\\.github\\hooks\\block-rm.ps1&quot;</span>,
-            <span class="prop">&quot;timeoutSec&quot;</span>: <span class="num">10</span>
-          }
-        ],
-        <span class="prop">&quot;postToolUse&quot;</span>: [
-          { <span class="prop">&quot;type&quot;</span>: <span class="str">&quot;command&quot;</span>, <span class="prop">&quot;bash&quot;</span>: <span class="str">&quot;./.github/hooks/audit.sh&quot;</span> }
-        ]
-      }
-    }</code></div>
-    <p class="slide-body">Runtime pipes a JSON event to stdin; hook can respond with JSON on stdout.</p>
+          <h1 class="slide-title">The 8 lifecycle events</h1>
+          <table class="slide-table"><thead><tr><th>Event</th><th>When</th><th>Can block?</th></tr></thead><tbody><tr><td><code>sessionStart</code></td><td>New session / resume</td><td>No</td></tr><tr><td><code>sessionEnd</code></td><td>Session completes</td><td>No</td></tr><tr><td><code>userPromptSubmitted</code></td><td>User submits a prompt</td><td>No</td></tr><tr><td><strong><code>preToolUse</code></strong></td><td><strong>Before</strong> any tool call</td><td><strong>Yes</strong> (emit <code>permissionDecision: &quot;deny&quot;</code>)</td></tr><tr><td><code>postToolUse</code></td><td>After a tool completes</td><td>No</td></tr><tr><td><code>errorOccurred</code></td><td>Error during execution</td><td>No</td></tr><tr><td><code>agentStop</code></td><td>Main agent finished</td><td>No</td></tr><tr><td><code>subagentStop</code></td><td>Subagent completes, before returning</td><td>No</td></tr></tbody></table>
   </div>
-  <aside class="speaker-notes" hidden>Separate <code>bash</code> / <code>powershell</code> keys make hooks portable across OSes. Default timeout is 30s.</aside>
+  <aside class="speaker-notes" hidden><code>preToolUse</code> is the hero — the one that can actually deny a <code>rm -rf /</code>. Everything else is observability.</aside>
 </article>

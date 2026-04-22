@@ -1,11 +1,26 @@
-<article class="slide" data-number="71" data-type="single-point" data-section="Advanced Agents">
+<article class="slide" data-number="71" data-type="code-example" data-section="Advanced Agents">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title"><code>gh-aw</code> — GitHub Agentic Workflows</h1>
-          <p class="slide-body">A GitHub-Next extension (<code>gh-aw</code> = &quot;gh agentic workflows&quot;) that lets you write agentic workflows as <strong>Markdown + YAML frontmatter</strong>, then compile them into regular GitHub Actions files.</p>
-    <p class="slide-body">Two features worth knowing by name:</p>
-    <ul class="slide-list"><li><strong>Safe outputs</strong> — sandboxed outputs the agent is allowed to emit (e.g., <em>&quot;create an issue&quot;</em>, <em>&quot;post a comment&quot;</em>) instead of arbitrary shell execution.</li><li><strong>Agent Workflow Firewall</strong> — a network allowlist for what the agent&#x27;s runner can reach.</li></ul>
-    <p class="slide-body">Pick your engine: Copilot · Claude · Codex · Gemini.</p>
+          <h1 class="slide-title">Running Copilot CLI inside GitHub Actions</h1>
+          <div class="code-block"><code><span class="cmt"># .github/workflows/copilot-triage.yml</span>
+    <span class="prop">name</span>: Copilot Triage
+    <span class="prop">on</span>:
+      <span class="prop">issues</span>:
+        <span class="prop">types</span>: [opened]
+    <span class="prop">jobs</span>:
+      <span class="prop">triage</span>:
+        <span class="prop">runs-on</span>: ubuntu-latest
+        <span class="prop">steps</span>:
+          - uses: actions/checkout@v4
+    <span class="cmt">      # Pin a known-good CLI version for reproducibility:</span>
+          - run: npm install -g @github/copilot@1.x    # or a specific x.y.z
+          - run: |
+              copilot -p <span class="str">&quot;Read issue #${{ github.event.issue.number }},
+                          add labels, and post a triage comment.&quot;</span> \
+                      --allow-tool=<span class="str">&#x27;shell(gh)&#x27;</span> \
+                      --deny-tool=<span class="str">&#x27;shell(rm)&#x27;</span>
+            <span class="prop">env</span>:
+              <span class="prop">COPILOT_GITHUB_TOKEN</span>: ${{ secrets.COPILOT_TOKEN }}</code></div>
   </div>
-  <aside class="speaker-notes" hidden>Experimental but production-used at GitHub. The value prop: write the <em>intent</em> in Markdown, let <code>gh aw compile</code> produce a hardened Actions workflow with network + output restrictions baked in — so you don&#x27;t have to hand-roll the security-sensitive parts.</aside>
+  <aside class="speaker-notes" hidden>Same <code>copilot -p</code> pattern we saw in the CLI section, now in CI. <strong>Version pinning recommendation:</strong> pin <code>@github/copilot</code> to a major or specific version so CI jobs don&#x27;t break on a weekly release. This is how teams build &quot;AI teammates&quot; around their repo.</aside>
 </article>

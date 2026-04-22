@@ -1,9 +1,18 @@
-<article class="slide" data-number="81" data-type="demo-placeholder" data-section="Admin">
+<article class="slide" data-number="81" data-type="code-example" data-section="Admin">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">🎬 Demo: Enterprise Admin</h1>
-          <div class="demo-badge">🎬 LIVE DEMO</div>
-          <p class="demo-note">Presenter fills this in live — see speaker notes for suggestions.</p>
+          <h1 class="slide-title">Identity, seats, and audit</h1>
+          <div class="code-block"><code># Identity — typically EMU* with SAML/OIDC + SCIM:
+    #   Entra ID ✓ SAML ✓ OIDC ✓ SCIM
+    #   Okta     ✓ SAML      ✓ SCIM
+    #   Ping     ✓ SAML      ✓ SCIM
+    # NOT supported: Okta + Entra combined for SSO+SCIM
+    # Audit-log queries (retention 180 days; stream to SIEM*):
+    action:copilot
+    action:copilot.cfb_seat_assignment_created
+    actor:Copilot action:pull_request.create
+    agent_session_id:&lt;id&gt;</code></div>
+    <p class="slide-body"><strong>Glossary:</strong> <strong>EMU</strong> = Enterprise Managed Users (GitHub accounts controlled by your IdP — users can&#x27;t change email, 2FA, etc.). <strong>SAML</strong> / <strong>OIDC</strong> = SSO protocols (SAML is older/XML-based; OIDC is OAuth2-based). <strong>SCIM</strong> = automated user/group provisioning from your IdP to GitHub. <strong>SIEM</strong> = Security Information and Event Management (Splunk/Sentinel/etc.) — the system that ingests audit logs for alerting.</p>
   </div>
-  <aside class="speaker-notes" hidden>[To be filled in by presenter — e.g., walk the AI controls tab, flip a feature policy, show an audit log query, point to the Copilot usage metrics dashboard.]</aside>
+  <aside class="speaker-notes" hidden>The audit log does <strong>not</strong> include client-side prompts — only platform events (policy changes, seat grants, agent PR creates). For prompt-level audit you need the Hooks we covered earlier.</aside>
 </article>

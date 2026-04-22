@@ -1,9 +1,8 @@
-<article class="slide" data-number="78" data-type="table" data-section="Admin">
+<article class="slide" data-number="78" data-type="comparison" data-section="Security">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Enterprise admin: plans &amp; consoles</h1>
-          <table class="slide-table"><thead><tr><th></th><th><strong>Business</strong></th><th><strong>Enterprise</strong></th></tr></thead><tbody><tr><td>Price</td><td>$19 / seat / mo</td><td>$39 / seat / mo</td></tr><tr><td>Premium req / user / mo</td><td>300</td><td>1,000</td></tr><tr><td>Overage</td><td>$0.04 / request</td><td>$0.04 / request</td></tr><tr><td>Console</td><td>Org Settings → Copilot</td><td>Enterprise → <strong>AI controls</strong> tab</td></tr></tbody></table>
-    <p class="slide-body">AI controls has sub-pages for <strong>Copilot · Models · Agents · MCP</strong>. Audit logs live under <em>Settings → Audit log</em>; seats &amp; spend under <em>Billing &amp; licensing</em>.</p>
+          <h1 class="slide-title">CLI vs VS Code — governance gaps to know</h1>
+          <table class="slide-table"><thead><tr><th>Governance feature</th><th>VS Code</th><th>Copilot CLI</th></tr></thead><tbody><tr><td>Content exclusion (repo-level)</td><td>✅ inline + chat</td><td>❌ <strong>does not apply</strong></td></tr><tr><td>MCP policies</td><td>✅</td><td>❌ <strong>does not apply</strong></td></tr><tr><td>IDE policies</td><td>✅</td><td>❌</td></tr><tr><td>Public-code &quot;Block&quot; enforcement</td><td>✅ inline suggestions</td><td>⚠️ not enforced the same way</td></tr><tr><td>Hooks for enforcement</td><td>❌</td><td>✅ primary surface</td></tr></tbody></table>
   </div>
-  <aside class="speaker-notes" hidden>~5 slides, ~5 minutes in this section. Enterprise policies can pin a value so orgs can&#x27;t override — helpful for rolling out regulated defaults.</aside>
+  <aside class="speaker-notes" hidden>Emphasized per directive. The CLI is deliberately closer to the metal — governance on the CLI is done with Hooks + org policy (enable/disable the CLI entirely), not with content exclusion.</aside>
 </article>

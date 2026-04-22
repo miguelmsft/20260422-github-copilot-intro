@@ -1,9 +1,40 @@
-<article class="slide" data-number="56" data-type="comparison" data-section="Skills">
+<article class="slide" data-number="56" data-type="diagram" data-section="Skills">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">CLI vs VS Code — Skills support</h1>
-          <table class="slide-table dense"><thead><tr><th></th><th><strong>Copilot CLI</strong></th><th><strong>VS Code Agent</strong></th><th><strong>Cloud Agent</strong></th></tr></thead><tbody><tr><td>Supported</td><td>✅ full</td><td>✅ (agent mode)</td><td>✅</td></tr><tr><td>Locations</td><td><code>.github/skills/</code>, <code>~/.copilot/skills/</code>, <code>.claude/skills/</code>, <code>.agents/skills/</code>, plugins, <code>COPILOT_SKILLS_DIRS</code></td><td><code>.github/skills/</code> (+ related)</td><td><code>.github/skills/</code> on default branch</td></tr><tr><td>Slash invoke</td><td><code>/skill-name</code> ✅</td><td><code>/skill-name</code> ✅</td><td><code>/skill-name</code> in prompt</td></tr><tr><td>Slash mgmt</td><td><code>/skills list / info / add / reload / remove</code> ✅</td><td>via UI</td><td>—</td></tr></tbody></table>
-    <p class="slide-body"><strong>Not supported:</strong> Visual Studio, Eclipse, Xcode, regular GitHub.com chat. JetBrains: preview.</p>
+    <h1 class="slide-title">How Copilot picks a skill</h1>
+    <div class="flow-container">
+      <div class="flow-step">
+        <div class="flow-step-title">Session start</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-title">Scan skill sources</div>
+        <div class="flow-step-desc"><code>.github/skills/</code> · <code>~/.copilot/skills/</code> · plugins · <code>COPILOT_SKILLS_DIRS</code> · built-ins</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-title">Build catalog of (name, description) pairs</div>
+        <div class="flow-step-desc">only metadata loaded</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step flow-highlight">
+        <div class="flow-step-title">You prompt: &quot;debug the failing CI on PR #42&quot;</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-title">Model matches description</div>
+        <div class="flow-step-desc">selects <code>github-actions-failure-debugging</code></div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-title">Built-in <code>skill</code> tool injects SKILL.md body into context</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-title">Copilot follows the steps</div>
+        <div class="flow-step-desc">may run bundled scripts</div>
+      </div>
+    </div>
   </div>
-  <aside class="speaker-notes" hidden>Emphasized per directive. CLI has the richest management UX; VS Code handles it via the Chat agent-mode plumbing; other IDEs are not in scope yet.</aside>
+  <aside class="speaker-notes" hidden>Only descriptions load at session start; the body is injected on demand. That&#x27;s how you can have dozens of skills without blowing context.</aside>
 </article>

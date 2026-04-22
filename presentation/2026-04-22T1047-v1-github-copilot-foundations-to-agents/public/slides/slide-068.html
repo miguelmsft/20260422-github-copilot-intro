@@ -1,8 +1,20 @@
-<article class="slide" data-number="68" data-type="comparison" data-section="Advanced Agents">
+<article class="slide" data-number="68" data-type="code-example" data-section="Advanced Agents">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">CLI vs VS Code — custom agent differences</h1>
-          <table class="slide-table"><thead><tr><th>Feature</th><th><strong>VS Code</strong></th><th><strong>Copilot CLI</strong></th></tr></thead><tbody><tr><td>Discover location</td><td><code>.github/agents/</code> (+ user, workspace)</td><td><code>.github/agents/</code> + <code>~/.copilot/agents/</code></td></tr><tr><td>Invocation</td><td>Agent dropdown, <code>/agents</code>, <code>/create-agent</code></td><td><code>/agent</code>, <code>--agent</code> flag, or natural language</td></tr><tr><td><code>handoffs:</code> buttons</td><td>✅ VS Code-only</td><td>❌</td></tr><tr><td><code>agents:</code> subagent declarations</td><td>✅</td><td>(uses built-in subagent model)</td></tr><tr><td><code>/fleet</code> parallel orchestrator</td><td>❌</td><td>✅ CLI-only</td></tr><tr><td>Scoped <code>hooks:</code> per agent (Preview)</td><td>✅</td><td>(repo-wide hooks instead)</td></tr></tbody></table>
+          <h1 class="slide-title"><code>.agent.md</code> example</h1>
+          <div class="code-block"><code><span class="cmt">---</span>
+    name: readme-creator
+    description: Agent specializing in creating and improving README files
+    tools: [read, write, view, edit]
+    model: claude-sonnet-4.6
+    <span class="cmt">---</span>
+    You are a documentation specialist focused on README files. Your scope
+    is limited to README files and related docs only — do not modify or
+    analyze code files.
+    Focus on:
+    - Clear project descriptions with logical sections
+    - Scannable headings and relative links to in-repo docs
+    - Appropriate badges and alt text on images</code></div>
   </div>
-  <aside class="speaker-notes" hidden>Per directive. VS Code gets interactive UX (handoffs, buttons); CLI gets orchestration (<code>/fleet</code>) and raw power. Cloud agent consumes the same file but ignores UX-only fields.</aside>
+  <aside class="speaker-notes" hidden>Minimum: <code>name</code>, <code>description</code>, prompt body. Optional: <code>tools</code>, <code>model</code>, and (VS Code only) <code>handoffs:</code>, <code>agents:</code>, <code>hooks:</code>.</aside>
 </article>

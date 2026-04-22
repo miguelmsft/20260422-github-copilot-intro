@@ -1,0 +1,480 @@
+- generic [active] [ref=e1]:
+  - article [ref=e5]:
+    - generic [ref=e6]:
+      - heading "Agenda — 6 big themes" [level=1] [ref=e7]
+      - list [ref=e8]:
+        - listitem [ref=e9]:
+          - strong [ref=e10]: How we got here
+          - text: — 5 years of Copilot in 5 minutes
+        - listitem [ref=e11]:
+          - strong [ref=e12]: Agentic foundations
+          - text: — what an AI agent actually
+          - emphasis [ref=e13]: is
+        - listitem [ref=e14]:
+          - strong [ref=e15]: The surface map + modes
+          - text: — where Copilot runs and how it behaves
+        - listitem [ref=e16]:
+          - strong [ref=e17]: The CLI deep dive
+          - text: — terminal-native agentic coding
+        - listitem [ref=e18]:
+          - strong [ref=e19]: "Customization: instructions, MCP, Skills, Hooks, custom agents"
+        - listitem [ref=e20]:
+          - strong [ref=e21]: Governance
+          - text: — security, privacy, enterprise admin
+      - paragraph [ref=e22]: Two breaks. Demos at the end of each major section.
+  - generic: 2 / 85
+  - generic: Opening
+  - button "Toggle speaker notes" [ref=e23] [cursor=pointer]: 📝
+  - button "Open settings" [ref=e24] [cursor=pointer]: ⚙
+  - complementary [ref=e25]:
+    - button "Close" [ref=e26] [cursor=pointer]: ×
+    - heading "⚙ Presentation Settings" [level=2] [ref=e27]
+    - heading "Theme" [level=3] [ref=e28]
+    - combobox [ref=e29] [cursor=pointer]:
+      - option "GitHub Cosmos (dark)" [selected]
+      - option "Warm & Welcoming"
+      - option "Corporate Clean"
+      - option "Neon Cyberpunk"
+    - heading "Speaker Notes" [level=3] [ref=e30]
+    - generic [ref=e31]:
+      - checkbox "Show speaker notes overlay (N)" [ref=e32]
+      - text: Show speaker notes overlay (N)
+    - heading "Go to slide" [level=3] [ref=e33]
+    - generic [ref=e34]:
+      - spinbutton [ref=e35] [cursor=pointer]
+      - button "Go" [ref=e36] [cursor=pointer]
+    - heading "PDF Export" [level=3] [ref=e37]
+    - button "Export / Print to PDF" [ref=e39] [cursor=pointer]
+    - generic [ref=e40]: Prints with current theme. Hidden slides are skipped.
+    - heading "Slides" [level=3] [ref=e41]
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - 'generic "Slide 1: GitHub Copilot" [ref=e44] [cursor=pointer]':
+          - 'checkbox "Slide 1: GitHub Copilot" [checked] [ref=e45]'
+          - text: "Slide 1: GitHub Copilot"
+        - button "▶" [ref=e46] [cursor=pointer]
+      - generic [ref=e47]:
+        - 'generic "Slide 2: Agenda — 6 big themes" [ref=e48] [cursor=pointer]':
+          - 'checkbox "Slide 2: Agenda — 6 big themes" [checked] [ref=e49]'
+          - text: "Slide 2: Agenda — 6 big themes"
+        - button "▶" [ref=e50] [cursor=pointer]
+      - generic [ref=e51]:
+        - 'generic "Slide 3: Why this matters in 2026" [ref=e52] [cursor=pointer]':
+          - 'checkbox "Slide 3: Why this matters in 2026" [checked] [ref=e53]'
+          - text: "Slide 3: Why this matters in 2026"
+        - button "▶" [ref=e54] [cursor=pointer]
+      - generic [ref=e55]:
+        - 'generic "Slide 4: A brief history: the capability arc" [ref=e56] [cursor=pointer]':
+          - 'checkbox "Slide 4: A brief history: the capability arc" [checked] [ref=e57]'
+          - text: "Slide 4: A brief history: the capability arc"
+        - button "▶" [ref=e58] [cursor=pointer]
+      - generic [ref=e59]:
+        - 'generic "Slide 5: The four inflection points" [ref=e60] [cursor=pointer]':
+          - 'checkbox "Slide 5: The four inflection points" [checked] [ref=e61]'
+          - text: "Slide 5: The four inflection points"
+        - button "▶" [ref=e62] [cursor=pointer]
+      - generic [ref=e63]:
+        - 'generic "Slide 6: Agentic foundations: Plain LLM vs Chatbot vs …" [ref=e64] [cursor=pointer]':
+          - 'checkbox "Slide 6: Agentic foundations: Plain LLM vs Chatbot vs …" [checked] [ref=e65]'
+          - text: "Slide 6: Agentic foundations: Plain LLM vs Chatbot vs …"
+        - button "▶" [ref=e66] [cursor=pointer]
+      - generic [ref=e67]:
+        - 'generic "Slide 7: The agentic loop — Think · Act · Observe" [ref=e68] [cursor=pointer]':
+          - 'checkbox "Slide 7: The agentic loop — Think · Act · Observe" [checked] [ref=e69]'
+          - text: "Slide 7: The agentic loop — Think · Act · Observe"
+        - button "▶" [ref=e70] [cursor=pointer]
+      - generic [ref=e71]:
+        - 'generic "Slide 8: Five building blocks" [ref=e72] [cursor=pointer]':
+          - 'checkbox "Slide 8: Five building blocks" [checked] [ref=e73]'
+          - text: "Slide 8: Five building blocks"
+        - button "▶" [ref=e74] [cursor=pointer]
+      - generic [ref=e75]:
+        - 'generic "Slide 9: What a tool call looks like (conceptually)" [ref=e76] [cursor=pointer]':
+          - 'checkbox "Slide 9: What a tool call looks like (conceptually)" [checked] [ref=e77]'
+          - text: "Slide 9: What a tool call looks like (conceptually)"
+        - button "▶" [ref=e78] [cursor=pointer]
+      - generic [ref=e79]:
+        - 'generic "Slide 10: Common agent patterns" [ref=e80] [cursor=pointer]':
+          - 'checkbox "Slide 10: Common agent patterns" [checked] [ref=e81]'
+          - text: "Slide 10: Common agent patterns"
+        - button "▶" [ref=e82] [cursor=pointer]
+      - generic [ref=e83]:
+        - 'generic "Slide 11: When should I use an agent?" [ref=e84] [cursor=pointer]':
+          - 'checkbox "Slide 11: When should I use an agent?" [checked] [ref=e85]'
+          - text: "Slide 11: When should I use an agent?"
+        - button "▶" [ref=e86] [cursor=pointer]
+      - generic [ref=e87]:
+        - 'generic "Slide 12: The compound-error problem" [ref=e88] [cursor=pointer]':
+          - 'checkbox "Slide 12: The compound-error problem" [checked] [ref=e89]'
+          - text: "Slide 12: The compound-error problem"
+        - button "▶" [ref=e90] [cursor=pointer]
+      - generic [ref=e91]:
+        - 'generic "Slide 13: The autonomy spectrum" [ref=e92] [cursor=pointer]':
+          - 'checkbox "Slide 13: The autonomy spectrum" [checked] [ref=e93]'
+          - text: "Slide 13: The autonomy spectrum"
+        - button "▶" [ref=e94] [cursor=pointer]
+      - generic [ref=e95]:
+        - 'generic "Slide 14: 🎬 Demo: Agentic Foundations" [ref=e96] [cursor=pointer]':
+          - 'checkbox "Slide 14: 🎬 Demo: Agentic Foundations" [checked] [ref=e97]'
+          - text: "Slide 14: 🎬 Demo: Agentic Foundations"
+        - button "▶" [ref=e98] [cursor=pointer]
+      - generic [ref=e99]:
+        - 'generic "Slide 15: The Copilot surface map — five families + whe…" [ref=e100] [cursor=pointer]':
+          - 'checkbox "Slide 15: The Copilot surface map — five families + whe…" [checked] [ref=e101]'
+          - text: "Slide 15: The Copilot surface map — five families + whe…"
+        - button "▶" [ref=e102] [cursor=pointer]
+      - generic [ref=e103]:
+        - 'generic "Slide 16: The mental model to teach" [ref=e104] [cursor=pointer]':
+          - 'checkbox "Slide 16: The mental model to teach" [checked] [ref=e105]'
+          - text: "Slide 16: The mental model to teach"
+        - button "▶" [ref=e106] [cursor=pointer]
+      - generic [ref=e107]:
+        - 'generic "Slide 17: 🎬 Demo: Surface Tour" [ref=e108] [cursor=pointer]':
+          - 'checkbox "Slide 17: 🎬 Demo: Surface Tour" [checked] [ref=e109]'
+          - text: "Slide 17: 🎬 Demo: Surface Tour"
+        - button "▶" [ref=e110] [cursor=pointer]
+      - generic [ref=e111]:
+        - 'generic "Slide 18: Modes: a VS Code chat session = 3 independent…" [ref=e112] [cursor=pointer]':
+          - 'checkbox "Slide 18: Modes: a VS Code chat session = 3 independent…" [checked] [ref=e113]'
+          - text: "Slide 18: Modes: a VS Code chat session = 3 independent…"
+        - button "▶" [ref=e114] [cursor=pointer]
+      - generic [ref=e115]:
+        - 'generic "Slide 19: The three built-in personas" [ref=e116] [cursor=pointer]':
+          - 'checkbox "Slide 19: The three built-in personas" [checked] [ref=e117]'
+          - text: "Slide 19: The three built-in personas"
+        - button "▶" [ref=e118] [cursor=pointer]
+      - generic [ref=e119]:
+        - 'generic "Slide 20: Permission levels" [ref=e120] [cursor=pointer]':
+          - 'checkbox "Slide 20: Permission levels" [checked] [ref=e121]'
+          - text: "Slide 20: Permission levels"
+        - button "▶" [ref=e122] [cursor=pointer]
+      - generic [ref=e123]:
+        - 'generic "Slide 21: In-IDE Agent vs Copilot Cloud Agent — do not …" [ref=e124] [cursor=pointer]':
+          - 'checkbox "Slide 21: In-IDE Agent vs Copilot Cloud Agent — do not …" [checked] [ref=e125]'
+          - text: "Slide 21: In-IDE Agent vs Copilot Cloud Agent — do not …"
+        - button "▶" [ref=e126] [cursor=pointer]
+      - generic [ref=e127]:
+        - 'generic "Slide 22: Which mode should I pick?" [ref=e128] [cursor=pointer]':
+          - 'checkbox "Slide 22: Which mode should I pick?" [checked] [ref=e129]'
+          - text: "Slide 22: Which mode should I pick?"
+        - button "▶" [ref=e130] [cursor=pointer]
+      - generic [ref=e131]:
+        - 'generic "Slide 23: CLI vs VS Code — mode differences" [ref=e132] [cursor=pointer]':
+          - 'checkbox "Slide 23: CLI vs VS Code — mode differences" [checked] [ref=e133]'
+          - text: "Slide 23: CLI vs VS Code — mode differences"
+        - button "▶" [ref=e134] [cursor=pointer]
+      - generic [ref=e135]:
+        - 'generic "Slide 24: 🎬 Demo: Modes" [ref=e136] [cursor=pointer]':
+          - 'checkbox "Slide 24: 🎬 Demo: Modes" [checked] [ref=e137]'
+          - text: "Slide 24: 🎬 Demo: Modes"
+        - button "▶" [ref=e138] [cursor=pointer]
+      - generic [ref=e139]:
+        - 'generic "Slide 25: ☕ Break 1 — 10 minutes" [ref=e140] [cursor=pointer]':
+          - 'checkbox "Slide 25: ☕ Break 1 — 10 minutes" [checked] [ref=e141]'
+          - text: "Slide 25: ☕ Break 1 — 10 minutes"
+        - button "▶" [ref=e142] [cursor=pointer]
+      - generic [ref=e143]:
+        - 'generic "Slide 26: Models & premium requests: Copilot is a multi…" [ref=e144] [cursor=pointer]':
+          - 'checkbox "Slide 26: Models & premium requests: Copilot is a multi…" [checked] [ref=e145]'
+          - text: "Slide 26: Models & premium requests: Copilot is a multi…"
+        - button "▶" [ref=e146] [cursor=pointer]
+      - generic [ref=e147]:
+        - 'generic "Slide 27: Premium requests — the cost unit" [ref=e148] [cursor=pointer]':
+          - 'checkbox "Slide 27: Premium requests — the cost unit" [checked] [ref=e149]'
+          - text: "Slide 27: Premium requests — the cost unit"
+        - button "▶" [ref=e150] [cursor=pointer]
+      - generic [ref=e151]:
+        - 'generic "Slide 28: Which model should I pick?" [ref=e152] [cursor=pointer]':
+          - 'checkbox "Slide 28: Which model should I pick?" [checked] [ref=e153]'
+          - text: "Slide 28: Which model should I pick?"
+        - button "▶" [ref=e154] [cursor=pointer]
+      - generic [ref=e155]:
+        - 'generic "Slide 29: CLI vs VS Code — model lineup nuances" [ref=e156] [cursor=pointer]':
+          - 'checkbox "Slide 29: CLI vs VS Code — model lineup nuances" [checked] [ref=e157]'
+          - text: "Slide 29: CLI vs VS Code — model lineup nuances"
+        - button "▶" [ref=e158] [cursor=pointer]
+      - generic [ref=e159]:
+        - 'generic "Slide 30: 🎬 Demo: Models" [ref=e160] [cursor=pointer]':
+          - 'checkbox "Slide 30: 🎬 Demo: Models" [checked] [ref=e161]'
+          - text: "Slide 30: 🎬 Demo: Models"
+        - button "▶" [ref=e162] [cursor=pointer]
+      - generic [ref=e163]:
+        - 'generic "Slide 31: Copilot CLI — what it is (and isn''t)" [ref=e164] [cursor=pointer]':
+          - 'checkbox "Slide 31: Copilot CLI — what it is (and isn''t)" [checked] [ref=e165]'
+          - text: "Slide 31: Copilot CLI — what it is (and isn't)"
+        - button "▶" [ref=e166] [cursor=pointer]
+      - generic [ref=e167]:
+        - 'generic "Slide 32: Install & first launch" [ref=e168] [cursor=pointer]':
+          - 'checkbox "Slide 32: Install & first launch" [checked] [ref=e169]'
+          - text: "Slide 32: Install & first launch"
+        - button "▶" [ref=e170] [cursor=pointer]
+      - generic [ref=e171]:
+        - 'generic "Slide 33: Interactive essentials" [ref=e172] [cursor=pointer]':
+          - 'checkbox "Slide 33: Interactive essentials" [checked] [ref=e173]'
+          - text: "Slide 33: Interactive essentials"
+        - button "▶" [ref=e174] [cursor=pointer]
+      - generic [ref=e175]:
+        - 'generic "Slide 34: The permission model" [ref=e176] [cursor=pointer]':
+          - 'checkbox "Slide 34: The permission model" [checked] [ref=e177]'
+          - text: "Slide 34: The permission model"
+        - button "▶" [ref=e178] [cursor=pointer]
+      - generic [ref=e179]:
+        - 'generic "Slide 35: Programmatic / scripted mode" [ref=e180] [cursor=pointer]':
+          - 'checkbox "Slide 35: Programmatic / scripted mode" [checked] [ref=e181]'
+          - text: "Slide 35: Programmatic / scripted mode"
+        - button "▶" [ref=e182] [cursor=pointer]
+      - generic [ref=e183]:
+        - 'generic "Slide 36: Built-in sub-agents" [ref=e184] [cursor=pointer]':
+          - 'checkbox "Slide 36: Built-in sub-agents" [checked] [ref=e185]'
+          - text: "Slide 36: Built-in sub-agents"
+        - button "▶" [ref=e186] [cursor=pointer]
+      - generic [ref=e187]:
+        - 'generic "Slide 37: CLI vs VS Code — when to pick which" [ref=e188] [cursor=pointer]':
+          - 'checkbox "Slide 37: CLI vs VS Code — when to pick which" [checked] [ref=e189]'
+          - text: "Slide 37: CLI vs VS Code — when to pick which"
+        - button "▶" [ref=e190] [cursor=pointer]
+      - generic [ref=e191]:
+        - 'generic "Slide 38: 🎬 Demo: Copilot CLI" [ref=e192] [cursor=pointer]':
+          - 'checkbox "Slide 38: 🎬 Demo: Copilot CLI" [checked] [ref=e193]'
+          - text: "Slide 38: 🎬 Demo: Copilot CLI"
+        - button "▶" [ref=e194] [cursor=pointer]
+      - generic [ref=e195]:
+        - 'generic "Slide 39: The four customization layers" [ref=e196] [cursor=pointer]':
+          - 'checkbox "Slide 39: The four customization layers" [checked] [ref=e197]'
+          - text: "Slide 39: The four customization layers"
+        - button "▶" [ref=e198] [cursor=pointer]
+      - generic [ref=e199]:
+        - 'generic "Slide 40: A good .github/copilot-instructions.md" [ref=e200] [cursor=pointer]':
+          - 'checkbox "Slide 40: A good .github/copilot-instructions.md" [checked] [ref=e201]'
+          - text: "Slide 40: A good .github/copilot-instructions.md"
+        - button "▶" [ref=e202] [cursor=pointer]
+      - generic [ref=e203]:
+        - 'generic "Slide 41: Instructions vs Prompt files" [ref=e204] [cursor=pointer]':
+          - 'checkbox "Slide 41: Instructions vs Prompt files" [checked] [ref=e205]'
+          - text: "Slide 41: Instructions vs Prompt files"
+        - button "▶" [ref=e206] [cursor=pointer]
+      - generic [ref=e207]:
+        - 'generic "Slide 42: CLI vs VS Code — customization nuances" [ref=e208] [cursor=pointer]':
+          - 'checkbox "Slide 42: CLI vs VS Code — customization nuances" [checked] [ref=e209]'
+          - text: "Slide 42: CLI vs VS Code — customization nuances"
+        - button "▶" [ref=e210] [cursor=pointer]
+      - generic [ref=e211]:
+        - 'generic "Slide 43: AGENTS.md — the cross-tool standard" [ref=e212] [cursor=pointer]':
+          - 'checkbox "Slide 43: AGENTS.md — the cross-tool standard" [checked] [ref=e213]'
+          - text: "Slide 43: AGENTS.md — the cross-tool standard"
+        - button "▶" [ref=e214] [cursor=pointer]
+      - generic [ref=e215]:
+        - 'generic "Slide 44: 🎬 Demo: Customization" [ref=e216] [cursor=pointer]':
+          - 'checkbox "Slide 44: 🎬 Demo: Customization" [checked] [ref=e217]'
+          - text: "Slide 44: 🎬 Demo: Customization"
+        - button "▶" [ref=e218] [cursor=pointer]
+      - generic [ref=e219]:
+        - 'generic "Slide 45: MCP — Model Context Protocol: why it exists" [ref=e220] [cursor=pointer]':
+          - 'checkbox "Slide 45: MCP — Model Context Protocol: why it exists" [checked] [ref=e221]'
+          - text: "Slide 45: MCP — Model Context Protocol: why it exists"
+        - button "▶" [ref=e222] [cursor=pointer]
+      - generic [ref=e223]:
+        - 'generic "Slide 46: Host · Client · Server" [ref=e224] [cursor=pointer]':
+          - 'checkbox "Slide 46: Host · Client · Server" [checked] [ref=e225]'
+          - text: "Slide 46: Host · Client · Server"
+        - button "▶" [ref=e226] [cursor=pointer]
+      - generic [ref=e227]:
+        - 'generic "Slide 47: What servers expose (3 primitives)" [ref=e228] [cursor=pointer]':
+          - 'checkbox "Slide 47: What servers expose (3 primitives)" [checked] [ref=e229]'
+          - text: "Slide 47: What servers expose (3 primitives)"
+        - button "▶" [ref=e230] [cursor=pointer]
+      - generic [ref=e231]:
+        - 'generic "Slide 48: Configure MCP — where each surface reads from" [ref=e232] [cursor=pointer]':
+          - 'checkbox "Slide 48: Configure MCP — where each surface reads from" [checked] [ref=e233]'
+          - text: "Slide 48: Configure MCP — where each surface reads from"
+        - button "▶" [ref=e234] [cursor=pointer]
+      - generic [ref=e235]:
+        - 'generic "Slide 49: The built-in GitHub MCP server" [ref=e236] [cursor=pointer]':
+          - 'checkbox "Slide 49: The built-in GitHub MCP server" [checked] [ref=e237]'
+          - text: "Slide 49: The built-in GitHub MCP server"
+        - button "▶" [ref=e238] [cursor=pointer]
+      - generic [ref=e239]:
+        - 'generic "Slide 50: Permission model & the cloud-agent caveat" [ref=e240] [cursor=pointer]':
+          - 'checkbox "Slide 50: Permission model & the cloud-agent caveat" [checked] [ref=e241]'
+          - text: "Slide 50: Permission model & the cloud-agent caveat"
+        - button "▶" [ref=e242] [cursor=pointer]
+      - generic [ref=e243]:
+        - 'generic "Slide 51: 🎬 Demo: MCP" [ref=e244] [cursor=pointer]':
+          - 'checkbox "Slide 51: 🎬 Demo: MCP" [checked] [ref=e245]'
+          - text: "Slide 51: 🎬 Demo: MCP"
+        - button "▶" [ref=e246] [cursor=pointer]
+      - generic [ref=e247]:
+        - 'generic "Slide 52: ☕ Break 2 — 10 minutes" [ref=e248] [cursor=pointer]':
+          - 'checkbox "Slide 52: ☕ Break 2 — 10 minutes" [checked] [ref=e249]'
+          - text: "Slide 52: ☕ Break 2 — 10 minutes"
+        - button "▶" [ref=e250] [cursor=pointer]
+      - generic [ref=e251]:
+        - 'generic "Slide 53: Skills — mind the terminology trap" [ref=e252] [cursor=pointer]':
+          - 'checkbox "Slide 53: Skills — mind the terminology trap" [checked] [ref=e253]'
+          - text: "Slide 53: Skills — mind the terminology trap"
+        - button "▶" [ref=e254] [cursor=pointer]
+      - generic [ref=e255]:
+        - 'generic "Slide 54: Anatomy of a skill" [ref=e256] [cursor=pointer]':
+          - 'checkbox "Slide 54: Anatomy of a skill" [checked] [ref=e257]'
+          - text: "Slide 54: Anatomy of a skill"
+        - button "▶" [ref=e258] [cursor=pointer]
+      - generic [ref=e259]:
+        - 'generic "Slide 55: How Copilot picks a skill" [ref=e260] [cursor=pointer]':
+          - 'checkbox "Slide 55: How Copilot picks a skill" [checked] [ref=e261]'
+          - text: "Slide 55: How Copilot picks a skill"
+        - button "▶" [ref=e262] [cursor=pointer]
+      - generic [ref=e263]:
+        - 'generic "Slide 56: CLI vs VS Code — Skills support" [ref=e264] [cursor=pointer]':
+          - 'checkbox "Slide 56: CLI vs VS Code — Skills support" [checked] [ref=e265]'
+          - text: "Slide 56: CLI vs VS Code — Skills support"
+        - button "▶" [ref=e266] [cursor=pointer]
+      - generic [ref=e267]:
+        - 'generic "Slide 57: Skills vs MCP vs custom agents vs instructions" [ref=e268] [cursor=pointer]':
+          - 'checkbox "Slide 57: Skills vs MCP vs custom agents vs instructions" [checked] [ref=e269]'
+          - text: "Slide 57: Skills vs MCP vs custom agents vs instructions"
+        - button "▶" [ref=e270] [cursor=pointer]
+      - generic [ref=e271]:
+        - 'generic "Slide 58: 🎬 Demo: Skills" [ref=e272] [cursor=pointer]':
+          - 'checkbox "Slide 58: 🎬 Demo: Skills" [checked] [ref=e273]'
+          - text: "Slide 58: 🎬 Demo: Skills"
+        - button "▶" [ref=e274] [cursor=pointer]
+      - generic [ref=e275]:
+        - 'generic "Slide 59: Hooks: Instructions ask. Skills guide. Hooks …" [ref=e276] [cursor=pointer]':
+          - 'checkbox "Slide 59: Hooks: Instructions ask. Skills guide. Hooks …" [checked] [ref=e277]'
+          - text: "Slide 59: Hooks: Instructions ask. Skills guide. Hooks …"
+        - button "▶" [ref=e278] [cursor=pointer]
+      - generic [ref=e279]:
+        - 'generic "Slide 60: The 8 lifecycle events" [ref=e280] [cursor=pointer]':
+          - 'checkbox "Slide 60: The 8 lifecycle events" [checked] [ref=e281]'
+          - text: "Slide 60: The 8 lifecycle events"
+        - button "▶" [ref=e282] [cursor=pointer]
+      - generic [ref=e283]:
+        - 'generic "Slide 61: Shape of a hooks config" [ref=e284] [cursor=pointer]':
+          - 'checkbox "Slide 61: Shape of a hooks config" [checked] [ref=e285]'
+          - text: "Slide 61: Shape of a hooks config"
+        - button "▶" [ref=e286] [cursor=pointer]
+      - generic [ref=e287]:
+        - 'generic "Slide 62: A preToolUse hook that blocks rm -rf" [ref=e288] [cursor=pointer]':
+          - 'checkbox "Slide 62: A preToolUse hook that blocks rm -rf" [checked] [ref=e289]'
+          - text: "Slide 62: A preToolUse hook that blocks rm -rf"
+        - button "▶" [ref=e290] [cursor=pointer]
+      - generic [ref=e291]:
+        - 'generic "Slide 63: CLI vs VS Code vs Cloud — Hooks support" [ref=e292] [cursor=pointer]':
+          - 'checkbox "Slide 63: CLI vs VS Code vs Cloud — Hooks support" [checked] [ref=e293]'
+          - text: "Slide 63: CLI vs VS Code vs Cloud — Hooks support"
+        - button "▶" [ref=e294] [cursor=pointer]
+      - generic [ref=e295]:
+        - 'generic "Slide 64: Real uses" [ref=e296] [cursor=pointer]':
+          - 'checkbox "Slide 64: Real uses" [checked] [ref=e297]'
+          - text: "Slide 64: Real uses"
+        - button "▶" [ref=e298] [cursor=pointer]
+      - generic [ref=e299]:
+        - 'generic "Slide 65: 🎬 Demo: Hooks" [ref=e300] [cursor=pointer]':
+          - 'checkbox "Slide 65: 🎬 Demo: Hooks" [checked] [ref=e301]'
+          - text: "Slide 65: 🎬 Demo: Hooks"
+        - button "▶" [ref=e302] [cursor=pointer]
+      - generic [ref=e303]:
+        - 'generic "Slide 66: Advanced custom agents: one profile, three ru…" [ref=e304] [cursor=pointer]':
+          - 'checkbox "Slide 66: Advanced custom agents: one profile, three ru…" [checked] [ref=e305]'
+          - text: "Slide 66: Advanced custom agents: one profile, three ru…"
+        - button "▶" [ref=e306] [cursor=pointer]
+      - generic [ref=e307]:
+        - 'generic "Slide 67: .agent.md example" [ref=e308] [cursor=pointer]':
+          - 'checkbox "Slide 67: .agent.md example" [checked] [ref=e309]'
+          - text: "Slide 67: .agent.md example"
+        - button "▶" [ref=e310] [cursor=pointer]
+      - generic [ref=e311]:
+        - 'generic "Slide 68: CLI vs VS Code — custom agent differences" [ref=e312] [cursor=pointer]':
+          - 'checkbox "Slide 68: CLI vs VS Code — custom agent differences" [checked] [ref=e313]'
+          - text: "Slide 68: CLI vs VS Code — custom agent differences"
+        - button "▶" [ref=e314] [cursor=pointer]
+      - generic [ref=e315]:
+        - 'generic "Slide 69: The Cloud Agent — \"assign an issue, get a PR\"" [ref=e316] [cursor=pointer]':
+          - 'checkbox "Slide 69: The Cloud Agent — \"assign an issue, get a PR\"" [checked] [ref=e317]'
+          - text: "Slide 69: The Cloud Agent — \"assign an issue, get a PR\""
+        - button "▶" [ref=e318] [cursor=pointer]
+      - generic [ref=e319]:
+        - 'generic "Slide 70: Running Copilot CLI inside GitHub Actions" [ref=e320] [cursor=pointer]':
+          - 'checkbox "Slide 70: Running Copilot CLI inside GitHub Actions" [checked] [ref=e321]'
+          - text: "Slide 70: Running Copilot CLI inside GitHub Actions"
+        - button "▶" [ref=e322] [cursor=pointer]
+      - generic [ref=e323]:
+        - 'generic "Slide 71: gh-aw — GitHub Agentic Workflows" [ref=e324] [cursor=pointer]':
+          - 'checkbox "Slide 71: gh-aw — GitHub Agentic Workflows" [checked] [ref=e325]'
+          - text: "Slide 71: gh-aw — GitHub Agentic Workflows"
+        - button "▶" [ref=e326] [cursor=pointer]
+      - generic [ref=e327]:
+        - 'generic "Slide 72: Agent HQ / Mission Control" [ref=e328] [cursor=pointer]':
+          - 'checkbox "Slide 72: Agent HQ / Mission Control" [checked] [ref=e329]'
+          - text: "Slide 72: Agent HQ / Mission Control"
+        - button "▶" [ref=e330] [cursor=pointer]
+      - generic [ref=e331]:
+        - 'generic "Slide 73: 🎬 Demo: Advanced Agents" [ref=e332] [cursor=pointer]':
+          - 'checkbox "Slide 73: 🎬 Demo: Advanced Agents" [checked] [ref=e333]'
+          - text: "Slide 73: 🎬 Demo: Advanced Agents"
+        - button "▶" [ref=e334] [cursor=pointer]
+      - generic [ref=e335]:
+        - 'generic "Slide 74: Data security & privacy: the training split" [ref=e336] [cursor=pointer]':
+          - 'checkbox "Slide 74: Data security & privacy: the training split" [checked] [ref=e337]'
+          - text: "Slide 74: Data security & privacy: the training split"
+        - button "▶" [ref=e338] [cursor=pointer]
+      - generic [ref=e339]:
+        - 'generic "Slide 75: Four governance levers (admin-side)" [ref=e340] [cursor=pointer]':
+          - 'checkbox "Slide 75: Four governance levers (admin-side)" [checked] [ref=e341]'
+          - text: "Slide 75: Four governance levers (admin-side)"
+        - button "▶" [ref=e342] [cursor=pointer]
+      - generic [ref=e343]:
+        - 'generic "Slide 76: BYOK changes the data path" [ref=e344] [cursor=pointer]':
+          - 'checkbox "Slide 76: BYOK changes the data path" [checked] [ref=e345]'
+          - text: "Slide 76: BYOK changes the data path"
+        - button "▶" [ref=e346] [cursor=pointer]
+      - generic [ref=e347]:
+        - 'generic "Slide 77: CLI vs VS Code — governance gaps to know" [ref=e348] [cursor=pointer]':
+          - 'checkbox "Slide 77: CLI vs VS Code — governance gaps to know" [checked] [ref=e349]'
+          - text: "Slide 77: CLI vs VS Code — governance gaps to know"
+        - button "▶" [ref=e350] [cursor=pointer]
+      - generic [ref=e351]:
+        - 'generic "Slide 78: Enterprise admin: plans & consoles" [ref=e352] [cursor=pointer]':
+          - 'checkbox "Slide 78: Enterprise admin: plans & consoles" [checked] [ref=e353]'
+          - text: "Slide 78: Enterprise admin: plans & consoles"
+        - button "▶" [ref=e354] [cursor=pointer]
+      - generic [ref=e355]:
+        - 'generic "Slide 79: The six levers admins actually pull" [ref=e356] [cursor=pointer]':
+          - 'checkbox "Slide 79: The six levers admins actually pull" [checked] [ref=e357]'
+          - text: "Slide 79: The six levers admins actually pull"
+        - button "▶" [ref=e358] [cursor=pointer]
+      - generic [ref=e359]:
+        - 'generic "Slide 80: Identity, seats, and audit" [ref=e360] [cursor=pointer]':
+          - 'checkbox "Slide 80: Identity, seats, and audit" [checked] [ref=e361]'
+          - text: "Slide 80: Identity, seats, and audit"
+        - button "▶" [ref=e362] [cursor=pointer]
+      - generic [ref=e363]:
+        - 'generic "Slide 81: 🎬 Demo: Enterprise Admin" [ref=e364] [cursor=pointer]':
+          - 'checkbox "Slide 81: 🎬 Demo: Enterprise Admin" [checked] [ref=e365]'
+          - text: "Slide 81: 🎬 Demo: Enterprise Admin"
+        - button "▶" [ref=e366] [cursor=pointer]
+      - generic [ref=e367]:
+        - 'generic "Slide 82: Closing: 7 practical tips to leave with" [ref=e368] [cursor=pointer]':
+          - 'checkbox "Slide 82: Closing: 7 practical tips to leave with" [checked] [ref=e369]'
+          - text: "Slide 82: Closing: 7 practical tips to leave with"
+        - button "▶" [ref=e370] [cursor=pointer]
+      - generic [ref=e371]:
+        - 'generic "Slide 83: Resources" [ref=e372] [cursor=pointer]':
+          - 'checkbox "Slide 83: Resources" [checked] [ref=e373]'
+          - text: "Slide 83: Resources"
+        - button "▶" [ref=e374] [cursor=pointer]
+      - generic [ref=e375]:
+        - 'generic "Slide 84: The one thing to remember" [ref=e376] [cursor=pointer]':
+          - 'checkbox "Slide 84: The one thing to remember" [checked] [ref=e377]'
+          - text: "Slide 84: The one thing to remember"
+        - button "▶" [ref=e378] [cursor=pointer]
+      - generic [ref=e379]:
+        - 'generic "Slide 85: Questions?" [ref=e380] [cursor=pointer]':
+          - 'checkbox "Slide 85: Questions?" [checked] [ref=e381]'
+          - text: "Slide 85: Questions?"
+        - button "▶" [ref=e382] [cursor=pointer]
+    - generic [ref=e383]: Uncheck to hide a slide from the deck & PDF. Click ▶ to jump.
+    - heading "Keyboard" [level=3] [ref=e384]
+    - generic [ref=e385]:
+      - text: →/Space/PgDn = next · ←/PgUp = prev · Home/End = first/last
+      - text: F = fullscreen · N = toggle notes · A = admin · Esc = close

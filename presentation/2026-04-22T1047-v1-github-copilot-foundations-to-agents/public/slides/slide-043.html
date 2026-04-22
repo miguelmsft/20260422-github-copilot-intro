@@ -1,9 +1,8 @@
-<article class="slide" data-number="43" data-type="single-point" data-section="Customization">
+<article class="slide" data-number="43" data-type="comparison" data-section="Customization">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title"><code>AGENTS.md</code> — the cross-tool standard</h1>
-          <p class="slide-body">A vendor-neutral <code>AGENTS.md</code> at the repo root (alongside <code>CLAUDE.md</code>, <code>GEMINI.md</code>) carries agent-style instructions recognized by Copilot, Claude Code, Codex, Gemini CLI, Cursor, and others.</p>
-    <p class="slide-body"><strong>Use it when you want one instructions file to serve multiple AI coding tools.</strong></p>
+          <h1 class="slide-title">CLI vs VS Code — customization nuances</h1>
+          <table class="slide-table"><thead><tr><th></th><th><strong>VS Code</strong></th><th><strong>Copilot CLI</strong></th></tr></thead><tbody><tr><td>Repo instructions</td><td><code>.github/copilot-instructions.md</code> ✓</td><td><code>.github/copilot-instructions.md</code> ✓</td></tr><tr><td>User-level</td><td><code>~/.copilot/instructions/*.instructions.md</code> (<code>chat.instructionsFilesLocations</code>)</td><td><code>$HOME/.copilot/copilot-instructions.md</code> (+ <code>COPILOT_CUSTOM_INSTRUCTIONS_DIRS</code>)</td></tr><tr><td>Path-scoped</td><td><code>.github/instructions/*.instructions.md</code> w/ <code>applyTo:</code></td><td>Supported via same files</td></tr><tr><td>Prompt files</td><td><code>*.prompt.md</code> (Chat view)</td><td>Not in CLI (use Skills instead)</td></tr><tr><td>Custom agents</td><td><code>.github/agents/*.agent.md</code> + VS Code-only fields</td><td><code>.github/agents/</code> + <code>~/.copilot/agents/</code></td></tr></tbody></table>
   </div>
-  <aside class="speaker-notes" hidden>New convention, rapidly standardizing. GitHub&#x27;s precedence puts <code>AGENTS.md</code> below <code>copilot-instructions.md</code> but above org instructions — useful fallback content.</aside>
+  <aside class="speaker-notes" hidden>Per directive. VS Code adds a prompt-file surface that CLI doesn&#x27;t have; CLI has a broader env-var-driven customization search path. <code>AGENTS.md</code> works across both.</aside>
 </article>

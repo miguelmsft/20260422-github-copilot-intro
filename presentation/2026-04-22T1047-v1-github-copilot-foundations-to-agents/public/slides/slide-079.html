@@ -1,8 +1,9 @@
-<article class="slide" data-number="79" data-type="list" data-section="Admin">
+<article class="slide" data-number="79" data-type="table" data-section="Admin">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">The six levers admins actually pull</h1>
-          <ol class="slide-list ordered"><li><strong>Feature policies</strong> — Enable/Disable per surface (IDE, github.com, CLI, MCP, cloud agent…)</li><li><strong>Model allow-lists + BYOK</strong> — pin providers; bring your own key to Anthropic/Bedrock/Google/OpenAI/xAI</li><li><strong>Content exclusion</strong> — hide paths from Copilot</li><li><strong>Network</strong> — Copilot endpoints + published allowlist</li><li><strong>Budgets</strong> — premium-request caps per org/seat</li><li><strong>Cloud-agent approvals</strong> — enable/block cloud agent and third-party agents</li></ol>
+          <h1 class="slide-title">Enterprise admin: plans &amp; consoles</h1>
+          <table class="slide-table"><thead><tr><th></th><th><strong>Business</strong></th><th><strong>Enterprise</strong></th></tr></thead><tbody><tr><td>Price</td><td>$19 / seat / mo</td><td>$39 / seat / mo</td></tr><tr><td>Premium req / user / mo</td><td>300</td><td>1,000</td></tr><tr><td>Overage</td><td>$0.04 / request</td><td>$0.04 / request</td></tr><tr><td>Console</td><td>Org Settings → Copilot</td><td>Enterprise → <strong>AI controls</strong> tab</td></tr></tbody></table>
+    <p class="slide-body">AI controls has sub-pages for <strong>Copilot · Models · Agents · MCP</strong>. Audit logs live under <em>Settings → Audit log</em>; seats &amp; spend under <em>Billing &amp; licensing</em>.</p>
   </div>
-  <aside class="speaker-notes" hidden>Most rollouts start by disabling the cloud agent + MCP, proving value on IDE + CLI, then opening up. The Copilot endpoints in lever #4 are <code>*.business.githubcopilot.com</code> / <code>*.enterprise.githubcopilot.com</code>. &quot;Feature policies&quot; are tri-state: Enabled / Disabled / Unconfigured.</aside>
+  <aside class="speaker-notes" hidden>~5 slides, ~5 minutes in this section. Enterprise policies can pin a value so orgs can&#x27;t override — helpful for rolling out regulated defaults.</aside>
 </article>

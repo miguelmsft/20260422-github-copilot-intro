@@ -1,9 +1,11 @@
 <article class="slide" data-number="72" data-type="single-point" data-section="Advanced Agents">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Agent HQ / Mission Control</h1>
-          <p class="slide-body">One UI (github.com + VS Code + Mobile) to <strong>assign, steer, and track</strong> agents from Copilot, Anthropic, OpenAI, Google, Cognition, and xAI — all under your paid Copilot subscription.</p>
-    <p class="slide-body">Rolling out through 2026.</p>
+          <h1 class="slide-title"><code>gh-aw</code> — GitHub Agentic Workflows</h1>
+          <p class="slide-body">A GitHub-Next extension (<code>gh-aw</code> = &quot;gh agentic workflows&quot;) that lets you write agentic workflows as <strong>Markdown + YAML frontmatter</strong>, then compile them into regular GitHub Actions files.</p>
+    <p class="slide-body">Two features worth knowing by name:</p>
+    <ul class="slide-list"><li><strong>Safe outputs</strong> — sandboxed outputs the agent is allowed to emit (e.g., <em>&quot;create an issue&quot;</em>, <em>&quot;post a comment&quot;</em>) instead of arbitrary shell execution.</li><li><strong>Agent Workflow Firewall</strong> — a network allowlist for what the agent&#x27;s runner can reach.</li></ul>
+    <p class="slide-body">Pick your engine: Copilot · Claude · Codex · Gemini.</p>
   </div>
-  <aside class="speaker-notes" hidden>Announced at Universe 2025. You don&#x27;t need to master it today; know it exists and that it&#x27;s the direction of travel.</aside>
+  <aside class="speaker-notes" hidden>Experimental but production-used at GitHub. The value prop: write the <em>intent</em> in Markdown, let <code>gh aw compile</code> produce a hardened Actions workflow with network + output restrictions baked in — so you don&#x27;t have to hand-roll the security-sensitive parts.</aside>
 </article>

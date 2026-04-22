@@ -1,17 +1,17 @@
 <article class="slide" data-number="35" data-type="code-example" data-section="CLI">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Programmatic / scripted mode</h1>
-          <div class="code-block"><code><span class="cmt"># One-shot, tight permission scope</span>
-    copilot -p &quot;Show me this week&#x27;s commits and summarize them&quot; \
-            --allow-tool=<span class="str">&#x27;shell(git)&#x27;</span>
-    <span class="cmt"># Full headless: fix failing tests, with guardrails</span>
-    copilot -p <span class="str">&quot;Run the test suite and fix any failing tests&quot;</span> \
-            --allow-all-tools \
-            --deny-tool=<span class="str">&#x27;shell(rm)&#x27;</span> \
-            --deny-tool=<span class="str">&#x27;shell(git push)&#x27;</span>
-    <span class="cmt"># CI-friendly auth (fine-grained PAT w/ <span class="str">&quot;Copilot Requests&quot;</span> permission)</span>
-    <span class="kw">export</span> COPILOT_GITHUB_TOKEN=<span class="str">&quot;github_pat_...&quot;</span></code></div>
+          <h1 class="slide-title">The permission model</h1>
+          <p class="slide-body">When the agent wants a tool:</p>
+    <div class="code-block"><code>1. Yes
+    2. Yes, and approve TOOL for the rest of the session
+    3. No, and tell Copilot what to do differently  (Esc)</code></div>
+    <p class="slide-body">Pre-declare approvals on the command line:</p>
+    <div class="code-block"><code>copilot --allow-tool=<span class="str">&#x27;shell(git)&#x27;</span>            # allow any git
+    copilot --allow-tool=<span class="str">&#x27;shell(git push)&#x27;</span>       # allow only git push
+    copilot --allow-all-tools                    # aka --yolo
+    copilot --deny-tool=<span class="str">&#x27;shell(rm)&#x27;</span>              # block rm</code></div>
+    <p class="slide-body"><strong>Precedence:</strong> <code>--deny-tool</code> &gt; <code>--allow-tool</code> &gt; <code>--allow-all-tools</code></p>
   </div>
-  <aside class="speaker-notes" hidden>This is how Copilot CLI ends up inside GitHub Actions jobs and pre-commit hooks. We&#x27;ll see that pattern again in the advanced-agents section.</aside>
+  <aside class="speaker-notes" hidden>&quot;Yolo mode&quot; is literally an alias. Good hygiene: pair <code>--allow-all-tools</code> with explicit <code>--deny-tool</code> guards for the dangerous things.</aside>
 </article>

@@ -1,13 +1,32 @@
 <article class="slide" data-number="22" data-type="decision-tree" data-section="Modes">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Which mode should I pick?</h1>
-          <div class="code-block"><code>Need to understand something, no edits?         → Ask
-    Want a plan before code changes?                → Plan → hand off to Agent
-    Multi-file implementation, you&#x27;re watching?     → Agent (Default Approvals)
-    Routine, trusted job, want to walk away?        → Agent + Autopilot
-    Want it done while you work on something else?  → Copilot CLI (local)  OR
-                                                      Cloud agent (on GHA, PR)</code></div>
+    <h1 class="slide-title">Which mode should I pick?</h1>
+    <div class="tree-container">
+      <div class="tree-node">
+        <div class="tree-question">Need to understand something, no edits?</div>
+        <div class="tree-branches"><div class="tree-branch"><span class="tree-branch-label yes">→</span><span class="tree-branch-text"><strong>Ask</strong></span></div></div>
+      </div>
+      <div class="tree-node">
+        <div class="tree-question">Want a plan before code changes?</div>
+        <div class="tree-branches"><div class="tree-branch"><span class="tree-branch-label yes">→</span><span class="tree-branch-text"><strong>Plan</strong> → hand off to Agent</span></div></div>
+      </div>
+      <div class="tree-node">
+        <div class="tree-question">Multi-file implementation, you&#x27;re watching?</div>
+        <div class="tree-branches"><div class="tree-branch"><span class="tree-branch-label yes">→</span><span class="tree-branch-text"><strong>Agent</strong> (Default Approvals)</span></div></div>
+      </div>
+      <div class="tree-node">
+        <div class="tree-question">Routine, trusted job, want to walk away?</div>
+        <div class="tree-branches"><div class="tree-branch"><span class="tree-branch-label yes">→</span><span class="tree-branch-text"><strong>Agent + Autopilot</strong></span></div></div>
+      </div>
+      <div class="tree-node">
+        <div class="tree-question">Want it done while you work on something else?</div>
+        <div class="tree-branches">
+          <div class="tree-branch"><span class="tree-branch-label yes">→</span><span class="tree-branch-text"><strong>Copilot CLI</strong> (local)</span></div>
+          <div class="tree-branch"><span class="tree-branch-label yes">→</span><span class="tree-branch-text"><strong>Cloud agent</strong> (on GHA, opens PR)</span></div>
+        </div>
+      </div>
+    </div>
   </div>
   <aside class="speaker-notes" hidden>Post this as a cheat sheet. The Plan → Agent handoff is the single best habit to build.</aside>
 </article>

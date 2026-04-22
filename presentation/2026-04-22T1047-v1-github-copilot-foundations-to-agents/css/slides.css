@@ -826,3 +826,87 @@
 .slide[data-type="decision-tree"] .slide-content {
   gap: 16px;
 }
+
+/* Mental-axes (slide 16): nice numbered list for "(1) × (2) × (3)" axes */
+.mental-axes {
+  list-style: none;
+  padding: 0;
+  margin: 40px 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1400px;
+}
+.mental-axes > li {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 22px 28px;
+  background: var(--bg-card, rgba(255,255,255,0.04));
+  border: 1px solid var(--border-card, rgba(255,255,255,0.10));
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+}
+.mental-axes .axis-num {
+  flex: 0 0 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--accent-primary);
+  background: linear-gradient(135deg, rgba(88,166,255,0.18), rgba(125,249,255,0.10));
+  border: 2px solid var(--accent-primary);
+  border-radius: 50%;
+}
+.mental-axes .axis-body { display: flex; flex-direction: column; gap: 6px; font-size: 34px; }
+.mental-axes .axis-body strong { font-weight: 700; color: var(--text-primary); }
+.mental-axes .axis-ex { font-size: 26px; color: var(--text-secondary); font-family: var(--font-mono, monospace); }
+.slide-body-sub { margin-top: 24px; font-style: italic; color: var(--text-secondary); }
+
+[data-theme="warm"] .mental-axes > li,
+[data-theme="corporate"] .mental-axes > li { backdrop-filter: none; }
+
+/* Slash-grid (slide 34): 4-column card grid of CLI slash commands */
+.slash-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 32px;
+}
+.slash-col {
+  background: var(--bg-card, rgba(255,255,255,0.04));
+  border: 1px solid var(--border-card, rgba(255,255,255,0.10));
+  border-radius: 14px;
+  padding: 24px 22px;
+  backdrop-filter: blur(8px);
+}
+.slash-cat {
+  margin: 0 0 16px;
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border-card, rgba(255,255,255,0.12));
+  padding-bottom: 10px;
+}
+.slash-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.slash-list li { display: flex; flex-direction: column; gap: 4px; }
+.slash-list code {
+  font-family: var(--font-mono, monospace);
+  font-size: 24px;
+  color: var(--accent-secondary, var(--accent-primary));
+  background: rgba(125,249,255,0.08);
+  padding: 2px 10px;
+  border-radius: 6px;
+  align-self: flex-start;
+}
+.slash-list li > span { font-size: 20px; color: var(--text-secondary); line-height: 1.35; }
+
+[data-theme="warm"] .slash-col,
+[data-theme="corporate"] .slash-col { backdrop-filter: none; }
+[data-theme="warm"] .slash-list code,
+[data-theme="corporate"] .slash-list code { background: rgba(0,0,0,0.06); }
