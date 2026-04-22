@@ -1,14 +1,18 @@
 ---
 reviewer: presentation-content-reviewer
-round: 1
-review_date: 2026-04-22
+subject: GitHub Copilot — Foundations through Advanced Agentic Workflows
+companion: presentation-content-creator
+date: 2026-04-22
 target_file: presentation-content.md
-verdict: APPROVED WITH EDITS
-critical_count: 1
-important_count: 7
-minor_count: 2
+current_verdict: APPROVED
+current_round: 3
+round_history:
+  - { round: 1, verdict: APPROVED WITH EDITS, critical: 1, important: 7, minor: 2 }
+  - { round: 2, verdict: APPROVED WITH EDITS, critical: 0, important: 1, minor: 0 }
+  - { round: 3, verdict: APPROVED, critical: 0, important: 0, minor: 0 }
 ---
 
+# Presentation Content Review — all rounds
 # Presentation Content Review — Round 1
 
 ## Summary table
@@ -102,3 +106,82 @@ minor_count: 2
 4. Add beginner-friendly explanations for heaviest acronym/jargon slides (91, 92, 98, 87, 37, 47, 93).
 5. Standardize BYOK/BYOM terminology across models/CLI/security slides.
 6. Soften slide 78 hooks/VS Code claim to match research (inference, not fact).
+
+
+---
+
+## Review Round 2 — 2026-04-22
+
+### Edit Verification
+- ✅ **Round 1 #1 (🔴 slide 85 → now 69): fixed.** Slide 69 says cloud agent is available in **Pro+, Business, or Enterprise**. Spot-check matches `research/2026-04-21-copilot-surfaces.md` §3.9: *"Available in Copilot Pro+, Copilot Business, and Copilot Enterprise only."*
+- ✅ **Round 1 #2 (slides 101, 103 → now 82, 84): fixed.** Composite research citations replace `general knowledge`.
+- ✅ **Round 1 #3 (slide 78 → now 63): fixed.** Hooks/VS Code claim is now explicitly caveated as reasoned interpretation.
+- ✅ **Round 1 #4 (BYOK/BYOM): fixed.** Standardized to BYOK on slides 26, 29, 37, 76.
+- ✅ **Round 1 #5 (dense slides): fixed.** Slide 47 cut; others leaner.
+- ✅ **Round 1 #6 (pacing 104→85): fixed.** Target met.
+- ✅ **Round 1 #7 (glossary gaps): fixed.** DPA, FedRAMP, EMU/SAML/OIDC/SCIM/SIEM, `gh-aw`, safe outputs, BYOK all glossed.
+- ✅ **Minor fixes:** Slide 15 notes, slide 3/4 softening, slide 70 pinning.
+
+### Summary table
+
+| Dimension | Score (1-5) | Key Finding |
+|-----------|-------------|-------------|
+| 1. One-Idea-Per-Slide | 4/5 | v2 is materially tighter. |
+| 2. Audience Calibration | 4/5 | Beginner fit improved via glossary additions. |
+| 3. Progressive Learning Flow | 4/5 | No stranded references after merges. |
+| 4. Research Fidelity | 4/5 | R1 issues fixed; slide 29 has wrong CLI BYOK env-vars. |
+| 5. Coverage Completeness | 4/5 | All 13 files represented. |
+| 6. Example & Code Validity | 3/5 | Slide 29 env-var mismatch. |
+| 7. Pacing & Density | 4/5 | 85 slides matches target. |
+| 8. Visual Variety | 4/5 | Good mix preserved. |
+| 9. Storytelling Arc | 4/5 | Callbacks intact. |
+| 10. Content Progression / Non-Redundancy | 4/5 | Merges improved progression. |
+| **Overall** | **39/50** | |
+
+## Issues Summary
+
+| # | Severity | Slide(s) | Issue | Suggested Fix |
+|---|----------|----------|-------|---------------|
+| 1 | 🟡 | 29 | CLI BYOK env-var names inaccurate: uses `COPILOT_PROVIDER_URL` instead of documented `COPILOT_PROVIDER_BASE_URL`; omits `COPILOT_PROVIDER_TYPE` | Update to `COPILOT_PROVIDER_TYPE`, `COPILOT_PROVIDER_BASE_URL`, `COPILOT_PROVIDER_API_KEY` (+ `COPILOT_MODEL` for model selection). Verified against `model-variety.md` line 218 and `copilot-cli.md` lines 372–373, 494–495. |
+
+## Verdict: APPROVED WITH EDITS
+
+All Round 1 Critical and Important findings resolved. One new 🟡 Important introduced on slide 29 (CLI BYOK env-var names). Must be fixed before finalization.
+
+
+---
+
+## Review Round 3 — 2026-04-22
+
+### Edit Verification
+- ✅ **Round 2 #1 (slide 29): fixed.** Slide 29 now uses documented CLI BYOK env vars:
+  - `COPILOT_PROVIDER_TYPE`
+  - `COPILOT_PROVIDER_BASE_URL`
+  - `COPILOT_PROVIDER_API_KEY`
+  - `COPILOT_MODEL`
+
+Verified against `research/2026-04-21-model-variety.md` L218 and `research/2026-04-21-copilot-cli.md` L372–375, 494–497.
+
+## Verification Summary
+
+| Check | Slide(s) | Result | Evidence |
+|---|---:|---|---|
+| BYOK env-var fix | 29 | ✅ Match | `model-variety.md:218`; `copilot-cli.md:372–375, 494–497` |
+| `/model` and `--model` | 29 | ✅ Match | `copilot-cli.md:252, 375, 408` |
+| `COPILOT_GITHUB_TOKEN` | 35 | ✅ Match | `copilot-cli.md:221–225, 371` |
+| `COPILOT_CUSTOM_INSTRUCTIONS_DIRS` | 43 | ✅ Match | `copilot-customization.md:81, 545, 561` |
+| MCP config path + `/mcp add` | 48 | ✅ Match | `copilot-mcp.md:280–291`; `copilot-cli.md:466–468` |
+| `COPILOT_OFFLINE=true` | 75–76 | ✅ Match | `copilot-security-privacy.md:157–163, 231` |
+
+## Findings
+- Slide 29 correction verified accurate and complete.
+- All sampled identifiers matched research.
+- No regressions, no new 🔴/🟡 issues.
+
+## Issues Summary
+None.
+
+## Verdict: APPROVED
+
+Content phase complete. Ready for Gate 3 and slides phase.
+

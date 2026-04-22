@@ -13,8 +13,8 @@
 .slide[data-type="transition"] .slide-subtitle { font-size: 36px; }
 
 /* Diagram slides — reduced padding, smaller title, tighter gap */
-.slide[data-type="diagram"] { padding: 16px 56px; }
-.slide[data-type="diagram"] .slide-content { gap: 10px; }
+.slide[data-type="diagram"] { padding: 22px 56px; }
+.slide[data-type="diagram"] .slide-content { gap: 12px; }
 .slide[data-type="diagram"] .slide-title { font-size: 50px; }
 .slide[data-type="diagram"] .code-block {
   font-size: 22px;
