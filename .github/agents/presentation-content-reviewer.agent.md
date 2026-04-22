@@ -175,7 +175,7 @@ Every slide should advance the story. Flag slides that repeat a point already ma
 Use these markers consistently:
 - 🔴 **Critical** — Content that is factually wrong, missing entirely, or would confuse the audience. Must fix.
 - 🟡 **Important** — Significant quality improvements: overloaded slides, poor pacing, missing key topics, audience mismatch. Should fix.
-- 🟢 **Minor** — Polish items: slide type suggestions, minor reordering, speaker note additions. Nice to fix.
+- 🟢 **Minor** — Polish items: slide type suggestions, minor reordering, speaker note additions, **reading cadence** (any Markdown paragraph with ≥2 sentences AND ≥150 characters — suggest splitting into one sentence per paragraph for on-screen readability). Nice to fix.
 
 ### Step 4: Provide Verdict
 

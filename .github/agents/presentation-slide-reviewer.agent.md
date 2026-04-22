@@ -351,7 +351,7 @@ Save the review to `agent-reviews/{YYYY-MM-DD}-presentation-slide-reviewer-{topi
 
 Use these consistently:
 - 🔴 **Critical** — Content visually cut off, overflow causing hidden text, broken layout, zero-dimension elements, **raw ASCII art / box-drawing characters used as a "diagram" on a conceptual-visual slide** (see Visual-Fidelity Check below). Must fix before presenting.
-- 🟡 **Important** — Horizontal code overflow (on non-code slides), tight margins (0-20px), empty containers, sibling element overlap, elements close to clipping, literal `**bold**` asterisks visible inside `<pre>` blocks on non-code slides. Should fix.
+- 🟡 **Important** — Horizontal code overflow (on non-code slides), tight margins (0-20px), empty containers, sibling element overlap, elements close to clipping, literal `**bold**` asterisks visible inside `<pre>` blocks on non-code slides, **`/favicon.ico` 404 in the console** (fix: add an inline SVG data-URI `<link rel="icon">` to `index.html` — never rely on a separate favicon file on GitHub Pages). Should fix.
 - 🟢 **Minor** — Fallback fonts, snug fit (20-40px margin), minor alignment imperfections. Nice to fix.
 
 ## Visual-Fidelity Check (required on every review)

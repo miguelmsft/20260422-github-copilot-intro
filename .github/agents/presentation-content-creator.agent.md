@@ -125,6 +125,7 @@ For each slide, produce content following the slide format below.
 - **Include demo placeholders** — where live demos or hands-on exercises would fit naturally
 - **Adapt depth to audience** — beginners need analogies and simple explanations; advanced audiences want technical details and edge cases
 - **Every slide must earn its place** — each slide adds new information, a new angle, or a higher-abstraction summary. Good: overview → drill-down, progressive build, deliberate callback with added synthesis. Bad: restating a point already made. Recap slides summarize at higher abstraction; they do not paraphrase body slides.
+- **Sentence cadence** — default to one sentence per Markdown paragraph (blank-line separated). Combine only when two short clauses form a tight subject + elaboration pair. The slide builder renders each paragraph as its own `<p>`, so sentence-per-paragraph gives the presenter visible breathing room on screen.
 
 ### Phase 5: Save
 

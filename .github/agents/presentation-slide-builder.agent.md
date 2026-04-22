@@ -185,7 +185,7 @@ Generate in this order:
 4. `js/transitions.js`
 5. `js/admin.js`
 6. `js/app.js`
-7. `index.html`
+7. `index.html` — must include an inline SVG data-URI favicon (`<link rel="icon" href="data:image/svg+xml,...">`). Never rely on a separate `/favicon.ico` file: on GitHub Pages, the browser requests `/favicon.ico` at the site root (not the project subpath), which returns GitHub's "unicorn" 404 error page and flashes in the tab.
 8. All `public/slides/slide-NNN.html` files
 9. **Copy source images**: `cp ../../presentation-images/*.png public/images/` (or PowerShell equivalent on Windows). If `presentation-images/` does not exist at the project root, log a note and skip — don't fail the build. **After copying, cross-check** every slide's declared image filename (extracted in Phase 2) against the files actually present in `public/images/`. Report any mismatch as a warning and render those slides with the missing-image placeholder (see **Image placeholder rendering**).
 
