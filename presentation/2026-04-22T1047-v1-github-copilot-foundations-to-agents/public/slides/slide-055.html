@@ -1,0 +1,25 @@
+<article class="slide" data-number="55" data-type="diagram" data-section="Skills">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+          <h1 class="slide-title">How Copilot picks a skill</h1>
+          <div class="code-block"><code>Session start
+        │
+        ▼
+    Scan: .github/skills/ · ~/.copilot/skills/ · plugins · COPILOT_SKILLS_DIRS · built-ins
+        │
+        ▼
+    Build catalog of (name, description) pairs   ← only metadata loaded
+        │
+    You prompt: &quot;debug the failing CI on PR #42&quot;
+        │
+        ▼
+    Model matches &quot;github-actions-failure-debugging&quot; description
+        │
+        ▼
+    Built-in `skill` tool injects SKILL.md body into context
+        │
+        ▼
+    Copilot follows the steps (may run bundled scripts)</code></div>
+  </div>
+  <aside class="speaker-notes" hidden>Only descriptions load at session start; the body is injected on demand. That&#x27;s how you can have dozens of skills without blowing context.</aside>
+</article>

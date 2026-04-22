@@ -1,0 +1,19 @@
+<article class="slide" data-number="40" data-type="code-example" data-section="Customization">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+          <h1 class="slide-title">A good <code>.github/copilot-instructions.md</code></h1>
+          <div class="code-block"><code><span class="kw"># Project Overview</span>
+    This is a TypeScript + React 18 app using Vite and Tailwind.
+    <span class="kw">## Folder Structure</span>
+    - `src/components/` — presentational React components (no state)
+    - `src/hooks/`      — custom hooks (one per file, named use*)
+    - `src/api/`        — fetch wrappers; always use `zod` for validation
+    <span class="kw">## Coding Standards</span>
+    - Prefer named exports; no default exports.
+    - All new code must include vitest tests next to the source file.
+    - Use `pnpm`, not `npm` or `yarn`.
+    <span class="kw">## UI guidelines</span>
+    - Use Tailwind utility classes; do not add new CSS files.</code></div>
+  </div>
+  <aside class="speaker-notes" hidden>Small, high-signal, stable. Large instruction files hurt more than they help. <code>/init</code> in VS Code Chat can bootstrap this from your codebase.</aside>
+</article>

@@ -1,0 +1,8 @@
+<article class="slide" data-number="63" data-type="comparison" data-section="Hooks">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+          <h1 class="slide-title">CLI vs VS Code vs Cloud — Hooks support</h1>
+          <table class="slide-table dense"><thead><tr><th></th><th><strong>Copilot CLI</strong></th><th><strong>Cloud agent</strong></th><th><strong>VS Code extension</strong></th></tr></thead><tbody><tr><td>Supported</td><td>✅ primary surface</td><td>✅ (repo <code>.github/hooks/</code> on default branch)</td><td>❌ <strong>not listed</strong> as a hook-supporting surface</td></tr><tr><td>Scopes</td><td><code>~/.copilot/hooks/</code> + <code>.github/hooks/</code></td><td><code>.github/hooks/</code> only</td><td>—</td></tr><tr><td>Global disable</td><td><code>disableAllHooks: true</code> in <code>~/.copilot/config.json</code></td><td>—</td><td>—</td></tr><tr><td>Documented VS Code path</td><td>Run Copilot CLI <strong>connected to VS Code</strong>; the CLI&#x27;s hooks then apply by normal CLI loading rules <em>(reasoned from the docs — not an explicit carve-out)</em></td><td></td><td></td></tr></tbody></table>
+  </div>
+  <aside class="speaker-notes" hidden>Emphasized per directive. The VS Code extension&#x27;s own agent does <em>not</em> evaluate hooks — this is an absence-of-evidence conclusion from the About hooks surface list and the Connecting-CLI-to-VS-Code page, which does not discuss hooks. The &quot;CLI hooks apply when CLI is connected to VS Code&quot; line is a reasoned interpretation in the hooks research (§6.4), not a directly quoted rule. Present it as &quot;the documented path, with the caveat that GitHub hasn&#x27;t explicitly carved this out in writing.&quot;</aside>
+</article>

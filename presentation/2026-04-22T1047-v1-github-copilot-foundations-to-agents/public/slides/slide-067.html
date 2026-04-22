@@ -1,0 +1,20 @@
+<article class="slide" data-number="67" data-type="code-example" data-section="Advanced Agents">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+          <h1 class="slide-title"><code>.agent.md</code> example</h1>
+          <div class="code-block"><code><span class="cmt">---</span>
+    name: readme-creator
+    description: Agent specializing in creating and improving README files
+    tools: [read, write, view, edit]
+    model: claude-sonnet-4.6
+    <span class="cmt">---</span>
+    You are a documentation specialist focused on README files. Your scope
+    is limited to README files and related docs only — do not modify or
+    analyze code files.
+    Focus on:
+    - Clear project descriptions with logical sections
+    - Scannable headings and relative links to in-repo docs
+    - Appropriate badges and alt text on images</code></div>
+  </div>
+  <aside class="speaker-notes" hidden>Minimum: <code>name</code>, <code>description</code>, prompt body. Optional: <code>tools</code>, <code>model</code>, and (VS Code only) <code>handoffs:</code>, <code>agents:</code>, <code>hooks:</code>.</aside>
+</article>

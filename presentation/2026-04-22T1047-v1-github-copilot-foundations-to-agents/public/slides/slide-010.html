@@ -1,0 +1,17 @@
+<article class="slide" data-number="10" data-type="boxes" data-section="Agentic Foundations">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+          <h1 class="slide-title">Common agent patterns</h1>
+          <div class="code-block"><code>┌─────────────────────────┬─────────────────────────┐
+    │ **ReAct**               │ **Plan-and-Execute**    │
+    │ Interleave reasoning    │ Plan everything first,  │
+    │ and action, one step    │ then execute; re-plan   │
+    │ at a time               │ if reality drifts       │
+    ├─────────────────────────┼─────────────────────────┤
+    │ **Reflexion**           │ **Orchestrator-Workers**│
+    │ Verbal self-critique    │ One agent delegates to  │
+    │ stored between trials   │ specialized sub-agents  │
+    └─────────────────────────┴─────────────────────────┘</code></div>
+  </div>
+  <aside class="speaker-notes" hidden>Map to Copilot: the default Agent is ReAct-ish. Plan mode is Plan-and-Execute. The CLI <code>/fleet</code> command is Orchestrator-Workers. Reflexion shows up when agents loop on test failures.</aside>
+</article>

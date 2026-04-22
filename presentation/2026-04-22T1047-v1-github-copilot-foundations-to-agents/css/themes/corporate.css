@@ -1,0 +1,20 @@
+[data-theme="corporate"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --bg-card: rgba(0,0,0,0.02);
+  --border-card: rgba(0,0,0,0.12);
+  --text-primary: #1a1a2e;
+  --text-secondary: rgba(26,26,46,0.65);
+  --accent-primary: #0066cc;
+  --accent-secondary: #003d7a;
+  --gradient-title: linear-gradient(135deg, #0066cc, #003d7a);
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+[data-theme="corporate"] .tool-card { backdrop-filter: none; }
+[data-theme="corporate"] code { background: rgba(0,0,0,0.05); color: var(--accent-primary); }
+[data-theme="corporate"] .code-block { background: #f5f7fa; color: #1a1a2e; }
+[data-theme="corporate"] .speaker-notes-overlay {
+  background: rgba(255,255,255,0.95); color: #1a1a2e; border-color: rgba(0,0,0,0.1);
+}

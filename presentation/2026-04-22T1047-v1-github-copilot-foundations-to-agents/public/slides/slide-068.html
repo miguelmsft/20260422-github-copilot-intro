@@ -1,0 +1,8 @@
+<article class="slide" data-number="68" data-type="comparison" data-section="Advanced Agents">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+          <h1 class="slide-title">CLI vs VS Code — custom agent differences</h1>
+          <table class="slide-table"><thead><tr><th>Feature</th><th><strong>VS Code</strong></th><th><strong>Copilot CLI</strong></th></tr></thead><tbody><tr><td>Discover location</td><td><code>.github/agents/</code> (+ user, workspace)</td><td><code>.github/agents/</code> + <code>~/.copilot/agents/</code></td></tr><tr><td>Invocation</td><td>Agent dropdown, <code>/agents</code>, <code>/create-agent</code></td><td><code>/agent</code>, <code>--agent</code> flag, or natural language</td></tr><tr><td><code>handoffs:</code> buttons</td><td>✅ VS Code-only</td><td>❌</td></tr><tr><td><code>agents:</code> subagent declarations</td><td>✅</td><td>(uses built-in subagent model)</td></tr><tr><td><code>/fleet</code> parallel orchestrator</td><td>❌</td><td>✅ CLI-only</td></tr><tr><td>Scoped <code>hooks:</code> per agent (Preview)</td><td>✅</td><td>(repo-wide hooks instead)</td></tr></tbody></table>
+  </div>
+  <aside class="speaker-notes" hidden>Per directive. VS Code gets interactive UX (handoffs, buttons); CLI gets orchestration (<code>/fleet</code>) and raw power. Cloud agent consumes the same file but ignores UX-only fields.</aside>
+</article>

@@ -1,0 +1,22 @@
+[data-theme="cyberpunk"] {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: rgba(255,255,255,0.03);
+  --border-card: rgba(0,255,213,0.18);
+  --text-primary: #e0e0e8;
+  --text-secondary: rgba(224,224,232,0.65);
+  --accent-primary: #00ffd5;
+  --accent-secondary: #ff2d95;
+  --gradient-title: linear-gradient(135deg, #00ffd5, #ff2d95);
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+[data-theme="cyberpunk"] #slide-scaler {
+  background:
+    linear-gradient(rgba(0,255,213,0.03) 1px, transparent 1px) 0 0 / 50px 50px,
+    linear-gradient(90deg, rgba(0,255,213,0.03) 1px, transparent 1px) 0 0 / 50px 50px,
+    var(--bg-primary);
+}
+[data-theme="cyberpunk"] .slide { background: transparent; }
+[data-theme="cyberpunk"] .slide-title { text-shadow: 0 0 30px rgba(0,255,213,0.3); }

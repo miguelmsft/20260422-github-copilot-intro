@@ -1,0 +1,17 @@
+<article class="slide" data-number="34" data-type="code-example" data-section="CLI">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+          <h1 class="slide-title">The permission model</h1>
+          <p class="slide-body">When the agent wants a tool:</p>
+    <div class="code-block"><code>1. Yes
+    2. Yes, and approve TOOL for the rest of the session
+    3. No, and tell Copilot what to do differently  (Esc)</code></div>
+    <p class="slide-body">Pre-declare approvals on the command line:</p>
+    <div class="code-block"><code>copilot --allow-tool=<span class="str">&#x27;shell(git)&#x27;</span>            # allow any git
+    copilot --allow-tool=<span class="str">&#x27;shell(git push)&#x27;</span>       # allow only git push
+    copilot --allow-all-tools                    # aka --yolo
+    copilot --deny-tool=<span class="str">&#x27;shell(rm)&#x27;</span>              # block rm</code></div>
+    <p class="slide-body"><strong>Precedence:</strong> <code>--deny-tool</code> &gt; <code>--allow-tool</code> &gt; <code>--allow-all-tools</code></p>
+  </div>
+  <aside class="speaker-notes" hidden>&quot;Yolo mode&quot; is literally an alias. Good hygiene: pair <code>--allow-all-tools</code> with explicit <code>--deny-tool</code> guards for the dangerous things.</aside>
+</article>

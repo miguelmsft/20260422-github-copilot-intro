@@ -1,0 +1,21 @@
+<article class="slide" data-number="46" data-type="diagram" data-section="MCP">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+          <h1 class="slide-title">Host · Client · Server</h1>
+          <div class="code-block"><code>┌──────────── Host (VS Code / CLI / Cloud Agent) ────────────┐
+    │                                                             │
+    │   ┌─ MCP Client A ─┐  ┌─ MCP Client B ─┐  ┌─ MCP Client C ─┐│
+    │   │ 1 per server;  │  │                 │  │                ││
+    │   │ negotiates     │  │                 │  │                ││
+    └───┤ capabilities   ├──┤                 ├──┤                ├┘
+        │ (JSON-RPC 2.0) │  │                 │  │                │
+        ▼                   ▼                    ▼
+     stdio (local subprocess)  /  Streamable HTTP  (remote)
+        │                   │                    │
+        ▼                   ▼                    ▼
+     Local MCP server   Remote MCP server    GitHub MCP server
+     (Playwright,       (Sentry, Notion,     api.githubcopilot
+      filesystem,…)      Atlassian,…)         .com/mcp/</code></div>
+  </div>
+  <aside class="speaker-notes" hidden>Key: the host has one client per server. Two transports — stdio for local, Streamable HTTP for remote. Capability negotiation happens at <code>initialize</code> time.</aside>
+</article>

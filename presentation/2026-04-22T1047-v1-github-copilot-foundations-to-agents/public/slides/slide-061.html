@@ -1,0 +1,25 @@
+<article class="slide" data-number="61" data-type="code-example" data-section="Hooks">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+          <h1 class="slide-title">Shape of a hooks config</h1>
+          <div class="code-block"><code><span class="cmt">// .github/hooks/guardrails.json  (repo scope — works in CLI + cloud agent)</span>
+    {
+      <span class="prop">&quot;version&quot;</span>: <span class="num">1</span>,
+      <span class="prop">&quot;hooks&quot;</span>: {
+        <span class="prop">&quot;preToolUse&quot;</span>: [
+          {
+            <span class="prop">&quot;type&quot;</span>: <span class="str">&quot;command&quot;</span>,
+            <span class="prop">&quot;bash&quot;</span>: <span class="str">&quot;./.github/hooks/block-rm.sh&quot;</span>,
+            <span class="prop">&quot;powershell&quot;</span>: <span class="str">&quot;.\\.github\\hooks\\block-rm.ps1&quot;</span>,
+            <span class="prop">&quot;timeoutSec&quot;</span>: <span class="num">10</span>
+          }
+        ],
+        <span class="prop">&quot;postToolUse&quot;</span>: [
+          { <span class="prop">&quot;type&quot;</span>: <span class="str">&quot;command&quot;</span>, <span class="prop">&quot;bash&quot;</span>: <span class="str">&quot;./.github/hooks/audit.sh&quot;</span> }
+        ]
+      }
+    }</code></div>
+    <p class="slide-body">Runtime pipes a JSON event to stdin; hook can respond with JSON on stdout.</p>
+  </div>
+  <aside class="speaker-notes" hidden>Separate <code>bash</code> / <code>powershell</code> keys make hooks portable across OSes. Default timeout is 30s.</aside>
+</article>

@@ -1,0 +1,20 @@
+<article class="slide" data-number="36" data-type="boxes" data-section="CLI">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+          <h1 class="slide-title">Built-in sub-agents</h1>
+          <div class="code-block"><code>┌──────────────────┬──────────────────┐
+    │ **Explore**      │ **Task**         │
+    │ Quick codebase   │ Run tests/builds;│
+    │ Q&amp;A w/o adding   │ terse on success,│
+    │ to main context  │ verbose on fail  │
+    ├──────────────────┼──────────────────┤
+    │ **General-       │ **Code-review**  │
+    │  purpose**       │ Surfaces genuine │
+    │ Complex multi-   │ issues, minimizes│
+    │ step in its own  │ noise            │
+    │ context          │                  │
+    └──────────────────┴──────────────────┘</code></div>
+    <p class="slide-body">Plus <strong>Research</strong> (added in CLI 1.0.x) and any custom agents you define.</p>
+  </div>
+  <aside class="speaker-notes" hidden>The main agent delegates to these — you don&#x27;t invoke them directly. <code>/fleet</code> parallelizes work across sub-agents; we&#x27;ll cover that in the advanced section.</aside>
+</article>

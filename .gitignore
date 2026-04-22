@@ -1,0 +1,25 @@
+node_modules/
+dist/
+.DS_Store
+Thumbs.db
+
+# Env / secrets
+.env
+.env.*
+*.key
+*.pem
+secrets/
+
+# Logs
+*.log
+research-logs/
+
+# Local tooling
+.vite/
+.vscode/
+.idea/
+
+# Playwright / screenshots (generated)
+**/review-screenshots/
+playwright-report/
+test-results/

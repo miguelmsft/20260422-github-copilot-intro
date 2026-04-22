@@ -1,0 +1,17 @@
+<article class="slide" data-number="32" data-type="code-example" data-section="CLI">
+  <div class="slide-bg"></div>
+  <div class="slide-content">
+          <h1 class="slide-title">Install &amp; first launch</h1>
+          <div class="code-block"><code><span class="cmt"># Pick one installer (Node 22+ <span class="kw">for</span> npm):</span>
+    npm install -g @github/copilot
+    brew install copilot-cli          # macOS/Linux
+    winget install GitHub.Copilot     # Windows
+    <span class="cmt"># <span class="kw">cd</span> into a project (not your home dir!), <span class="kw">then</span>:</span>
+    <span class="kw">cd</span> ~/code/my-project
+    copilot                           # interactive REPL
+    <span class="cmt"># On first run:</span>
+    <span class="cmt">#   1. <span class="str">&quot;Trust this folder?&quot;</span>  → Yes</span>
+    <span class="cmt">#   2. /login  → device-code OAuth</span></code></div>
+  </div>
+  <aside class="speaker-notes" hidden>Windows requires PowerShell 6+ (or WSL); plain cmd.exe is unsupported. On a dev box most people stick with npm.</aside>
+</article>
