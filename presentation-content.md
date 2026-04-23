@@ -41,10 +41,18 @@ source_files:
   - research/2026-04-22-agent-hq.md
   - research/2026-04-22-approvals-and-bypass.md
   - research/2026-04-22-cloud-agent-deep-dive.md
-version: 5
+version: 6
 created: 2026-04-21
-revised: 2026-04-22
+revised: 2026-04-23
 change_notes: |
+  v6: Speaker-notes cleanup on slides 3, 4, 5, 6 (removed meta-commentary about
+  drafts and vendor framing). Slide 5: added Copilot CLI (public preview
+  mid-2025) to the 2025 bullet. Slide 10 speaker notes: "Custom subagents"
+  added before "CLI /fleet command" as Orchestrator-Workers examples.
+  Slide 11: retitled "What type of agentic approach should I use?";
+  "Prompt chain / workflow" replaced with "Agentic workflow — a specific set
+  of steps you describe across a chain of agents"; "(ReAct / tool-calling
+  loop)" removed from the single-agent yes branch.
   v5: Finished the appendix-only cost move — stripped premium-request /
   multiplier / quota wording from slides 25, 26, 31, 32, 33; slide 32 now
   carries the model-variety showcase only (prior content duplicated slide 95
@@ -127,7 +135,7 @@ Copilot stopped being "autocomplete" years ago. It is now a **platform of agents
 If you only know the 2022 version, you are missing a large and growing share of what it can do.
 
 **Speaker Notes:**
-Set the stakes: a developer who has not looked at Copilot since the original Codex ghost-text days will be surprised at what "assigning an issue to Copilot" means today. That expansion — autocomplete → chat → multi-file edit → agent → cloud agent → Agent HQ — is literally the spine of this talk. (Previous draft quoted a "~80%" figure; that was rhetorical, not sourced, so we've softened it.)
+Set the stakes: a developer who has not looked at Copilot since the original Codex ghost-text days will be surprised at what "assigning an issue to Copilot" means today. That expansion — autocomplete → chat → multi-file edit → agent → cloud agent → Agent HQ — is literally the spine of this talk.
 
 Sources: research/2026-04-21-copilot-history.md
 
@@ -147,7 +155,7 @@ Sources: research/2026-04-21-copilot-history.md
 ```
 
 **Speaker Notes:**
-Short section — spend maybe 5 minutes total on history. This is the spine: every later section of today's talk is a point on this arc. Each jump meaningfully expanded what Copilot could do on your behalf (exact magnitude is hard to quantify; the history research flags vendor-framing claims as needing care, so paraphrase rather than quote).
+Short section — spend maybe 5 minutes total on history. This is the spine: every later section of today's talk is a point on this arc. Each jump meaningfully expanded what Copilot could do on your behalf.
 
 Sources: research/2026-04-21-copilot-history.md
 
@@ -160,10 +168,10 @@ Sources: research/2026-04-21-copilot-history.md
 - **2021** — Technical preview, OpenAI Codex, VS Code only, inline ghost text
 - **2023** — Copilot Chat GA; Copilot for Business; GPT-4
 - **2024** — Multi-model choice (Claude, Gemini, OpenAI); Copilot Free; Extensions
-- **2025** — *The year of agents.* Agent mode (Feb), cloud coding agent (May, GA Sep), Agent HQ (Oct)
+- **2025** — *The year of agents.* Agent mode (Feb), Copilot CLI (public preview mid-2025), cloud coding agent (May, GA Sep), Agent HQ (Oct)
 
 **Speaker Notes:**
-Paraphrase vendor framing ("re-founded on Copilot", "agent awakens") rather than quoting verbatim. The key point: 2025 was when the product stopped being a sidecar and became a delegation target. One current context note: on April 20, 2026 GitHub paused new sign-ups for Pro/Pro+/Student plans and tightened weekly limits — we'll see that banner in docs throughout.
+The key point: 2025 was when the product stopped being a sidecar and became a delegation target.
 
 Sources: research/2026-04-21-copilot-history.md, research/2026-04-21-copilot-modes.md
 
@@ -180,7 +188,7 @@ Sources: research/2026-04-21-copilot-history.md, research/2026-04-21-copilot-mod
 | **Agent** — takes a goal, plans, uses tools, iterates | **Yes** | **Yes, via tools** |
 
 **Speaker Notes:**
-We deliberately start vendor-neutral. Before we open VS Code, you need a mental model that explains why Copilot, Cursor, Claude Code, and Devin all look different but feel the same. This is the longest conceptual section — ~10 minutes. Everything Copilot does in "agent mode" or "cloud agent" lives in the bottom row; the top two rows are what Copilot was in 2022–2023.
+Before we open VS Code, you need a mental model that explains why Copilot, Cursor, Claude Code, and Devin all look different but feel the same. This is the longest conceptual section — ~10 minutes. Everything Copilot does in "agent mode" or "cloud agent" lives in the bottom row; the top two rows are what Copilot was in 2022–2023.
 
 Sources: research/2026-04-21-agentic-foundations.md
 
@@ -276,7 +284,7 @@ Sources: research/2026-04-21-agentic-foundations.md
 └─────────────────────────┴─────────────────────────┘
 
 **Speaker Notes:**
-Map to Copilot: the default Agent is ReAct-ish. Plan mode is Plan-and-Execute. The CLI `/fleet` command is Orchestrator-Workers. Reflexion shows up when agents loop on test failures.
+Map to Copilot: the default Agent is ReAct-ish. Plan mode is Plan-and-Execute. Custom subagents and the CLI `/fleet` command are Orchestrator-Workers. Reflexion shows up when agents loop on test failures.
 
 Sources: research/2026-04-21-agentic-foundations.md
 
@@ -284,7 +292,7 @@ Sources: research/2026-04-21-agentic-foundations.md
 
 <!-- Slide 11 | Section: Agentic Foundations | Type: decision-tree -->
 
-# When should I use an agent?
+# What type of agentic approach should I use?
 
 ```
 Is the task one-shot & well-defined?
@@ -292,11 +300,12 @@ Is the task one-shot & well-defined?
  └─ No ↓
 
 Can you enumerate the steps up front?
- ├─ Yes → Prompt chain / workflow.  DONE.
+ ├─ Yes → Agentic workflow — a specific set of steps
+ │        you describe across a chain of agents.  DONE.
  └─ No ↓
 
 Do steps depend on what you discover at runtime?
- ├─ Yes → **Single agent (ReAct / tool-calling loop).**
+ ├─ Yes → **Single agent.**
  └─ No  → Go back one box.
 
 Does the task have parallel specialized pieces?

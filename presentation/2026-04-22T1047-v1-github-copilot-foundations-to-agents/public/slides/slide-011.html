@@ -1,15 +1,16 @@
 <article class="slide" data-number="11" data-type="decision-tree" data-section="Agentic Foundations">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">When should I use an agent?</h1>
+          <h1 class="slide-title">What type of agentic approach should I use?</h1>
           <div class="code-block"><code>Is the task one-shot &amp; well-defined?
      ├─ Yes → Plain LLM call / autocomplete.  DONE.
      └─ No ↓
     Can you enumerate the steps up front?
-     ├─ Yes → Prompt chain / workflow.  DONE.
+     ├─ Yes → Agentic workflow — a specific set of steps
+     │        you describe across a chain of agents.  DONE.
      └─ No ↓
     Do steps depend on what you discover at runtime?
-     ├─ Yes → **Single agent (ReAct / tool-calling loop).**
+     ├─ Yes → **Single agent.**
      └─ No  → Go back one box.
     Does the task have parallel specialized pieces?
      └─ Yes → Multi-agent / orchestrator-workers.</code></div>
