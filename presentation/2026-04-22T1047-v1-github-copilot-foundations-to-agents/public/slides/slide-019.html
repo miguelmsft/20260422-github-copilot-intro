@@ -1,25 +1,19 @@
-<article class="slide" data-number="19" data-type="boxes" data-section="Modes">
+<article class="slide" data-number="19" data-type="diagram" data-section="Modes">
   <div class="slide-bg"></div>
   <div class="slide-content">
-    <h1 class="slide-title">The three built-in personas</h1>
-    <div class="tool-grid cols-3">
-      <div class="tool-card">
-        <div class="tool-card-title">Ask</div>
-        <div class="tool-card-body">Q&amp;A, no edits. &quot;Apply in Editor&quot; is manual.</div>
-        <div class="tool-card-footer">Cheapest, safest.</div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-card-title">Plan</div>
-        <div class="tool-card-body">Research &amp; write a structured plan. Hands off. No code changes.</div>
-        <div class="tool-card-footer"><code>/plan &lt;task&gt;</code></div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-card-title">Agent</div>
-        <div class="tool-card-body">Autonomous: edits files, runs commands, self-corrects. Multi-file.</div>
-        <div class="tool-card-footer">Default for work.</div>
-      </div>
-    </div>
-    <p class="slide-body"><strong>Edit</strong> mode is <strong>deprecated</strong> — its behavior folded into Agent. You can un-hide it with <code>chat.editMode.hidden</code>.</p>
+          <h1 class="slide-title">Modes: a VS Code chat session = 3 independent choices</h1>
+          <div class="code-block"><code>┌───────────────────────────────────────────────────────────┐
+    │  1. Agent Target  (WHERE it runs)                         │
+    │       Local │ Copilot CLI │ Cloud │ Third-party           │
+    │                                                           │
+    │  2. Agent  (WHICH persona)                                │
+    │       Agent │ Plan │ Ask │ &lt;your .agent.md&gt;               │
+    │                                                           │
+    │  3. Permission Level  (HOW MUCH autonomy)                 │
+    │       Default Approvals │ Bypass │ Autopilot (Preview)    │
+    │                                                           │
+    │  (+ Language model picker — orthogonal to all three)      │
+    └───────────────────────────────────────────────────────────┘</code></div>
   </div>
-  <aside class="speaker-notes" hidden>Plan is the under-used hero. For anything touching more than one file, having Plan produce a checklist <em>before</em> Agent implements it drastically improves outcomes. Plan writes its result to <code>/memories/session/plan.md</code>.</aside>
+  <aside class="speaker-notes" hidden>This is the most confusing part of Copilot for new users because terminology changed in 2025/2026. The word &quot;mode&quot; is being phased out — VS Code now calls these <strong>agents</strong>, but docs and users still say &quot;mode.&quot; Both are fine. The crucial insight is that these three dropdowns are <em>independent</em>; Autopilot is a permission level, not a different kind of agent. Budget ~12 minutes for this section.</aside>
 </article>

@@ -4,11 +4,12 @@ subject: GitHub Copilot — Foundations through Advanced Agentic Workflows
 companion: presentation-slide-builder
 date: 2026-04-22
 presentation_dir: presentation/2026-04-22T1047-v1-github-copilot-foundations-to-agents/
-verdict: APPROVED
-slides_reviewed: 85
+current_verdict: APPROVED
+current_round: 5
+slides_reviewed: 96
 critical_issues: 0
 important_issues: 0
-minor_issues: 85
+minor_issues: 0
 round_1_verdict: APPROVED WITH EDITS
 round_1_important_issues: 8
 round_2_verdict: APPROVED
@@ -17,6 +18,12 @@ round_3_verdict: APPROVED
 round_3_critical_issues: 0
 round_3_important_issues: 0
 round_3_visual_fidelity_failures: 0
+round_4_verdict: APPROVED WITH EDITS
+round_4_critical_issues: 2
+round_4_important_issues: 1
+round_5_verdict: APPROVED
+round_5_critical_issues: 0
+round_5_important_issues: 0
 ---
 
 ## Review Round 1 — 2026-04-22
@@ -847,3 +854,115 @@ The visual-first rebuild is **complete and fully verified**. All 16 slides that 
 **No regressions:** Margins remain within the same ranges as Round 2 (20–32px). No new overflow, clipping, or layout issues introduced by the rebuild.
 
 This presentation is ready to deliver.
+
+## Review Round 4 — 2026-04-22 — v5 build (96 slides)
+
+**URL:** http://localhost:5173  **Viewport:** 1920×1080  **Theme:** github-cosmos
+**Scope:** 15 new/changed slides (14, 17, 23, 24, 25, 32, 53, 74, 75, 76, 79, 80, 94, 95, 96)
+
+### Summary
+- ✅ 13 slides clean
+- 🔴 2 critical issues
+- 🟡 1 important issue
+- 🟢 minor snug margins (26–32px) — acceptable
+
+### Status Table
+| # | Title | Status | Issues |
+|---|-------|--------|--------|
+| 14 | Working with autonomous agents responsibly | ✅ | 32px margin |
+| 17 | Pick three things each time | ✅ | title wraps 2 lines, ok |
+| 23 | Configuring approvals — CLI | ✅ | clean |
+| 24 | Configuring approvals — VS Code | ✅ | clean |
+| 25 | Bypass mode — what still protects you | 🔴 | content overflows 106px; closing paragraph clipped |
+| 32 | Model variety — families on offer | ✅ | tool-grid override looks excellent |
+| 53 | Configure MCP — where each coding environment reads from | ✅ | title change verified |
+| 74 | Cloud Agent — assign an issue, get a PR | ✅ | clean opener |
+| 75 | Cloud Agent deep dive — triggers | ✅ | clean |
+| 76 | Cloud Agent deep dive — models + guardrails | ✅ | clean |
+| 79 | What is Agent HQ | ✅ | blockquote renders well |
+| 80 | Why Agent HQ matters | ✅ | clean |
+| 94 | Appendix divider | ✅ | centered title-slide works |
+| 95 | Premium requests — the basics | 🔴 | ASCII box-drawing `<pre>` + literal `**bold**` asterisks visible |
+| 96 | Cost tips | ✅ | clean |
+
+### 🔴 Critical
+1. **Slide 25** content-exceeds-canvas by 106px — closing paragraph "GitHub's own guidance: the CLI docs strongly recommend only using `--allow-all` / `--yolo` in an isolated environment…" visibly clipped. Fix: split slide, condense the closing paragraph, OR reduce list font-size.
+2. **Slide 95** Visual-Fidelity failure — declared `data-type="boxes"` but primary visual is ASCII box-drawing inside `<pre><code>`. Literal `**Multiplier**` / `**Allowance**` render as raw asterisks. Fix: replace with `.tool-grid` + 2 `.tool-card` children (matching slide 32 pattern).
+
+### 🟡 Important
+- Slide 95 literal markdown asterisks visible.
+
+### Functional Checks
+- Keyboard nav ✅ · Slide counter "N / 96" ✅ · Console errors 0 · Network failures 0 · Fonts load ✅
+
+## Verdict: APPROVED WITH EDITS
+Blocker: slides 25 and 95.
+
+---
+
+## Review Round 5 — 2026-04-22 — Fix verification (slides 25 & 95)
+
+**URL:** http://localhost:5173  **Viewport:** 1920×1080  **Theme:** github-cosmos (default)
+**Scope:** Targeted re-check of the 2 critical issues from Round 4
+
+### Fix Verification
+
+| # | Round 4 issue | Status | Detail |
+|---|---------------|--------|--------|
+| 25 | 🔴 content-exceeds-canvas by 106px; closing paragraph clipped | ✅ **Fixed** | Closing sentence condensed to one line. Last text element `<strong>only in isolated environments</strong>` bottom = 1077px, slideBottom = 1080px → 3px within bounds. `scrollHeight === clientHeight` (1050px) — zero scrollable overflow. Container bottomMargin = −2px (subpixel rounding, not content clipping). Closing sentence fully visible in screenshot. |
+| 95 | 🔴 ASCII box-drawing `<pre>` + literal `**bold**` asterisks (Visual-Fidelity failure) | ✅ **Fixed** | Rebuilt as hand-crafted `.tool-grid` with 2 `.tool-card` children (789×356px each). Zero `<pre>` blocks on slide. Zero raw asterisks in body text. Cards render cleanly — Multiplier (left) and Allowance (right) with proper borders, purple headers, and bullet lists. 32px bottom margin. Matches slide 32 pattern. |
+
+### Programmatic Results
+
+#### Slide 25 — Bypass mode — what still protects you
+
+| Check | Result |
+|-------|--------|
+| Vertical overflow | ✅ No overflow (scrollH = clientH = 1050px) |
+| Content-exceeds-canvas | ✅ No (−2px is container box-model rounding; last text at 1077 < 1080) |
+| Element clipping | ✅ No elements clipped |
+| Last element visible | ✅ `<strong>only in isolated environments</strong>` fully visible |
+| Spacing | 🟢 Tight but acceptable — text ends 3px above slide bottom |
+
+**Screenshot:** `review-screenshots/slide-025.png`
+**Issues:** None (previous 106px overflow fully resolved)
+
+#### Slide 95 — Premium requests — the basics
+
+| Check | Result |
+|-------|--------|
+| `<pre>` blocks | ✅ Zero `<pre>` blocks on slide |
+| Box-drawing characters | ✅ None |
+| Raw `**bold**` asterisks | ✅ None |
+| `.tool-grid` present | ✅ Yes |
+| `.tool-card` count | ✅ 2 (Multiplier 789×356px, Allowance 789×356px) |
+| Vertical overflow | ✅ No overflow (scrollH = clientH = 1016px) |
+| Bottom margin | 🟢 32px — comfortable |
+| Element clipping | ✅ No elements clipped |
+
+**Screenshot:** `review-screenshots/slide-095.png`
+**Issues:** None (ASCII box-drawing and raw asterisks fully replaced with `.tool-grid` component)
+
+### Functional Checks
+
+| Check | Result |
+|-------|--------|
+| Slide counter | ✅ "25 / 96" and "95 / 96" correct |
+| Console errors | ✅ 0 |
+| Admin go-to-slide | ✅ Navigated directly to both slides |
+
+### Summary
+
+| Metric | Count |
+|--------|-------|
+| Slides verified | 2 |
+| ✅ Fixed | 2 |
+| ❌ Not fixed | 0 |
+| New issues | 0 |
+| Critical issues (🔴) | 0 |
+| Important issues (🟡) | 0 |
+| Minor observations (🟢) | 0 |
+
+## Verdict: APPROVED
+
+Both Round 4 blockers are resolved. Slide 25's closing sentence is fully visible after condensing (106px overflow → 0). Slide 95 is now a clean `.tool-grid` with 2 `.tool-card` children — zero `<pre>` blocks, zero raw asterisks, zero box-drawing characters. No new issues introduced. All 96 slides are presentation-ready.

@@ -1,8 +1,9 @@
-<article class="slide" data-number="43" data-type="comparison" data-section="Customization">
+<article class="slide" data-number="43" data-type="demo-placeholder" data-section="CLI">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">CLI vs VS Code — customization nuances</h1>
-          <table class="slide-table"><thead><tr><th></th><th><strong>VS Code</strong></th><th><strong>Copilot CLI</strong></th></tr></thead><tbody><tr><td>Repo instructions</td><td><code>.github/copilot-instructions.md</code> ✓</td><td><code>.github/copilot-instructions.md</code> ✓</td></tr><tr><td>User-level</td><td><code>~/.copilot/instructions/*.instructions.md</code> (<code>chat.instructionsFilesLocations</code>)</td><td><code>$HOME/.copilot/copilot-instructions.md</code> (+ <code>COPILOT_CUSTOM_INSTRUCTIONS_DIRS</code>)</td></tr><tr><td>Path-scoped</td><td><code>.github/instructions/*.instructions.md</code> w/ <code>applyTo:</code></td><td>Supported via same files</td></tr><tr><td>Prompt files</td><td><code>*.prompt.md</code> (Chat view)</td><td>Not in CLI (use Skills instead)</td></tr><tr><td>Custom agents</td><td><code>.github/agents/*.agent.md</code> + VS Code-only fields</td><td><code>.github/agents/</code> + <code>~/.copilot/agents/</code></td></tr></tbody></table>
+          <h1 class="slide-title">🎬 Demo: Copilot CLI</h1>
+          <div class="demo-badge">🎬 LIVE DEMO</div>
+          <p class="demo-note">Presenter fills this in live — see speaker notes for suggestions.</p>
   </div>
-  <aside class="speaker-notes" hidden>Per directive. VS Code adds a prompt-file surface that CLI doesn&#x27;t have; CLI has a broader env-var-driven customization search path. <code>AGENTS.md</code> works across both.</aside>
+  <aside class="speaker-notes" hidden>Suggested demo: install + login + trusted folder, then one multi-step prompt (plan → autopilot); show <code>/usage</code>, <code>/context</code>, and <code>/clear</code>. Optionally pipe to a BYOK Ollama.</aside>
 </article>

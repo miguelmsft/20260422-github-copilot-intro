@@ -1,22 +1,9 @@
-<article class="slide" data-number="49" data-type="code-example" data-section="MCP">
+<article class="slide" data-number="49" data-type="demo-placeholder" data-section="Customization">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Configure MCP — where each surface reads from</h1>
-          <div class="code-block"><code><span class="cmt">// VS Code — .vscode/mcp.json (workspace) or user settings</span>
-    {
-      <span class="prop">&quot;servers&quot;</span>: {
-        <span class="prop">&quot;playwright&quot;</span>: { <span class="prop">&quot;command&quot;</span>: <span class="str">&quot;npx&quot;</span>, <span class="prop">&quot;args&quot;</span>: [&quot;-y&quot;, &quot;@playwright/mcp&quot;] }
-      }
-    }</code></div>
-    <div class="code-block"><code><span class="cmt">// Copilot CLI — ~/.copilot/mcp-config.json</span>
-    <span class="cmt">// (or /mcp add in-session, or --mcp-config flag)</span>
-    {
-      <span class="prop">&quot;mcpServers&quot;</span>: {
-        <span class="prop">&quot;sentry&quot;</span>: { <span class="prop">&quot;url&quot;</span>: <span class="str">&quot;https:<span class="cmt">//mcp.sentry.dev&quot;</span>, <span class="prop">&quot;headers&quot;</span>: {...} }</span>
-      }
-    }</code></div>
-    <div class="code-block"><code># Cloud agent — repo Settings → Copilot → Coding agent → MCP configuration
-    # (stored as repository-scoped JSON, tools-only)</code></div>
+          <h1 class="slide-title">🎬 Demo: Customization</h1>
+          <div class="demo-badge">🎬 LIVE DEMO</div>
+          <p class="demo-note">Presenter fills this in live — see speaker notes for suggestions.</p>
   </div>
-  <aside class="speaker-notes" hidden>Emphasized per directive. Three surfaces, three config locations — but the server definition shape is nearly identical. <code>/mcp add</code> in the CLI has an interactive form (Tab navigates, Ctrl+S saves).</aside>
+  <aside class="speaker-notes" hidden>Suggested demo: run <code>/init</code> in VS Code, add a path-scoped <code>*.instructions.md</code>, show Copilot honoring it; contrast with <code>~/.copilot/copilot-instructions.md</code> in the CLI.</aside>
 </article>

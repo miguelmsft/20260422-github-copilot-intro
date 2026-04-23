@@ -1,17 +1,9 @@
-<article class="slide" data-number="35" data-type="code-example" data-section="CLI">
+<article class="slide" data-number="35" data-type="demo-placeholder" data-section="Models">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">The permission model</h1>
-          <p class="slide-body">When the agent wants a tool:</p>
-    <div class="code-block"><code>1. Yes
-    2. Yes, and approve TOOL for the rest of the session
-    3. No, and tell Copilot what to do differently  (Esc)</code></div>
-    <p class="slide-body">Pre-declare approvals on the command line:</p>
-    <div class="code-block"><code>copilot --allow-tool=<span class="str">&#x27;shell(git)&#x27;</span>            # allow any git
-    copilot --allow-tool=<span class="str">&#x27;shell(git push)&#x27;</span>       # allow only git push
-    copilot --allow-all-tools                    # aka --yolo
-    copilot --deny-tool=<span class="str">&#x27;shell(rm)&#x27;</span>              # block rm</code></div>
-    <p class="slide-body"><strong>Precedence:</strong> <code>--deny-tool</code> &gt; <code>--allow-tool</code> &gt; <code>--allow-all-tools</code></p>
+          <h1 class="slide-title">🎬 Demo: Models</h1>
+          <div class="demo-badge">🎬 LIVE DEMO</div>
+          <p class="demo-note">Presenter fills this in live — see speaker notes for suggestions.</p>
   </div>
-  <aside class="speaker-notes" hidden>&quot;Yolo mode&quot; is literally an alias. Good hygiene: pair <code>--allow-all-tools</code> with explicit <code>--deny-tool</code> guards for the dangerous things.</aside>
+  <aside class="speaker-notes" hidden>Suggested demo: show the model picker in VS Code, <code>/model</code> in the CLI, and optionally point <code>COPILOT_MODEL</code> at a local Ollama via BYOK.</aside>
 </article>

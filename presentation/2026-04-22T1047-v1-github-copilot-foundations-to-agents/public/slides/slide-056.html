@@ -1,40 +1,9 @@
-<article class="slide" data-number="56" data-type="diagram" data-section="Skills">
+<article class="slide" data-number="56" data-type="demo-placeholder" data-section="MCP">
   <div class="slide-bg"></div>
   <div class="slide-content">
-    <h1 class="slide-title">How Copilot picks a skill</h1>
-    <div class="flow-container">
-      <div class="flow-step">
-        <div class="flow-step-title">Session start</div>
-      </div>
-      <div class="flow-connector"></div>
-      <div class="flow-step">
-        <div class="flow-step-title">Scan skill sources</div>
-        <div class="flow-step-desc"><code>.github/skills/</code> · <code>~/.copilot/skills/</code> · plugins · <code>COPILOT_SKILLS_DIRS</code> · built-ins</div>
-      </div>
-      <div class="flow-connector"></div>
-      <div class="flow-step">
-        <div class="flow-step-title">Build catalog of (name, description) pairs</div>
-        <div class="flow-step-desc">only metadata loaded</div>
-      </div>
-      <div class="flow-connector"></div>
-      <div class="flow-step flow-highlight">
-        <div class="flow-step-title">You prompt: &quot;debug the failing CI on PR #42&quot;</div>
-      </div>
-      <div class="flow-connector"></div>
-      <div class="flow-step">
-        <div class="flow-step-title">Model matches description</div>
-        <div class="flow-step-desc">selects <code>github-actions-failure-debugging</code></div>
-      </div>
-      <div class="flow-connector"></div>
-      <div class="flow-step">
-        <div class="flow-step-title">Built-in <code>skill</code> tool injects SKILL.md body into context</div>
-      </div>
-      <div class="flow-connector"></div>
-      <div class="flow-step">
-        <div class="flow-step-title">Copilot follows the steps</div>
-        <div class="flow-step-desc">may run bundled scripts</div>
-      </div>
-    </div>
+          <h1 class="slide-title">🎬 Demo: MCP</h1>
+          <div class="demo-badge">🎬 LIVE DEMO</div>
+          <p class="demo-note">Presenter fills this in live — see speaker notes for suggestions.</p>
   </div>
-  <aside class="speaker-notes" hidden>Only descriptions load at session start; the body is injected on demand. That&#x27;s how you can have dozens of skills without blowing context.</aside>
+  <aside class="speaker-notes" hidden>Suggested demo: add the Playwright or Notion MCP server in VS Code, watch Copilot list its tools, then call one through agent mode; contrast with the CLI <code>/mcp add</code> flow.</aside>
 </article>

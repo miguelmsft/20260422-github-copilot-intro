@@ -37,34 +37,50 @@ source_files:
   - research/2026-04-21-copilot-advanced-agents.md
   - research/2026-04-21-copilot-security-privacy.md
   - research/2026-04-21-copilot-enterprise-admin.md
-version: 3
+  - research/2026-04-22-copilot-surfaces-terminology.md
+  - research/2026-04-22-agent-hq.md
+  - research/2026-04-22-approvals-and-bypass.md
+  - research/2026-04-22-cloud-agent-deep-dive.md
+version: 5
 created: 2026-04-21
 revised: 2026-04-22
+change_notes: |
+  v5: Finished the appendix-only cost move — stripped premium-request /
+  multiplier / quota wording from slides 25, 26, 31, 32, 33; slide 32 now
+  carries the model-variety showcase only (prior content duplicated slide 95
+  and has been removed from the main deck). Renamed slide 17 to
+  "Pick three things each time: environment, mode, model". Renamed slide 53
+  title to say "coding environment" instead of "surface". Slide 74 trimmed to
+  a short section opener (trigger list lives only on slide 75); availability
+  softened per the cloud-agent research (paid Copilot plans — see docs).
+  Slide 78 gained a plain-English opener. Slide 80 split value proposition
+  from rollout status (status moved to speaker notes).
 ---
 
 # Presentation Outline
 
-**Target: 85 slides · 150 min (75 min delivery · 45 min Q&A · 30 min demos · 15 min breaks)**
+**Target: ~96 slides · 150 min (75 min delivery · 45 min Q&A · 30 min demos · 15 min breaks)**
 
-1. **Opening** (slides 1–3) — Title, agenda, why this matters
-2. **A brief history: autocomplete → agents** (4–5)
-3. **Agentic foundations** (6–14) — The concepts behind *every* modern coding agent
-4. **The Copilot surface map** (15–17) — Where Copilot runs today
-5. **Modes: Ask, Plan, Agent, Autopilot** (18–24) — Choosing autonomy
-6. **☕ Break 1** (25)
-7. **Models & premium requests** (26–30) — Picking an LLM, understanding cost
-8. **Copilot CLI deep dive** (31–38) — Terminal-native agentic coding
-9. **Customization** (39–44) — Instructions, prompts, AGENTS.md
-10. **MCP — Model Context Protocol** (45–51) — The USB-C port for AI tools
-11. **☕ Break 2** (52)
-12. **Skills** (53–58) — Just-in-time expertise via `SKILL.md`
-13. **Hooks** (59–65) — Deterministic guardrails
-14. **Advanced custom agents + GitHub Actions** (66–73) — Multi-agent orchestration
-15. **Data security & privacy** (74–77) — Concise
-16. **Enterprise admin controls** (78–81) — Concise
-17. **Closing** (82–85) — Practical tips, resources, Q&A
+1. **Opening** — Title, agenda, why this matters
+2. **A brief history: autocomplete → agents**
+3. **Agentic foundations** — The concepts behind *every* modern coding agent (includes: "working with autonomous agents responsibly")
+4. **Copilot coding environments** — Where Copilot runs today (GitHub's term: *coding environments*; informal shorthand previously "surfaces")
+5. **Modes: Ask, Plan, Agent, Autopilot** — Choosing autonomy; `plan.md`; configuring approvals (CLI + VS Code); bypass-mode guardrails
+6. **☕ Break 1**
+7. **Models** — Multi-model product; model variety showcase; picking a model (cost/billing pushed to the Appendix)
+8. **Copilot CLI deep dive** — Terminal-native agentic coding
+9. **Customization** — Instructions, prompts, AGENTS.md
+10. **MCP — Model Context Protocol** — The USB-C port for AI tools
+11. **☕ Break 2**
+12. **Skills** — Just-in-time expertise via `SKILL.md`
+13. **Hooks** — Deterministic guardrails
+14. **Advanced custom agents + GitHub Actions** — Multi-agent orchestration; Cloud Agent deep dive; Agent HQ
+15. **Data security & privacy** — Concise
+16. **Enterprise admin controls** — Concise
+17. **Closing** — Practical tips, resources, Q&A
+18. **Appendix** — Premium requests basics, cost tips (reference only)
 
-> v2 revision notes: merged 18 slides from v1 (brief section-title slides folded into following content slides; slides 20+22 and 50+51 combined; slide 47 "Beyond the basics" dropped as it previewed later sections; slide 8 April snapshot dropped as it duplicated slide 3). Slide 69 cloud-agent eligibility reconciled to the conservative, documented **Pro+/Business/Enterprise** per `copilot-surfaces.md` §3.9. BYOK/BYOM terminology standardized on **BYOK = Bring Your Own Key**, defined on first use (slide 29). Beginner jargon glossed in-slide: DPA, FedRAMP, EMU, SAML, OIDC, SCIM, SIEM, `gh-aw`, "safe outputs," Agent Workflow Firewall. Dense slides trimmed; detail pushed to speaker notes.
+> v4 revision notes: (a) Replaced informal "surface"/"surfaces" terminology with **coding environments**, the term used on GitHub's own install page (per `2026-04-22-copilot-surfaces-terminology.md`). (b) Added "working with autonomous agents responsibly" (spec-driven flow) to Agentic Foundations. (c) Added a dedicated `/memories/session/plan.md` slide in Modes. (d) Added three approvals slides — CLI config, VS Code config, and bypass-mode guardrails — per `2026-04-22-approvals-and-bypass.md`. (e) Added two Cloud Agent deep-dive slides (trigger entry points + models/guardrails) and expanded Agent HQ to two slides (what it is + value/status) per `2026-04-22-cloud-agent-deep-dive.md` and `2026-04-22-agent-hq.md`. (f) Pulled **all premium-request / cost / billing content out of the main deck** into a new Appendix; the old premium-requests slide was replaced by a model-variety showcase. (g) Removed third-party (Anthropic) quote from Slide 11 decision-tree and speaker notes where it could be restated in our own words. (h) Demo placeholders no longer say "Presenter fills this in live" — they read as demo markers only, with suggestions in speaker notes. (i) Spelled out **REPL** on the CLI opener; added `/clear` to the CLI slash-command list.
 
 ---
 
@@ -88,7 +104,7 @@ Sources: general knowledge (presentation framing)
 
 1. **How we got here** — 5 years of Copilot in 5 minutes
 2. **Agentic foundations** — what an AI agent actually *is*
-3. **The surface map + modes** — where Copilot runs and how it behaves
+3. **Coding environments + modes** — where Copilot runs and how it behaves
 4. **The CLI deep dive** — terminal-native agentic coding
 5. **Customization: instructions, MCP, Skills, Hooks, custom agents**
 6. **Governance** — security, privacy, enterprise admin
@@ -162,9 +178,6 @@ Sources: research/2026-04-21-copilot-history.md, research/2026-04-21-copilot-mod
 | **Plain LLM call** — one prompt → one completion | No | No |
 | **Chatbot** — multi-turn, still prompt → text each turn | No (per-turn only) | No (unless tools) |
 | **Agent** — takes a goal, plans, uses tools, iterates | **Yes** | **Yes, via tools** |
-
-> "Agents are systems where LLMs dynamically direct their own processes and tool usage…"
-> — Anthropic, *Building effective agents*
 
 **Speaker Notes:**
 We deliberately start vendor-neutral. Before we open VS Code, you need a mental model that explains why Copilot, Cursor, Claude Code, and Devin all look different but feel the same. This is the longest conceptual section — ~10 minutes. Everything Copilot does in "agent mode" or "cloud agent" lives in the bottom row; the top two rows are what Copilot was in 2022–2023.
@@ -290,7 +303,7 @@ Does the task have parallel specialized pieces?
  └─ Yes → Multi-agent / orchestrator-workers.
 ```
 
-> "Find the simplest solution possible, and only increase complexity when needed." — Anthropic
+Rule of thumb: reach for the simplest shape that fits, and add complexity only when the task demands it.
 
 **Speaker Notes:**
 This ladder is the single most important decision in practice. Most developers over-reach for "agent mode" on tasks that would be faster and cheaper as Ask + manual Apply.
@@ -334,65 +347,92 @@ Sources: research/2026-04-21-agentic-foundations.md
 
 ---
 
-<!-- Slide 14 | Section: Agentic Foundations | Type: demo-placeholder -->
+<!-- Slide 14 | Section: Agentic Foundations | Type: list -->
 
-# 🎬 Demo: Agentic Foundations
+# Working with autonomous agents responsibly
+
+Before you turn an agent loose, spend a few minutes on the basics.
+
+1. **Research** — understand the codebase, the constraint, and what already exists.
+
+2. **Define the task & objective** — what is "done"? What does success look like?
+
+3. **Define the plan & approach** — break the work into steps the agent (and you) can verify.
+
+4. **Set up tests & guardrails** — what proves the change is correct? What must never happen?
+
+5. **Design the workflow** — where does a human review? Where is the agent on its own?
+
+"Spec-driven" workflows turn an agent from a wish into a specification.
 
 **Speaker Notes:**
-[To be filled in by presenter — e.g., show a minimal Python ReAct loop or walk the audience through a Copilot agent-mode session highlighting Think/Act/Observe in the trace.]
+The compound-error slide you just saw is exactly why this matters: the best way to beat 0.6% reliability at 100 steps is to make each step smaller, checkable, and bounded. Plan mode (coming up) is Copilot's built-in way to do step 3; Hooks (much later) are one way to enforce step 4. Beginner framing: an agent is a junior teammate — you wouldn't hand one a vague ticket with no acceptance criteria and walk away; don't do it to an agent either.
 
 Sources: research/2026-04-21-agentic-foundations.md
 
 ---
 
-<!-- Slide 15 | Section: Surfaces | Type: boxes -->
+<!-- Slide 15 | Section: Agentic Foundations | Type: demo-placeholder -->
 
-# The Copilot surface map — five families + where each shines
+# 🎬 Demo: Agentic Foundations
 
-| Family | Surface(s) | Optimized for |
+**Speaker Notes:**
+Suggested demo: show a minimal Python ReAct loop, or walk the audience through a Copilot agent-mode session highlighting Think / Act / Observe in the trace.
+
+Sources: research/2026-04-21-agentic-foundations.md
+
+---
+
+<!-- Slide 16 | Section: Coding Environments | Type: boxes -->
+
+# Copilot coding environments — five families + where each shines
+
+| Family | Coding environment(s) | Optimized for |
 |---|---|---|
 | **IDEs** | VS Code (flagship), Visual Studio, JetBrains, Xcode, Eclipse, Neovim | In-flow writing; richest agent features (VS Code) |
 | **Terminal** | Copilot CLI (`copilot`), Windows Terminal Canary chat | Scriptable, CI-friendly, terminal-native |
 | **Web** | github.com Chat, PR / issue assist, code review | Async review, planning, delegating |
 | **Mobile** | GitHub Mobile chat | Read-mostly chat, approvals on the go |
-| **Cloud agent** | Runs on GitHub Actions, opens PRs | "Assign an issue, get a PR" |
+| **Cloud Agent** | Runs on GitHub Actions, opens PRs | "Assign an issue, get a PR" |
 
 **Speaker Notes:**
-All five families share one subscription and one pool of models — but they expose **different subsets of modes** and different config locations. We unpack the mode subset next, and the config differences throughout the rest of the day. Note: per the customization/hooks research, the surfaces share *concepts* (instructions, MCP, skills, hooks) but not identical *config locations or support* — we'll be precise about those differences as they come up.
+Terminology note: GitHub itself does not use "surface" in its official docs. The install page calls these *coding environments* ("Installing the GitHub Copilot extension in your environment … your preferred coding environment"); the Changelog taxonomy calls them *client apps*. We'll say **coding environments** throughout today. All five families share one subscription and one pool of models — but they expose **different subsets of modes** and different config locations. We unpack the mode subset next, and the config differences throughout the rest of the day. Per the customization/hooks research, these environments share *concepts* (instructions, MCP, skills, hooks) but not identical *config locations or support* — we'll be precise about those differences as they come up.
 
-Sources: research/2026-04-21-copilot-surfaces.md
+Sources: research/2026-04-21-copilot-surfaces.md, research/2026-04-22-copilot-surfaces-terminology.md
 
 ---
 
-<!-- Slide 16 | Section: Surfaces | Type: single-point -->
+<!-- Slide 17 | Section: Coding Environments | Type: single-point -->
 
-# The mental model to teach
+# Pick three things each time: environment, mode, model
 
 **(1) Where you type** (editor · terminal · browser · phone)
-**× (2) Which mode you pick** (completion · ask · edit · agent · cloud agent)
+
+**× (2) Which mode you pick** (completion · ask · plan · agent · cloud agent)
+
 **× (3) Which model** (GPT-5.x · Claude · Gemini · Grok · …)
 
-Three orthogonal axes. Confusing the first two is the #1 beginner mistake.
+Three orthogonal choices. Confusing the first two is the #1 beginner mistake.
 
 **Speaker Notes:**
-"Agent mode in VS Code" ≠ "Copilot cloud agent" — they both run agents, but one is on your laptop and one is on a GHA runner. We'll dedicate a whole slide to that distinction later.
+"Agent mode in VS Code" ≠ "Copilot Cloud Agent" — they both run agents, but one is on your laptop and one is on a GHA runner. We'll dedicate a whole slide to that distinction later.
 
 Sources: research/2026-04-21-copilot-surfaces.md, research/2026-04-21-copilot-modes.md
 
 ---
 
-<!-- Slide 17 | Section: Surfaces | Type: demo-placeholder -->
+<!-- Slide 18 | Section: Coding Environments | Type: demo-placeholder -->
 
-# 🎬 Demo: Surface Tour
+# 🎬 Demo: Coding Environments Tour
 
 **Speaker Notes:**
-[To be filled in by presenter — e.g., flip quickly between VS Code Chat, `copilot` CLI, and github.com Copilot Chat to show "same subscription, same model picker, different UX".]
+Suggested demo: flip quickly between VS Code Chat, the `copilot` CLI, and github.com Copilot Chat to show "same subscription, same model picker, different UX."
 
 Sources: research/2026-04-21-copilot-surfaces.md
 
 ---
 
-<!-- Slide 18 | Section: Modes | Type: diagram -->
+<!-- Slide 19 | Section: Modes | Type: diagram -->
 
 # Modes: a VS Code chat session = 3 independent choices
 
@@ -418,7 +458,7 @@ Sources: research/2026-04-21-copilot-modes.md
 
 ---
 
-<!-- Slide 19 | Section: Modes | Type: boxes -->
+<!-- Slide 20 | Section: Modes | Type: boxes -->
 
 # The three built-in personas
 
@@ -434,13 +474,30 @@ Sources: research/2026-04-21-copilot-modes.md
 **Edit** mode is **deprecated** — its behavior folded into Agent. You can un-hide it with `chat.editMode.hidden`.
 
 **Speaker Notes:**
-Plan is the under-used hero. For anything touching more than one file, having Plan produce a checklist *before* Agent implements it drastically improves outcomes. Plan writes its result to `/memories/session/plan.md`.
+Plan is the under-used hero. For anything touching more than one file, having Plan produce a checklist *before* Agent implements it drastically improves outcomes. The plan itself lives in a session file — next slide.
 
 Sources: research/2026-04-21-copilot-modes.md
 
 ---
 
-<!-- Slide 20 | Section: Modes | Type: comparison -->
+<!-- Slide 21 | Section: Modes | Type: single-point -->
+
+# Plan mode's output — `/memories/session/plan.md`
+
+When you enter Plan mode, Copilot creates a plan file inside a per-session folder.
+
+That file — `plan.md` — is the living source of truth for the work: what was researched, what will change, in what order.
+
+You review and edit it before handing off to Agent mode for execution; it persists through the session so the agent keeps referring back to it.
+
+**Speaker Notes:**
+The reason Plan → Agent beats going straight to Agent: the plan is *written down*. You can correct bad assumptions before any code is edited. Tell attendees: open it, read it, fix it, *then* hit Agent. The file lives under Copilot's session memory area (`/memories/session/`), which is also why re-entering Plan mode in the same session picks up where you left off.
+
+Sources: research/2026-04-21-agentic-foundations.md, research/2026-04-21-copilot-modes.md
+
+---
+
+<!-- Slide 22 | Section: Modes | Type: comparison -->
 
 # Permission levels
 
@@ -450,16 +507,105 @@ Sources: research/2026-04-21-copilot-modes.md
 | **Bypass Approvals** | No per-step prompt; still respects guardrails | Trusted, well-tested workflows |
 | **Autopilot (Preview)** | Agent runs uninterrupted; auto-answers clarifying Qs | Long routine jobs you'd otherwise babysit |
 
-Autopilot is **not a fourth mode** — it's Agent with the handbrake off.
-
 **Speaker Notes:**
-Most beginners should live on Default Approvals for a month. Tie this back to the autonomy spectrum slide.
+Most beginners should live on Default Approvals for a month. Tie this back to the autonomy spectrum slide. Verbally: Autopilot is not a fourth "mode" — it's a permission tier, the same Agent persona with the per-step handbrake off.
 
 Sources: research/2026-04-21-copilot-modes.md
 
 ---
 
-<!-- Slide 21 | Section: Modes | Type: comparison -->
+<!-- Slide 23 | Section: Modes | Type: code-example -->
+
+# Configuring approvals — Copilot CLI
+
+Approve or deny individual tools, commands, paths, and URLs from flags, slash commands, or config files.
+
+```bash
+# Flags — precedence: --deny-tool > --allow-tool > --allow-all-tools
+copilot --allow-tool='shell(git:*)' \
+        --allow-tool='write' \
+        --allow-tool='MyMCP(create_issue)' \
+        --deny-tool='shell(rm)' \
+        --deny-tool='shell(git push)'
+
+# In-session slash commands
+/allow-all              # or /yolo — enable all for this session (does not toggle off)
+/reset-allowed-tools    # revoke everything granted this session
+/add-dir /path/to/dir   # extend file-access scope
+/list-dirs              # show trusted directories
+```
+
+Settings cascade: user `~/.copilot/config.json` → repo `.github/copilot/settings.json` → personal `.github/copilot/settings.local.json`.
+
+**Speaker Notes:**
+Pattern syntax is `Kind(argument)`: `shell(git:*)` matches `git push` / `git pull` but not `gitea`; `write`, `read`, `url(github.com)`, and `MyMCP(tool)` follow the same shape. Keep denies narrow and specific; rely on them to survive `--allow-all`. `/reset-allowed-tools` is the panic button at the start of a sensitive task.
+
+Sources: research/2026-04-22-approvals-and-bypass.md
+
+---
+
+<!-- Slide 24 | Section: Modes | Type: code-example -->
+
+# Configuring approvals — VS Code
+
+Three permission tiers in the chat picker: **Default Approvals · Bypass Approvals · Autopilot (Preview)**.
+
+```jsonc
+// .vscode/settings.json or user settings
+{
+  // Which terminal commands auto-approve; false = always prompt
+  "chat.tools.terminal.autoApprove": {
+    "ls": true, "mkdir": true, "npm install": true,
+    "/^git (status|show\\b.*)$/": true,
+    "rm": false, "del": false
+  },
+
+  // Protect sensitive files from silent edits
+  "chat.tools.edits.autoApprove": {
+    "**/.env": false, "**/secrets.*": false
+  },
+
+  // Global kill-switch for approval prompts (org-manageable)
+  "chat.tools.global.autoApprove": false,
+
+  // Default permission level for new sessions
+  "chat.permissions.default": "default"
+}
+```
+
+**Speaker Notes:**
+`Chat: Manage Tool Approval` in the Command Palette is the central UI. Patterns wrapped in `/.../` are regex. `Default` is the sane starting point; only flip to `bypass` or `autopilot` once you have the guardrails on the next slide in place. Keep auto-approvals session-scoped where possible, per GitHub's own security baseline.
+
+Sources: research/2026-04-22-approvals-and-bypass.md
+
+---
+
+<!-- Slide 25 | Section: Modes | Type: list -->
+
+# Bypass mode — what still protects you
+
+Even with `--allow-all` / `/yolo` / Bypass Approvals / Autopilot, these guardrails still apply:
+
+- **Deny rules win** — `--deny-tool` and `--deny-url` take precedence over any allow, including `--allow-all`.
+
+- **Workspace Trust / Restricted mode** (VS Code) disables agents entirely in untrusted folders.
+
+- **Agent sandboxing** (VS Code, Preview) enforces file and network boundaries at the OS level — independent of approvals.
+
+- **CLI `preToolUse` hooks** fire on every tool call and can deny before execution. (`permissionRequest` hooks do **not** reliably fire under `--allow-all`, so `preToolUse` is the one to rely on.)
+
+- **Enterprise policies** — `ChatToolsAutoApprove`, `ChatToolsTerminalEnableAutoApprove`, and `ChatAgentMode` can hide or disable bypass org-wide.
+
+GitHub's own guidance:the CLI docs **strongly recommend only using `--allow-all` / `--yolo` in an isolated environment**; VS Code warns users to only enable Bypass or Autopilot if they understand the security implications, and to consider agent sandboxing or a container in high-risk / prompt-injection scenarios.
+
+**Speaker Notes:**
+This is the "what bypass is and isn't" reality check. Bypass removes the per-step prompt; it does not turn the machine into a sandbox — anything the agent runs still runs with your user privileges. If prompt injection is on the table (e.g., the agent browses untrusted web content), the VS Code docs are explicit: use sandboxing or a container. And remind attendees that auto-approval in VS Code is "best effort" — quote concatenation and similar tricks can subvert regex allowlists.
+
+Sources: research/2026-04-22-approvals-and-bypass.md
+
+---
+
+<!-- Slide 26 | Section: Modes | Type: comparison -->
 
 # In-IDE Agent vs Copilot Cloud Agent — do not confuse these
 
@@ -469,16 +615,15 @@ Sources: research/2026-04-21-copilot-modes.md
 | You see it | Real-time, in chat panel | Async, as commits on a draft PR |
 | Triggered by | You, in chat | Assign issue, `@copilot` mention, Agents tab, CLI `/delegate` |
 | Output | Edits in your open workspace | A pull request |
-| Billing | 1 premium req / user prompt | 1 premium req / session (separate SKU) |
 
 **Speaker Notes:**
-This slide alone will prevent half the confusion you will run into at work. Cloud agent is the former "Copilot coding agent" / Project Padawan.
+This slide alone will prevent half the confusion you will run into at work. Cloud agent is the former "Copilot coding agent" / Project Padawan. Billing differences (per-prompt vs per-session) live in the appendix.
 
 Sources: research/2026-04-21-copilot-modes.md, research/2026-04-21-copilot-advanced-agents.md
 
 ---
 
-<!-- Slide 22 | Section: Modes | Type: decision-tree -->
+<!-- Slide 27 | Section: Modes | Type: decision-tree -->
 
 # Which mode should I pick?
 
@@ -498,7 +643,7 @@ Sources: research/2026-04-21-copilot-modes.md
 
 ---
 
-<!-- Slide 23 | Section: Modes | Type: single-point -->
+<!-- Slide 28 | Section: Modes | Type: single-point -->
 
 # CLI vs VS Code — mode differences
 
@@ -513,18 +658,18 @@ Sources: research/2026-04-21-copilot-cli.md, research/2026-04-21-copilot-modes.m
 
 ---
 
-<!-- Slide 24 | Section: Modes | Type: demo-placeholder -->
+<!-- Slide 29 | Section: Modes | Type: demo-placeholder -->
 
 # 🎬 Demo: Modes
 
 **Speaker Notes:**
-[To be filled in by presenter — e.g., take one task and show it in Ask → Plan → Agent successively, then show the Autopilot toggle and a `/delegate` handoff to cloud.]
+Suggested demo: take one task and show it in Ask → Plan → Agent successively; open the `plan.md` between Plan and Agent; then show the Autopilot toggle and a `/delegate` handoff to the Cloud Agent.
 
 Sources: research/2026-04-21-copilot-modes.md
 
 ---
 
-<!-- Slide 25 | Section: Break | Type: single-point -->
+<!-- Slide 30 | Section: Break | Type: single-point -->
 
 # ☕ Break 1 — 10 minutes
 
@@ -539,66 +684,74 @@ Sources: general knowledge (break slide)
 
 ---
 
-<!-- Slide 26 | Section: Models | Type: single-point -->
+<!-- Slide 31 | Section: Models | Type: single-point -->
 
-# Models & premium requests: Copilot is a *multi-model* product
+# Copilot is a *multi-model* product
 
-~22 models from **OpenAI · Anthropic · Google · xAI · GitHub-tuned**, plus **Auto** and **BYOK** (Bring Your Own Key — point Copilot at your own provider credentials).
+Around 22 models from **OpenAI · Anthropic · Google · xAI · GitHub-tuned**, plus **Auto** and **BYOK** (Bring Your Own Key — point Copilot at your own provider credentials).
 
 You pick from a dropdown. Different models are optimized for speed, reasoning, coding, or multimodal input.
 
 **Speaker Notes:**
-~8 minutes on this section. Beginners don't need to memorize the lineup — they need to know how to not burn their quota. Name-dropping depth for the curious: GPT-4.1/4o/5.x, Claude Haiku/Sonnet/Opus 4.x, Gemini 2.5/3.x, Grok Code Fast 1, plus GitHub's Raptor mini and Goldeneye previews. We'll focus on *how to choose*. First definition of **BYOK** lands here; we'll revisit it for the CLI and for the data-path conversation later.
+~8 minutes on this section. Beginners don't need to memorize the lineup; they need a mental map of *families* and a rule of thumb for fit-for-task. Cost, quotas, and premium-request accounting are intentionally out of scope here — the appendix covers them. Name-dropping depth for the curious: GPT-4.1 / 4o / 5.x, Claude Haiku / Sonnet / Opus 4.x, Gemini 2.5 / 3.x, Grok Code Fast 1, plus GitHub's Raptor mini and Goldeneye previews. First definition of **BYOK** lands here; we'll revisit it in the CLI deep-dive and the data-path slide later.
 
 Sources: research/2026-04-21-model-variety.md
 
 ---
 
-<!-- Slide 27 | Section: Models | Type: boxes -->
+<!-- Slide 32 | Section: Models | Type: boxes -->
 
-# Premium requests — the cost unit
+# Model variety — the families on offer
 
-┌─────────────────────────────┬─────────────────────────────┐
-│ **Multiplier** — per model  │ **Allowance** — per plan    │
-│ 0× included (GPT-4.1, 4o,   │ Free 50, Pro 300, Pro+ 1500,│
-│ GPT-5 mini)                 │ Business 300/u, Ent. 1000/u │
-│ 0.25–1× most paid models    │                             │
-│ 3× Opus 4.5/4.6             │ Overage: $0.04 / request    │
-│ 30× Opus 4.6 "fast mode"    │                             │
-│ preview                     │ Auto mode = 10% discount    │
-└─────────────────────────────┴─────────────────────────────┘
+┌────────────────────────────────────┬────────────────────────────────────┐
+│ **OpenAI (GPT family)**            │ **Anthropic (Claude family)**      │
+│ GPT-5.x · GPT-5.2-Codex            │ Claude Sonnet 4.5 / 4.6            │
+│ GPT-5 mini · GPT-5.4 nano          │ Claude Opus 4.5 / 4.6 / 4.7        │
+│ GPT-4.1 · GPT-4o                   │ Claude Haiku 4.5                   │
+├────────────────────────────────────┼────────────────────────────────────┤
+│ **Google (Gemini family)**         │ **xAI (Grok family)**              │
+│ Gemini 2.5 · Gemini 3.1 Pro        │ Grok Code Fast 1                   │
+├────────────────────────────────────┼────────────────────────────────────┤
+│ **GitHub-tuned (previews)**        │ **Auto + BYOK**                    │
+│ Raptor mini · Goldeneye            │ Auto = best-fit picker             │
+│                                    │ BYOK = your own provider key       │
+└────────────────────────────────────┴────────────────────────────────────┘
+
+Flagships for agentic coding in 2026: **Claude Sonnet 4.5/4.6**, **Opus 4.7**, **GPT-5.x / GPT-5.2-Codex**, **Gemini 3.1 Pro**.
 
 **Speaker Notes:**
-One user prompt = 1 request × multiplier. Tool calls the agent makes on its own are free. Cloud agent sessions are billed per session from a separate SKU.
+The point of this slide is richness, not completeness. GitHub is deliberately multi-vendor — that's the unique structural choice of the product. Group by provider to give attendees a mental handle; almost every model name they'll encounter slots into one of these families. Lineup shifts weekly; don't commit the exact names to memory.
 
-Sources: research/2026-04-21-model-variety.md
+Sources: research/2026-04-21-model-variety.md, research/2026-04-22-cloud-agent-deep-dive.md
 
 ---
 
-<!-- Slide 28 | Section: Models | Type: decision-tree -->
+<!-- Slide 33 | Section: Models | Type: decision-tree -->
 
 # Which model should I pick?
 
 ```
-Default? ───────────────────────────► Auto  (10% discount, healthy pick)
+Default?                          ──►  Auto  (picks a healthy model for you)
 
-Want to burn zero quota? ────────────► GPT-5 mini / GPT-4.1 / GPT-4o  (all 0×)
+Quick edits / autocomplete feel?  ──►  GPT-4.1, GPT-4o, GPT-5 mini, Haiku 4.5
 
-Hard reasoning / agentic? ───────────► GPT-5.4, Claude Sonnet 4.6, Opus 4.7,
-                                       Gemini 3.1 Pro   (1×–7.5×)
+Hard reasoning / agentic work?    ──►  GPT-5.x, Claude Sonnet 4.5/4.6,
+                                       Claude Opus 4.7, Gemini 3.1 Pro
 
-Speed > everything else? ────────────► Haiku 4.5, Grok Code Fast 1, 5.4 nano
-                                       (0.25×–0.33×)
+Speed above all else?             ──►  Haiku 4.5, Grok Code Fast 1,
+                                       GPT-5.4 nano
+
+Multimodal (images, screenshots)? ──►  GPT-4o, Claude Sonnet/Opus, Gemini
 ```
 
 **Speaker Notes:**
-Point out Claude Opus 4.7 is on a 7.5× promotional multiplier through April 30, 2026 — it will rise after. "Auto" for 80% of work is our beginner advice.
+"Auto for 80% of the work" is the beginner advice. The reasoning-vs-speed axis is the most useful distinction in day-to-day picking — it maps cleanly to "is this a debugging/architecting task, or a mechanical edit?" Cost considerations are deliberately out of this slide; they live in the Appendix so this decision stays about fit-for-task.
 
 Sources: research/2026-04-21-model-variety.md
 
 ---
 
-<!-- Slide 29 | Section: Models | Type: comparison -->
+<!-- Slide 34 | Section: Models | Type: comparison -->
 
 # CLI vs VS Code — model lineup nuances
 
@@ -628,22 +781,22 @@ Sources: research/2026-04-21-model-variety.md, research/2026-04-21-copilot-cli.m
 
 ---
 
-<!-- Slide 30 | Section: Models | Type: demo-placeholder -->
+<!-- Slide 35 | Section: Models | Type: demo-placeholder -->
 
 # 🎬 Demo: Models
 
 **Speaker Notes:**
-[To be filled in by presenter — e.g., show the model picker in VS Code, `/usage` in the CLI, and (optionally) point `COPILOT_MODEL` at a local Ollama via BYOK.]
+Suggested demo: show the model picker in VS Code, `/model` in the CLI, and optionally point `COPILOT_MODEL` at a local Ollama via BYOK.
 
 Sources: research/2026-04-21-model-variety.md
 
 ---
 
-<!-- Slide 31 | Section: CLI | Type: single-point -->
+<!-- Slide 36 | Section: CLI | Type: single-point -->
 
 # Copilot CLI — what it is (and isn't)
 
-**`copilot`** — standalone agentic REPL, same agentic harness as the cloud agent, GitHub MCP pre-wired.
+**`copilot`** — standalone agentic **REPL (Read-Eval-Print Loop)**, same agentic harness as the Cloud Agent, GitHub MCP pre-wired.
 
 **Not `gh copilot`** — the old `gh copilot suggest/explain` extension was deprecated Oct 25, 2025. Different product.
 
@@ -654,7 +807,7 @@ Sources: research/2026-04-21-copilot-cli.md
 
 ---
 
-<!-- Slide 32 | Section: CLI | Type: code-example -->
+<!-- Slide 37 | Section: CLI | Type: code-example -->
 
 # Install & first launch
 
@@ -680,23 +833,23 @@ Sources: research/2026-04-21-copilot-cli.md
 
 ---
 
-<!-- Slide 33 | Section: CLI | Type: list -->
+<!-- Slide 38 | Section: CLI | Type: list -->
 
 # Interactive essentials
 
 - **Shift+Tab** — cycle modes (ask → plan → autopilot)
 - **`!cmd`** — run shell directly (no model call)
 - **`@path/to/file`** — attach file as context (Tab-completes)
-- **`/model` · `/mcp` · `/usage` · `/resume`** — key slash commands
+- **`/model` · `/mcp` · `/usage` · `/resume` · `/clear`** — key slash commands (context & sessions)
 
 **Speaker Notes:**
-Live demo these. The `!` and `@` prefixes are what make the CLI feel native to a terminal power user. Additional keys worth mentioning verbally but not putting on the slide: Enter sends a prompt; Esc stops a running operation; `/context` shows what's currently attached; `copilot --continue` resumes the last session; auto-compaction kicks in at 95% context with no user action required. Full slash-command list lives in `docs.github.com/en/copilot/reference/copilot-cli-reference`.
+Live demo these. The `!` and `@` prefixes are what make the CLI feel native to a terminal power user. `/clear` wipes the current session's context (useful when you want to pivot to an unrelated task without starting a new process). Additional keys worth mentioning verbally but not putting on the slide: Enter sends a prompt; Esc stops a running operation; `/context` shows what's currently attached; `copilot --continue` resumes the last session; auto-compaction kicks in at 95% context with no user action required. Full slash-command list lives in `docs.github.com/en/copilot/reference/copilot-cli-reference`.
 
 Sources: research/2026-04-21-copilot-cli.md
 
 ---
 
-<!-- Slide 34 | Section: CLI | Type: code-example -->
+<!-- Slide 39 | Section: CLI | Type: code-example -->
 
 # The permission model
 
@@ -724,7 +877,7 @@ Sources: research/2026-04-21-copilot-cli.md
 
 ---
 
-<!-- Slide 35 | Section: CLI | Type: code-example -->
+<!-- Slide 40 | Section: CLI | Type: code-example -->
 
 # Programmatic / scripted mode
 
@@ -750,7 +903,7 @@ Sources: research/2026-04-21-copilot-cli.md, research/2026-04-21-copilot-advance
 
 ---
 
-<!-- Slide 36 | Section: CLI | Type: boxes -->
+<!-- Slide 41 | Section: CLI | Type: boxes -->
 
 # Built-in sub-agents
 
@@ -776,7 +929,7 @@ Sources: research/2026-04-21-copilot-cli.md, research/2026-04-21-copilot-advance
 
 ---
 
-<!-- Slide 37 | Section: CLI | Type: comparison -->
+<!-- Slide 42 | Section: CLI | Type: comparison -->
 
 # CLI vs VS Code — when to pick which
 
@@ -795,18 +948,18 @@ Sources: research/2026-04-21-copilot-cli.md
 
 ---
 
-<!-- Slide 38 | Section: CLI | Type: demo-placeholder -->
+<!-- Slide 43 | Section: CLI | Type: demo-placeholder -->
 
 # 🎬 Demo: Copilot CLI
 
 **Speaker Notes:**
-[To be filled in by presenter — e.g., install + login + trusted folder + one multi-step prompt (plan → autopilot) + show `/usage` and `/context`. Optionally pipe to a BYOK Ollama.]
+Suggested demo: install + login + trusted folder, then one multi-step prompt (plan → autopilot); show `/usage`, `/context`, and `/clear`. Optionally pipe to a BYOK Ollama.
 
 Sources: research/2026-04-21-copilot-cli.md
 
 ---
 
-<!-- Slide 39 | Section: Customization | Type: boxes -->
+<!-- Slide 44 | Section: Customization | Type: boxes -->
 
 # Customization: the four layers (higher = wins on conflict; all still sent)
 
@@ -834,7 +987,7 @@ Sources: research/2026-04-21-copilot-customization.md
 
 ---
 
-<!-- Slide 40 | Section: Customization | Type: code-example -->
+<!-- Slide 45 | Section: Customization | Type: code-example -->
 
 # A good `.github/copilot-instructions.md`
 
@@ -863,7 +1016,7 @@ Sources: research/2026-04-21-copilot-customization.md
 
 ---
 
-<!-- Slide 41 | Section: Customization | Type: comparison -->
+<!-- Slide 46 | Section: Customization | Type: comparison -->
 
 # Instructions vs Prompt files
 
@@ -881,7 +1034,7 @@ Sources: research/2026-04-21-copilot-customization.md
 
 ---
 
-<!-- Slide 42 | Section: Customization | Type: comparison -->
+<!-- Slide 47 | Section: Customization | Type: comparison -->
 
 # CLI vs VS Code — customization nuances
 
@@ -900,7 +1053,7 @@ Sources: research/2026-04-21-copilot-customization.md
 
 ---
 
-<!-- Slide 43 | Section: Customization | Type: single-point -->
+<!-- Slide 48 | Section: Customization | Type: single-point -->
 
 # `AGENTS.md` — the cross-tool standard
 
@@ -915,18 +1068,18 @@ Sources: research/2026-04-21-copilot-customization.md
 
 ---
 
-<!-- Slide 44 | Section: Customization | Type: demo-placeholder -->
+<!-- Slide 49 | Section: Customization | Type: demo-placeholder -->
 
 # 🎬 Demo: Customization
 
 **Speaker Notes:**
-[To be filled in by presenter — e.g., run `/init` in VS Code, add a path-scoped `*.instructions.md`, show Copilot honoring it; contrast with `~/.copilot/copilot-instructions.md` in the CLI.]
+Suggested demo: run `/init` in VS Code, add a path-scoped `*.instructions.md`, show Copilot honoring it; contrast with `~/.copilot/copilot-instructions.md` in the CLI.
 
 Sources: research/2026-04-21-copilot-customization.md
 
 ---
 
-<!-- Slide 45 | Section: MCP | Type: single-point -->
+<!-- Slide 50 | Section: MCP | Type: single-point -->
 
 # MCP — Model Context Protocol: why it exists
 
@@ -934,8 +1087,7 @@ Before MCP: every AI app had its own plugin format → N × M integration pain.
 
 After MCP: **one server works with every MCP-compatible client** — Copilot, Claude, Cursor, Windsurf, Zed, and more.
 
-> "Think of MCP like a USB-C port for AI applications."
-> — modelcontextprotocol.io
+Analogy commonly used in the docs: MCP is a **USB-C port for AI applications** — one pluggable interface, many tools.
 
 **Speaker Notes:**
 ~12 minutes on MCP. Open standard from Anthropic (Nov 2024), now Copilot's official way to add tools. This is the framing to remember: same cable, many devices.
@@ -944,7 +1096,7 @@ Sources: research/2026-04-21-copilot-mcp.md
 
 ---
 
-<!-- Slide 46 | Section: MCP | Type: diagram -->
+<!-- Slide 51 | Section: MCP | Type: diagram -->
 
 # Host · Client · Server
 
@@ -972,7 +1124,7 @@ Sources: research/2026-04-21-copilot-mcp.md
 
 ---
 
-<!-- Slide 47 | Section: MCP | Type: list -->
+<!-- Slide 52 | Section: MCP | Type: list -->
 
 # What servers expose (3 primitives)
 
@@ -991,9 +1143,9 @@ Sources: research/2026-04-21-copilot-mcp.md
 
 ---
 
-<!-- Slide 48 | Section: MCP | Type: code-example -->
+<!-- Slide 53 | Section: MCP | Type: code-example -->
 
-# Configure MCP — where each surface reads from
+# Configure MCP — where each coding environment reads from
 
 ```jsonc
 // VS Code — .vscode/mcp.json (workspace) or user settings
@@ -1020,13 +1172,13 @@ Sources: research/2026-04-21-copilot-mcp.md
 ```
 
 **Speaker Notes:**
-Emphasized per directive. Three surfaces, three config locations — but the server definition shape is nearly identical. `/mcp add` in the CLI has an interactive form (Tab navigates, Ctrl+S saves).
+Emphasized per directive. Three coding environments, three config locations — but the server definition shape is nearly identical. `/mcp add` in the CLI has an interactive form (Tab navigates, Ctrl+S saves).
 
 Sources: research/2026-04-21-copilot-mcp.md
 
 ---
 
-<!-- Slide 49 | Section: MCP | Type: single-point -->
+<!-- Slide 54 | Section: MCP | Type: single-point -->
 
 # The built-in GitHub MCP server
 
@@ -1041,7 +1193,7 @@ Sources: research/2026-04-21-copilot-mcp.md
 
 ---
 
-<!-- Slide 50 | Section: MCP | Type: list -->
+<!-- Slide 55 | Section: MCP | Type: list -->
 
 # Permission model & the cloud-agent caveat
 
@@ -1057,18 +1209,18 @@ Sources: research/2026-04-21-copilot-mcp.md
 
 ---
 
-<!-- Slide 51 | Section: MCP | Type: demo-placeholder -->
+<!-- Slide 56 | Section: MCP | Type: demo-placeholder -->
 
 # 🎬 Demo: MCP
 
 **Speaker Notes:**
-[To be filled in by presenter — e.g., add the Playwright or Notion MCP server in VS Code, watch Copilot list its tools, then call one through agent mode; contrast the same in the CLI with `/mcp add`.]
+Suggested demo: add the Playwright or Notion MCP server in VS Code, watch Copilot list its tools, then call one through agent mode; contrast with the CLI `/mcp add` flow.
 
 Sources: research/2026-04-21-copilot-mcp.md
 
 ---
 
-<!-- Slide 52 | Section: Break | Type: single-point -->
+<!-- Slide 57 | Section: Break | Type: single-point -->
 
 # ☕ Break 2 — 10 minutes
 
@@ -1081,7 +1233,7 @@ Sources: general knowledge (break slide)
 
 ---
 
-<!-- Slide 53 | Section: Skills | Type: single-point -->
+<!-- Slide 58 | Section: Skills | Type: single-point -->
 
 # Skills — mind the terminology trap
 
@@ -1098,7 +1250,7 @@ Sources: research/2026-04-21-copilot-skills.md
 
 ---
 
-<!-- Slide 54 | Section: Skills | Type: code-example -->
+<!-- Slide 59 | Section: Skills | Type: code-example -->
 
 # Anatomy of a skill
 
@@ -1127,7 +1279,7 @@ Sources: research/2026-04-21-copilot-skills.md
 
 ---
 
-<!-- Slide 55 | Section: Skills | Type: diagram -->
+<!-- Slide 60 | Section: Skills | Type: diagram -->
 
 # How Copilot picks a skill
 
@@ -1159,7 +1311,7 @@ Sources: research/2026-04-21-copilot-skills.md
 
 ---
 
-<!-- Slide 56 | Section: Skills | Type: comparison -->
+<!-- Slide 61 | Section: Skills | Type: comparison -->
 
 # CLI vs VS Code — Skills support
 
@@ -1179,7 +1331,7 @@ Sources: research/2026-04-21-copilot-skills.md
 
 ---
 
-<!-- Slide 57 | Section: Skills | Type: list -->
+<!-- Slide 62 | Section: Skills | Type: list -->
 
 # Skills vs MCP vs custom agents vs instructions
 
@@ -1196,18 +1348,18 @@ Sources: research/2026-04-21-copilot-skills.md, research/2026-04-21-copilot-cust
 
 ---
 
-<!-- Slide 58 | Section: Skills | Type: demo-placeholder -->
+<!-- Slide 63 | Section: Skills | Type: demo-placeholder -->
 
 # 🎬 Demo: Skills
 
 **Speaker Notes:**
-[To be filled in by presenter — e.g., create a simple `~/.copilot/skills/release-notes/SKILL.md`, list via `/skills list`, invoke via `/release-notes`, then trigger automatically via a natural prompt.]
+Suggested demo: create a simple `~/.copilot/skills/release-notes/SKILL.md`, list via `/skills list`, invoke via `/release-notes`, then trigger automatically via a natural prompt.
 
 Sources: research/2026-04-21-copilot-skills.md
 
 ---
 
-<!-- Slide 59 | Section: Hooks | Type: single-point -->
+<!-- Slide 64 | Section: Hooks | Type: single-point -->
 
 # Hooks: Instructions *ask*. Skills *guide*. **Hooks *enforce*.**
 
@@ -1220,7 +1372,7 @@ Sources: research/2026-04-21-copilot-hooks.md
 
 ---
 
-<!-- Slide 60 | Section: Hooks | Type: table -->
+<!-- Slide 65 | Section: Hooks | Type: table -->
 
 # The 8 lifecycle events
 
@@ -1242,7 +1394,7 @@ Sources: research/2026-04-21-copilot-hooks.md
 
 ---
 
-<!-- Slide 61 | Section: Hooks | Type: code-example -->
+<!-- Slide 66 | Section: Hooks | Type: code-example -->
 
 # Shape of a hooks config
 
@@ -1275,7 +1427,7 @@ Sources: research/2026-04-21-copilot-hooks.md
 
 ---
 
-<!-- Slide 62 | Section: Hooks | Type: code-example -->
+<!-- Slide 67 | Section: Hooks | Type: code-example -->
 
 # A `preToolUse` hook that blocks `rm -rf`
 
@@ -1302,7 +1454,7 @@ Sources: research/2026-04-21-copilot-hooks.md
 
 ---
 
-<!-- Slide 63 | Section: Hooks | Type: comparison -->
+<!-- Slide 68 | Section: Hooks | Type: comparison -->
 
 # CLI vs VS Code vs Cloud — Hooks support
 
@@ -1320,7 +1472,7 @@ Sources: research/2026-04-21-copilot-hooks.md
 
 ---
 
-<!-- Slide 64 | Section: Hooks | Type: list -->
+<!-- Slide 69 | Section: Hooks | Type: list -->
 
 # Real uses
 
@@ -1337,18 +1489,18 @@ Sources: research/2026-04-21-copilot-hooks.md
 
 ---
 
-<!-- Slide 65 | Section: Hooks | Type: demo-placeholder -->
+<!-- Slide 70 | Section: Hooks | Type: demo-placeholder -->
 
 # 🎬 Demo: Hooks
 
 **Speaker Notes:**
-[To be filled in by presenter — e.g., drop a repo-scoped preToolUse hook that blocks `rm -rf`, show it denying an attempted deletion in a CLI session, then show a postToolUse audit log being written.]
+Suggested demo: drop a repo-scoped `preToolUse` hook that blocks `rm -rf`, show it denying an attempted deletion in a CLI session, then show a `postToolUse` audit log being written.
 
 Sources: research/2026-04-21-copilot-hooks.md
 
 ---
 
-<!-- Slide 66 | Section: Advanced Agents | Type: diagram -->
+<!-- Slide 71 | Section: Advanced Agents | Type: diagram -->
 
 # Advanced custom agents: one profile, three runtimes
 
@@ -1375,7 +1527,7 @@ Sources: research/2026-04-21-copilot-advanced-agents.md
 
 ---
 
-<!-- Slide 67 | Section: Advanced Agents | Type: code-example -->
+<!-- Slide 72 | Section: Advanced Agents | Type: code-example -->
 
 # `.agent.md` example
 
@@ -1404,7 +1556,7 @@ Sources: research/2026-04-21-copilot-advanced-agents.md
 
 ---
 
-<!-- Slide 68 | Section: Advanced Agents | Type: comparison -->
+<!-- Slide 73 | Section: Advanced Agents | Type: comparison -->
 
 # CLI vs VS Code — custom agent differences
 
@@ -1424,24 +1576,76 @@ Sources: research/2026-04-21-copilot-advanced-agents.md
 
 ---
 
-<!-- Slide 69 | Section: Advanced Agents | Type: single-point -->
+<!-- Slide 74 | Section: Advanced Agents | Type: single-point -->
 
 # The Cloud Agent — "assign an issue, get a PR"
 
-Triggered by: assigning an issue to Copilot · `@copilot` in a PR comment · Agents tab · VS Code `/delegate` · Mobile.
+An asynchronous agent that runs in a GitHub-hosted sandbox and delivers its work as a **draft pull request** for you to review.
 
-Runs asynchronously in an ephemeral GitHub Actions runner → pushes commits to a **draft PR** → tags you for review.
-
-**Availability:** Copilot **Pro+, Business, or Enterprise** (per the "What is GitHub Copilot?" docs page: *"Available in Copilot Pro+, Copilot Business, and Copilot Enterprise only."*). Third-party agents (Claude, Codex) must be explicitly enabled per org.
+**Availability:** paid Copilot plans — Pro, Pro+, Business, and Enterprise (see the Cloud Agent docs for the current per-plan list). Third-party agents (Claude, Codex) must be explicitly enabled per org.
 
 **Speaker Notes:**
-This is Project Padawan / coding agent — GA since Sep 25, 2025. It's the "fire and forget" surface. Eligibility reconciliation note: two research files disagreed slightly — `copilot-surfaces.md` §3.9 cites the authoritative docs quote as **Pro+/Business/Enterprise only**, while `copilot-advanced-agents.md` listed "Pro, Pro+, Business, or Enterprise." We're going with the conservative, directly-quoted claim from the canonical docs page (Pro+/Business/Enterprise) to avoid misleading attendees on Pro.
+Short opener for this section — the trigger list lives on the next slide, and the guardrails slide after that. Historical note: this is Project Padawan / "Copilot coding agent" — GA since Sep 25, 2025. GitHub's current branding is **Cloud Agent**, which the concept docs now use consistently.
 
-Sources: research/2026-04-21-copilot-surfaces.md, research/2026-04-21-copilot-advanced-agents.md
+Sources: research/2026-04-21-copilot-surfaces.md, research/2026-04-21-copilot-advanced-agents.md, research/2026-04-22-cloud-agent-deep-dive.md
 
 ---
 
-<!-- Slide 70 | Section: Advanced Agents | Type: code-example -->
+<!-- Slide 75 | Section: Advanced Agents | Type: list -->
+
+# Cloud Agent deep dive — what it is + how to trigger
+
+**Cloud Agent** (current branding; formerly "Copilot coding agent") is an async, PR-based agent that runs in an ephemeral GitHub Actions sandbox and delivers work as a **draft pull request**.
+
+Trigger entry points, per the docs:
+
+- **Issue assignment** — add `Copilot` as an assignee (the canonical flow).
+
+- **`@copilot` mention** on an open pull request the agent already owns.
+
+- **Agents panel / agents tab** on github.com (plus deep research + plan-then-iterate UI, github.com only).
+
+- **Copilot CLI** — `/delegate <prompt>` or the `&` prefix shorthand.
+
+- **IDE Copilot Chat** — VS Code, Visual Studio 2026, JetBrains, Eclipse (mention `@github` in the prompt).
+
+- **GitHub Mobile, Raycast, `gh` CLI, any MCP-capable client**.
+
+**Speaker Notes:**
+The "session" is one invocation on a task; the draft PR is the communication surface. Every commit is authored by Copilot with the human who started the task as co-author, signed, and linked back to the session log. Once the PR is merged or closed, Copilot stops responding to mentions on it. Deep research / plan-then-iterate is github.com only — Jira / Linear / Slack integrations go straight to a PR with no planning pass.
+
+Sources: research/2026-04-22-cloud-agent-deep-dive.md
+
+---
+
+<!-- Slide 76 | Section: Advanced Agents | Type: list -->
+
+# Cloud Agent deep dive — models + guardrails
+
+Model lineup where a picker is shown (Issue assignment, `@copilot` on a PR, agents panel, Mobile, Raycast):
+
+- **Auto · Claude Sonnet 4.5 · Claude Opus 4.7 · GPT-5.2-Codex**
+
+Where no picker is shown, Cloud Agent falls back to **Auto**.
+
+Built-in guardrails:
+
+- **Session timeout: 1 hour.** The ephemeral VM is torn down after.
+
+- **Default-deny firewall** with a recommended allowlist (package registries, container registries, CA hosts). Blocked requests surface as warnings on the PR.
+
+- **GitHub Actions do not auto-run** on Copilot's pushes by default — you click *Approve and run workflows*.
+
+- **Permissions model** — Copilot can only push to branches it created; the user who kicked off the task cannot approve the resulting PR; existing rulesets, required reviews, and branch protections all apply.
+
+**Speaker Notes:**
+Two caveats worth calling out: (1) the firewall only covers processes started by the agent's Bash tool — it does **not** cover MCP servers or steps run in `copilot-setup-steps.yml`. (2) Image inputs are capped at 3 MiB. For governance teams: Cloud Agent is disabled by default at the enterprise level and must be turned on in AI Controls → Agents; third-party agents (Claude, Codex) are separately enabled per org.
+
+Sources: research/2026-04-22-cloud-agent-deep-dive.md
+
+---
+
+<!-- Slide 77 | Section: Advanced Agents | Type: code-example -->
 
 # Running Copilot CLI inside GitHub Actions
 
@@ -1474,14 +1678,18 @@ Sources: research/2026-04-21-copilot-advanced-agents.md, research/2026-04-21-cop
 
 ---
 
-<!-- Slide 71 | Section: Advanced Agents | Type: single-point -->
+<!-- Slide 78 | Section: Advanced Agents | Type: single-point -->
 
 # `gh-aw` — GitHub Agentic Workflows
+
+Write the workflow intent in Markdown; `gh-aw` compiles it into a safer GitHub Actions workflow for you.
 
 A GitHub-Next extension (`gh-aw` = "gh agentic workflows") that lets you write agentic workflows as **Markdown + YAML frontmatter**, then compile them into regular GitHub Actions files.
 
 Two features worth knowing by name:
+
 - **Safe outputs** — sandboxed outputs the agent is allowed to emit (e.g., *"create an issue"*, *"post a comment"*) instead of arbitrary shell execution.
+
 - **Agent Workflow Firewall** — a network allowlist for what the agent's runner can reach.
 
 Pick your engine: Copilot · Claude · Codex · Gemini.
@@ -1493,33 +1701,63 @@ Sources: research/2026-04-21-copilot-advanced-agents.md
 
 ---
 
-<!-- Slide 72 | Section: Advanced Agents | Type: single-point -->
+<!-- Slide 79 | Section: Advanced Agents | Type: single-point -->
 
-# Agent HQ / Mission Control
+# What is Agent HQ
 
-One UI (github.com + VS Code + Mobile) to **assign, steer, and track** agents from Copilot, Anthropic, OpenAI, Google, Cognition, and xAI — all under your paid Copilot subscription.
+**Agent HQ** is GitHub's unified mission-control layer for orchestrating AI coding agents — Copilot plus third-party agents from **Anthropic, OpenAI, Google, Cognition, and xAI** — inside the normal GitHub flow.
 
-Rolling out through 2026.
+Announced at **GitHub Universe 2025 (Oct 28, 2025)**. It's not a new SKU; it's a set of capabilities rolling out across the existing Copilot subscription.
+
+> "Agent HQ transforms GitHub into an open ecosystem that unites every agent on a single platform."
+> — GitHub Blog, *Introducing Agent HQ* (Kyle Daigle)
+
+The user-facing surface is **mission control** — a consistent interface across **github.com, VS Code, GitHub Mobile, and Copilot CLI** for assigning, steering, and tracking agents.
 
 **Speaker Notes:**
-Announced at Universe 2025. You don't need to master it today; know it exists and that it's the direction of travel.
+Mental model: mission control is to agents what pull requests are to code changes — the single place you review, steer, and merge their work. The agent still produces draft PRs, comments, and commits; Agent HQ doesn't invent a new artifact type. Beginners don't need to master this today; they need to know the direction of travel and where to look.
 
-Sources: research/2026-04-21-copilot-advanced-agents.md, research/2026-04-21-copilot-history.md
+Sources: research/2026-04-22-agent-hq.md, research/2026-04-21-copilot-history.md
 
 ---
 
-<!-- Slide 73 | Section: Advanced Agents | Type: demo-placeholder -->
+<!-- Slide 80 | Section: Advanced Agents | Type: list -->
+
+# Why Agent HQ matters
+
+- **Open ecosystem** — pick your agent per task (Copilot, Claude, Codex, …) without juggling separate subscriptions or dashboards.
+
+- **Work on GitHub primitives** — agent output is draft PRs, issue comments, and commits; no new dashboard to learn.
+
+- **Assign, steer, track from anywhere** — github.com, VS Code, GitHub Mobile, and Copilot CLI all speak the same mission control.
+
+- **Enterprise governance** — AI Controls lets admins choose which agents and models are allowed, with audit logging.
+
+**Speaker Notes:**
+The friction Agent HQ targets is context-switching — the "different dashboard for each agent vendor" problem. The shift GitHub wants you to make is from babysitting one agent to orchestrating several in parallel: kicking off multiple tasks in minutes, reviewing drafts as they land.
+
+**Current status (April 2026)** — share verbally as relevant:
+- Mission control shipped Dec 2025.
+- Claude (Anthropic) and Codex (OpenAI) are in public preview on Copilot Pro+ and Enterprise (Feb 4, 2026).
+- Google, Cognition, and xAI were announced but not yet shipped at time of writing.
+- Third-party agents are gated by subscription tier *and* by enterprise policy — flag this for any enterprise attendees.
+
+Sources: research/2026-04-22-agent-hq.md
+
+---
+
+<!-- Slide 81 | Section: Advanced Agents | Type: demo-placeholder -->
 
 # 🎬 Demo: Advanced Agents
 
 **Speaker Notes:**
-[To be filled in by presenter — e.g., drop a `.github/agents/reviewer.agent.md`, invoke it from VS Code with a handoff button, kick off a cloud-agent session from an issue, then show a `copilot -p` step running inside a GH Actions workflow.]
+Suggested demo: drop a `.github/agents/reviewer.agent.md`, invoke it from VS Code with a handoff button, kick off a Cloud Agent session from an Issue, then show a `copilot -p` step running inside a GitHub Actions workflow.
 
 Sources: research/2026-04-21-copilot-advanced-agents.md
 
 ---
 
-<!-- Slide 74 | Section: Security | Type: boxes -->
+<!-- Slide 82 | Section: Security | Type: boxes -->
 
 # Data security & privacy: the training split
 
@@ -1539,7 +1777,7 @@ Sources: research/2026-04-21-copilot-security-privacy.md
 
 ---
 
-<!-- Slide 75 | Section: Security | Type: list -->
+<!-- Slide 83 | Section: Security | Type: list -->
 
 # Four governance levers (admin-side)
 
@@ -1555,7 +1793,7 @@ Sources: research/2026-04-21-copilot-security-privacy.md
 
 ---
 
-<!-- Slide 76 | Section: Security | Type: single-point -->
+<!-- Slide 84 | Section: Security | Type: single-point -->
 
 # BYOK changes the data path
 
@@ -1573,7 +1811,7 @@ Sources: research/2026-04-21-copilot-security-privacy.md
 
 ---
 
-<!-- Slide 77 | Section: Security | Type: comparison -->
+<!-- Slide 85 | Section: Security | Type: comparison -->
 
 # CLI vs VS Code — governance gaps to know
 
@@ -1592,7 +1830,7 @@ Sources: research/2026-04-21-copilot-security-privacy.md, research/2026-04-21-co
 
 ---
 
-<!-- Slide 78 | Section: Admin | Type: table -->
+<!-- Slide 86 | Section: Admin | Type: table -->
 
 # Enterprise admin: plans & consoles
 
@@ -1612,7 +1850,7 @@ Sources: research/2026-04-21-copilot-enterprise-admin.md
 
 ---
 
-<!-- Slide 79 | Section: Admin | Type: list -->
+<!-- Slide 87 | Section: Admin | Type: list -->
 
 # The six levers admins actually pull
 
@@ -1630,7 +1868,7 @@ Sources: research/2026-04-21-copilot-enterprise-admin.md
 
 ---
 
-<!-- Slide 80 | Section: Admin | Type: code-example -->
+<!-- Slide 88 | Section: Admin | Type: code-example -->
 
 # Identity, seats, and audit
 
@@ -1657,22 +1895,22 @@ Sources: research/2026-04-21-copilot-enterprise-admin.md, research/2026-04-21-co
 
 ---
 
-<!-- Slide 81 | Section: Admin | Type: demo-placeholder -->
+<!-- Slide 89 | Section: Admin | Type: demo-placeholder -->
 
 # 🎬 Demo: Enterprise Admin
 
 **Speaker Notes:**
-[To be filled in by presenter — e.g., walk the AI controls tab, flip a feature policy, show an audit log query, point to the Copilot usage metrics dashboard.]
+Suggested demo: walk the AI controls tab, flip a feature policy, show an audit-log query, point to the Copilot usage metrics dashboard.
 
 Sources: research/2026-04-21-copilot-enterprise-admin.md
 
 ---
 
-<!-- Slide 82 | Section: Closing | Type: list -->
+<!-- Slide 90 | Section: Closing | Type: list -->
 
 # Closing: 7 practical tips to leave with
 
-1. **Default to Auto** — or a 0× model. Escalate only on failure.
+1. **Default to Auto** — escalate models only on failure.
 2. **Plan → Agent** for anything multi-file.
 3. **Default Approvals** until you *earn* Autopilot.
 4. **Commit `.github/copilot-instructions.md`** — highest-leverage file.
@@ -1687,7 +1925,7 @@ Sources: research/2026-04-21-model-variety.md, research/2026-04-21-copilot-modes
 
 ---
 
-<!-- Slide 83 | Section: Closing | Type: list -->
+<!-- Slide 91 | Section: Closing | Type: list -->
 
 # Resources
 
@@ -1707,12 +1945,12 @@ Sources: research/2026-04-21-copilot-advanced-agents.md, research/2026-04-21-cop
 
 ---
 
-<!-- Slide 84 | Section: Closing | Type: single-point -->
+<!-- Slide 92 | Section: Closing | Type: single-point -->
 
 # The one thing to remember
 
 **Copilot is a platform of agents, not an autocomplete.**
-Your job is to choose the right *surface*, *mode*, and *autonomy level* for each task — and to customize with instructions, MCP, Skills, Hooks, and custom agents.
+Your job is to choose the right *coding environment*, *mode*, and *autonomy level* for each task — and to customize with instructions, MCP, Skills, Hooks, and custom agents.
 
 Everything we did today is a knob on that platform.
 
@@ -1723,7 +1961,7 @@ Sources: research/2026-04-21-copilot-history.md, research/2026-04-21-copilot-sur
 
 ---
 
-<!-- Slide 85 | Section: Closing | Type: title-slide -->
+<!-- Slide 93 | Section: Closing | Type: title-slide -->
 
 # Questions?
 
@@ -1731,3 +1969,64 @@ Sources: research/2026-04-21-copilot-history.md, research/2026-04-21-copilot-sur
 Budget ~45 minutes for Q&A. If the room is quiet, seed with: "What's the first thing you'd try on Monday morning?" or "Where is your team on the autonomy spectrum?"
 
 Sources: general knowledge (Q&A slide)
+
+---
+
+<!-- Slide 94 | Section: Appendix | Type: title-slide -->
+
+# Appendix
+
+Reference material — premium requests and cost tips.
+
+**Speaker Notes:**
+Not covered in the main flow. Pull these up if someone asks about billing, quotas, or how to pick a cheaper model.
+
+Sources: general knowledge (section divider)
+
+---
+
+<!-- Slide 95 | Section: Appendix | Type: boxes -->
+
+# Premium requests — the basics
+
+One **user prompt** = 1 request × the model's multiplier. Tool calls the agent makes on its own during that prompt are free.
+
+┌─────────────────────────────┬─────────────────────────────┐
+│ **Multiplier** — per model  │ **Allowance** — per plan    │
+│ 0× included (GPT-4.1, 4o,   │ Free 50, Pro 300, Pro+ 1500,│
+│ GPT-5 mini)                 │ Business 300/u, Ent. 1000/u │
+│ 0.25–1× most paid models    │                             │
+│ 3× Opus 4.5/4.6             │ Overage: $0.04 / request    │
+│ 30× Opus 4.6 "fast mode"    │                             │
+│ preview                     │ Auto mode = 10% discount    │
+└─────────────────────────────┴─────────────────────────────┘
+
+Cloud Agent is billed per **session** (plus one per real-time steering comment) from a separate SKU.
+
+**Speaker Notes:**
+Moved out of the main deck in v4. Reference only — pull up if someone asks about billing. Claude Opus 4.7 was on a 7.5× promotional multiplier through April 30, 2026; expect it to rise after.
+
+Sources: research/2026-04-21-model-variety.md, research/2026-04-22-cloud-agent-deep-dive.md
+
+---
+
+<!-- Slide 96 | Section: Appendix | Type: list -->
+
+# Cost tips
+
+- **Default to Auto** — it picks a healthy model and gets a 10% discount on the multiplier.
+
+- **Stay on 0× models** for everyday work — GPT-4.1, GPT-4o, GPT-5 mini are included with any paid plan.
+
+- **Escalate on failure**, not by default — try a 0× model first; reach for Opus 4.x only when the task genuinely needs it.
+
+- **Watch Opus multipliers** — Opus 4.5/4.6 is 3×; Opus 4.6 "fast mode" preview is 30×. Know before you click.
+
+- **Cloud Agent is per-session** — long sessions are not proportionally more expensive per prompt; one session = one request × the model rate, plus one per steering comment.
+
+- **Use `/usage`** in the CLI to see where your quota is going.
+
+**Speaker Notes:**
+These tips come out of the old slides 27–28. Keep them in the appendix — they matter, but they're not what a beginner coding-first presentation should lead with.
+
+Sources: research/2026-04-21-model-variety.md

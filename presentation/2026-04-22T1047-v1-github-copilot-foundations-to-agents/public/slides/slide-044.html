@@ -1,9 +1,22 @@
-<article class="slide" data-number="44" data-type="single-point" data-section="Customization">
+<article class="slide" data-number="44" data-type="boxes" data-section="Customization">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title"><code>AGENTS.md</code> — the cross-tool standard</h1>
-          <p class="slide-body">A vendor-neutral <code>AGENTS.md</code> at the repo root (alongside <code>CLAUDE.md</code>, <code>GEMINI.md</code>) carries agent-style instructions recognized by Copilot, Claude Code, Codex, Gemini CLI, Cursor, and others.</p>
-    <p class="slide-body"><strong>Use it when you want one instructions file to serve multiple AI coding tools.</strong></p>
+          <h1 class="slide-title">Customization: the four layers (higher = wins on conflict; all still sent)</h1>
+          <div class="code-block"><code>┌─────────────────────┬─────────────────────┐
+    │ **1. Personal**     │ **2. Repository**   │
+    │ github.com/copilot  │ .github/copilot-    │
+    │ → Personal          │ instructions.md     │
+    │ instructions        │ + path-scoped       │
+    │                     │ .github/            │
+    │                     │ instructions/*      │
+    ├─────────────────────┼─────────────────────┤
+    │ **3. Agent files**  │ **4. Org / Ent.**   │
+    │ AGENTS.md /         │ Org settings →      │
+    │ CLAUDE.md /         │ Copilot → Custom    │
+    │ GEMINI.md           │ instructions        │
+    │                     │ (Business/Ent.)     │
+    └─────────────────────┴─────────────────────┘</code></div>
+    <p class="slide-body">Plus <strong>user-profile</strong> layer (VS Code <code>~/.copilot/instructions/</code>, CLI <code>~/.copilot/copilot-instructions.md</code>). <strong>All layers merge</strong> — they are all sent to the model; numbering is the precedence order (1 &gt; 2 &gt; 3 &gt; 4).</p>
   </div>
-  <aside class="speaker-notes" hidden>New convention, rapidly standardizing. GitHub&#x27;s precedence puts <code>AGENTS.md</code> below <code>copilot-instructions.md</code> but above org instructions — useful fallback content.</aside>
+  <aside class="speaker-notes" hidden>~10 minutes on customization. All sets that apply <em>are</em> sent — nothing is dropped; the numbering only matters on direct conflict. Path-specific uses <code>applyTo:</code> glob frontmatter — powerful for monorepos. Conflicting rules across layers are the #1 beginner pitfall. This is the single slide to photograph.</aside>
 </article>

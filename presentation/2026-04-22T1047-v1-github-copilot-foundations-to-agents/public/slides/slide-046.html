@@ -1,10 +1,8 @@
-<article class="slide" data-number="46" data-type="single-point" data-section="MCP">
+<article class="slide" data-number="46" data-type="comparison" data-section="Customization">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">MCP — Model Context Protocol: why it exists</h1>
-          <p class="slide-body">Before MCP: every AI app had its own plugin format → N × M integration pain.</p>
-    <p class="slide-body">After MCP: <strong>one server works with every MCP-compatible client</strong> — Copilot, Claude, Cursor, Windsurf, Zed, and more.</p>
-    <blockquote class="slide-quote"><p>&quot;Think of MCP like a USB-C port for AI applications.&quot;</p><footer>— modelcontextprotocol.io</footer></blockquote>
+          <h1 class="slide-title">Instructions vs Prompt files</h1>
+          <table class="slide-table"><thead><tr><th></th><th><strong>Custom instructions</strong></th><th><strong>Prompt files (<code>*.prompt.md</code>)</strong></th></tr></thead><tbody><tr><td>When used</td><td><em>Automatic, always-on</em></td><td><em>Manual, on demand</em></td></tr><tr><td>How invoked</td><td>Every chat turn</td><td><code>/review-api</code>, <code>/scaffold-form</code>, …</td></tr><tr><td>Scope</td><td>&quot;Rules about this repo/you/org&quot;</td><td>&quot;This specific reusable task&quot;</td></tr><tr><td>Surface</td><td>All Copilot surfaces</td><td>IDEs only (VS Code, VS, JetBrains)</td></tr></tbody></table>
   </div>
-  <aside class="speaker-notes" hidden>~12 minutes on MCP. Open standard from Anthropic (Nov 2024), now Copilot&#x27;s official way to add tools. This is the framing to remember: same cable, many devices.</aside>
+  <aside class="speaker-notes" hidden>Rule of thumb: instructions = nouns (&quot;this is Vue 3&quot;), prompt files = verbs (&quot;review this API for security issues&quot;).</aside>
 </article>

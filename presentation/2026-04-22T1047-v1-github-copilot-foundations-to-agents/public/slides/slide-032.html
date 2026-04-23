@@ -1,17 +1,72 @@
-<article class="slide" data-number="32" data-type="code-example" data-section="CLI">
+<!-- HAND-CRAFTED OVERRIDE — do not regenerate from build-slides.mjs. Source markdown is an ASCII box table; this renders it as a proper .tool-grid. -->
+<article class="slide" data-number="32" data-type="boxes" data-section="Models">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Install &amp; first launch</h1>
-          <div class="code-block"><code><span class="cmt"># Pick one installer (Node 22+ <span class="kw">for</span> npm):</span>
-    npm install -g @github/copilot
-    brew install copilot-cli          # macOS/Linux
-    winget install GitHub.Copilot     # Windows
-    <span class="cmt"># <span class="kw">cd</span> into a project (not your home dir!), <span class="kw">then</span>:</span>
-    <span class="kw">cd</span> ~/code/my-project
-    copilot                           # interactive REPL
-    <span class="cmt"># On first run:</span>
-    <span class="cmt">#   1. <span class="str">&quot;Trust this folder?&quot;</span>  → Yes</span>
-    <span class="cmt">#   2. /login  → device-code OAuth</span></code></div>
+    <h1 class="slide-title">Model variety — the families on offer</h1>
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-card-icon">🟢</div>
+        <div class="tool-card-title">OpenAI · GPT family</div>
+        <div class="tool-card-body">
+          <ul>
+            <li>GPT-5.x · GPT-5.2-Codex</li>
+            <li>GPT-5 mini · GPT-5.4 nano</li>
+            <li>GPT-4.1 · GPT-4o</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">🟣</div>
+        <div class="tool-card-title">Anthropic · Claude family</div>
+        <div class="tool-card-body">
+          <ul>
+            <li>Claude Sonnet 4.5 / 4.6</li>
+            <li>Claude Opus 4.5 / 4.6 / 4.7</li>
+            <li>Claude Haiku 4.5</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">🔵</div>
+        <div class="tool-card-title">Google · Gemini family</div>
+        <div class="tool-card-body">
+          <ul>
+            <li>Gemini 2.5</li>
+            <li>Gemini 3.1 Pro</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">⚫</div>
+        <div class="tool-card-title">xAI · Grok family</div>
+        <div class="tool-card-body">
+          <ul>
+            <li>Grok Code Fast 1</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">🐙</div>
+        <div class="tool-card-title">GitHub-tuned (previews)</div>
+        <div class="tool-card-body">
+          <ul>
+            <li>Raptor mini</li>
+            <li>Goldeneye</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-icon">🎛️</div>
+        <div class="tool-card-title">Auto + BYOK</div>
+        <div class="tool-card-body">
+          <ul>
+            <li>Auto = best-fit picker</li>
+            <li>BYOK = your own provider key</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="slide-body">Flagships for agentic coding in 2026: <strong>Claude Sonnet 4.5/4.6</strong>, <strong>Opus 4.7</strong>, <strong>GPT-5.x / GPT-5.2-Codex</strong>, <strong>Gemini 3.1 Pro</strong>.</p>
   </div>
-  <aside class="speaker-notes" hidden>Windows requires PowerShell 6+ (or WSL); plain cmd.exe is unsupported. On a dev box most people stick with npm.</aside>
+  <aside class="speaker-notes" hidden>The point of this slide is richness, not completeness. GitHub is deliberately multi-vendor — that&#x27;s the unique structural choice of the product. Group by provider to give attendees a mental handle; almost every model name they&#x27;ll encounter slots into one of these families. Lineup shifts weekly; don&#x27;t commit the exact names to memory.</aside>
 </article>

@@ -1,11 +1,20 @@
-<article class="slide" data-number="23" data-type="single-point" data-section="Modes">
+<article class="slide" data-number="23" data-type="code-example" data-section="Modes">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">CLI vs VS Code — mode differences</h1>
-          <p class="slide-body"><strong>CLI</strong> exposes the same conceptual modes with different names: <strong>ask/execute</strong> (default), <strong>plan mode</strong>, and <strong>autopilot</strong>.</p>
-    <p class="slide-body">Cycle them with <code>Shift+Tab</code>, or set them via <code>--mode / --plan / --autopilot</code> flags.</p>
-    <p class="slide-body">Plan mode and Autopilot exist in both places.</p>
-    <p class="slide-body"><strong>Ask-style &quot;no edits&quot;</strong> on the CLI is approximated with <code>/ask</code> (one-off) or by declining tool approvals.</p>
+          <h1 class="slide-title">Configuring approvals — Copilot CLI</h1>
+          <p class="slide-body">Approve or deny individual tools, commands, paths, and URLs from flags, slash commands, or config files.</p>
+    <div class="code-block"><code><span class="cmt"># Flags — precedence: --deny-tool &gt; --allow-tool &gt; --allow-all-tools</span>
+    copilot --allow-tool=<span class="str">&#x27;shell(git:*)&#x27;</span> \
+            --allow-tool=<span class="str">&#x27;write&#x27;</span> \
+            --allow-tool=<span class="str">&#x27;MyMCP(create_issue)&#x27;</span> \
+            --deny-tool=<span class="str">&#x27;shell(rm)&#x27;</span> \
+            --deny-tool=<span class="str">&#x27;shell(git push)&#x27;</span>
+    <span class="cmt"># In-session slash commands</span>
+    /allow-all              # or /yolo — enable all <span class="kw">for</span> this session (does not toggle off)
+    /reset-allowed-tools    # revoke everything granted this session
+    /add-dir /path/to/dir   # extend file-access scope
+    /list-dirs              # show trusted directories</code></div>
+    <p class="slide-body">Settings cascade: user <code>~/.copilot/config.json</code> → repo <code>.github/copilot/settings.json</code> → personal <code>.github/copilot/settings.local.json</code>.</p>
   </div>
-  <aside class="speaker-notes" hidden>Emphasized per the cross-cutting directive: modes exist in both surfaces but the <em>UX</em> differs. CLI leans keyboard-driven and session-persistent; VS Code is dropdown-driven. We&#x27;ll see concrete CLI ergonomics in the CLI deep-dive.</aside>
+  <aside class="speaker-notes" hidden>Pattern syntax is <code>Kind(argument)</code>: <code>shell(git:*)</code> matches <code>git push</code> / <code>git pull</code> but not <code>gitea</code>; <code>write</code>, <code>read</code>, <code>url(github.com)</code>, and <code>MyMCP(tool)</code> follow the same shape. Keep denies narrow and specific; rely on them to survive <code>--allow-all</code>. <code>/reset-allowed-tools</code> is the panic button at the start of a sensitive task.</aside>
 </article>

@@ -1,32 +1,8 @@
-<article class="slide" data-number="22" data-type="decision-tree" data-section="Modes">
+<article class="slide" data-number="22" data-type="comparison" data-section="Modes">
   <div class="slide-bg"></div>
   <div class="slide-content">
-    <h1 class="slide-title">Which mode should I pick?</h1>
-    <div class="tree-container">
-      <div class="tree-node">
-        <div class="tree-question">Need to understand something, no edits?</div>
-        <div class="tree-branches"><div class="tree-branch"><span class="tree-branch-label yes">→</span><span class="tree-branch-text"><strong>Ask</strong></span></div></div>
-      </div>
-      <div class="tree-node">
-        <div class="tree-question">Want a plan before code changes?</div>
-        <div class="tree-branches"><div class="tree-branch"><span class="tree-branch-label yes">→</span><span class="tree-branch-text"><strong>Plan</strong> → hand off to Agent</span></div></div>
-      </div>
-      <div class="tree-node">
-        <div class="tree-question">Multi-file implementation, you&#x27;re watching?</div>
-        <div class="tree-branches"><div class="tree-branch"><span class="tree-branch-label yes">→</span><span class="tree-branch-text"><strong>Agent</strong> (Default Approvals)</span></div></div>
-      </div>
-      <div class="tree-node">
-        <div class="tree-question">Routine, trusted job, want to walk away?</div>
-        <div class="tree-branches"><div class="tree-branch"><span class="tree-branch-label yes">→</span><span class="tree-branch-text"><strong>Agent + Autopilot</strong></span></div></div>
-      </div>
-      <div class="tree-node">
-        <div class="tree-question">Want it done while you work on something else?</div>
-        <div class="tree-branches">
-          <div class="tree-branch"><span class="tree-branch-label yes">→</span><span class="tree-branch-text"><strong>Copilot CLI</strong> (local)</span></div>
-          <div class="tree-branch"><span class="tree-branch-label yes">→</span><span class="tree-branch-text"><strong>Cloud agent</strong> (on GHA, opens PR)</span></div>
-        </div>
-      </div>
-    </div>
+          <h1 class="slide-title">Permission levels</h1>
+          <table class="slide-table"><thead><tr><th>Level</th><th>Behavior</th><th>Use when</th></tr></thead><tbody><tr><td><strong>Default Approvals</strong></td><td>Asks before every terminal cmd &amp; sensitive edit</td><td>Learning, unfamiliar repos, destructive tasks</td></tr><tr><td><strong>Bypass Approvals</strong></td><td>No per-step prompt; still respects guardrails</td><td>Trusted, well-tested workflows</td></tr><tr><td><strong>Autopilot (Preview)</strong></td><td>Agent runs uninterrupted; auto-answers clarifying Qs</td><td>Long routine jobs you&#x27;d otherwise babysit</td></tr></tbody></table>
   </div>
-  <aside class="speaker-notes" hidden>Post this as a cheat sheet. The Plan → Agent handoff is the single best habit to build.</aside>
+  <aside class="speaker-notes" hidden>Most beginners should live on Default Approvals for a month. Tie this back to the autonomy spectrum slide. Verbally: Autopilot is not a fourth &quot;mode&quot; — it&#x27;s a permission tier, the same Agent persona with the per-step handbrake off.</aside>
 </article>

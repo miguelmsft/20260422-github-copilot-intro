@@ -10,7 +10,7 @@ const OUT_DIR = path.resolve(__dirname, 'public/slides');
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
-const md = fs.readFileSync(CONTENT, 'utf8');
+const md = fs.readFileSync(CONTENT, 'utf8').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
 
 // Strip YAML frontmatter and intro outline
 function stripFrontmatter(src) {
@@ -208,9 +208,15 @@ function renderBlocks(lines) {
     // unordered list
     if (/^\s*[-*]\s+/.test(ln)) {
       const items = [];
-      while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) {
-        items.push(lines[i].replace(/^\s*[-*]\s+/, ''));
-        i++;
+      while (i < lines.length) {
+        if (/^\s*[-*]\s+/.test(lines[i])) {
+          items.push(lines[i].replace(/^\s*[-*]\s+/, ''));
+          i++;
+        } else if (lines[i].trim() === '' && i + 1 < lines.length && /^\s*[-*]\s+/.test(lines[i + 1])) {
+          i++; // skip blank line between list items
+        } else {
+          break;
+        }
       }
       out.push('<ul class="slide-list">' + items.map(t => `<li>${inline(t)}</li>`).join('') + '</ul>');
       continue;
@@ -219,9 +225,15 @@ function renderBlocks(lines) {
     // ordered list
     if (/^\s*\d+\.\s+/.test(ln)) {
       const items = [];
-      while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) {
-        items.push(lines[i].replace(/^\s*\d+\.\s+/, ''));
-        i++;
+      while (i < lines.length) {
+        if (/^\s*\d+\.\s+/.test(lines[i])) {
+          items.push(lines[i].replace(/^\s*\d+\.\s+/, ''));
+          i++;
+        } else if (lines[i].trim() === '' && i + 1 < lines.length && /^\s*\d+\.\s+/.test(lines[i + 1])) {
+          i++; // skip blank line between list items
+        } else {
+          break;
+        }
       }
       out.push('<ol class="slide-list ordered">' + items.map(t => `<li>${inline(t)}</li>`).join('') + '</ol>');
       continue;

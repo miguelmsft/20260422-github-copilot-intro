@@ -1,9 +1,10 @@
-<article class="slide" data-number="25" data-type="single-point" data-section="Break">
+<article class="slide" data-number="25" data-type="list" data-section="Modes">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">☕ Break 1 — 10 minutes</h1>
-          <p class="slide-body">See you back here at [time].</p>
-    <p class="slide-body">Next up: models, the CLI deep-dive, and all the customization layers.</p>
+          <h1 class="slide-title">Bypass mode — what still protects you</h1>
+          <p class="slide-body">Even with <code>--allow-all</code> / <code>/yolo</code> / Bypass Approvals / Autopilot, these guardrails still apply:</p>
+    <ul class="slide-list"><li><strong>Deny rules win</strong> — <code>--deny-tool</code> and <code>--deny-url</code> take precedence over any allow, including <code>--allow-all</code>.</li><li><strong>Workspace Trust / Restricted mode</strong> (VS Code) disables agents entirely in untrusted folders.</li><li><strong>Agent sandboxing</strong> (VS Code, Preview) enforces file and network boundaries at the OS level — independent of approvals.</li><li><strong>CLI <code>preToolUse</code> hooks</strong> fire on every tool call and can deny before execution. (<code>permissionRequest</code> hooks do <strong>not</strong> reliably fire under <code>--allow-all</code>, so <code>preToolUse</code> is the one to rely on.)</li><li><strong>Enterprise policies</strong> — <code>ChatToolsAutoApprove</code>, <code>ChatToolsTerminalEnableAutoApprove</code>, and <code>ChatAgentMode</code> can hide or disable bypass org-wide.</li></ul>
+    <p class="slide-body">GitHub explicitly recommends <code>--allow-all</code> / <code>--yolo</code> <strong>only in isolated environments</strong>.</p>
   </div>
-  <aside class="speaker-notes" hidden>We&#x27;re roughly at the 60-minute mark. After the break the pace picks up: CLI + customization + MCP is where most of the practitioner value lives.</aside>
+  <aside class="speaker-notes" hidden>This is the &quot;what bypass is and isn&#x27;t&quot; reality check. Bypass removes the per-step prompt; it does not turn the machine into a sandbox — anything the agent runs still runs with your user privileges. Full guidance from GitHub: the CLI docs strongly recommend only using --allow-all / --yolo in an isolated environment; VS Code warns users to only enable Bypass or Autopilot if they understand the security implications, and to consider agent sandboxing or a container in high-risk / prompt-injection scenarios. If prompt injection is on the table (e.g., the agent browses untrusted web content), the VS Code docs are explicit: use sandboxing or a container. And remind attendees that auto-approval in VS Code is &quot;best effort&quot; — quote concatenation and similar tricks can subvert regex allowlists.</aside>
 </article>

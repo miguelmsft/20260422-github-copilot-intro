@@ -1,8 +1,12 @@
-<article class="slide" data-number="76" data-type="list" data-section="Security">
+<article class="slide" data-number="76" data-type="list" data-section="Advanced Agents">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Four governance levers (admin-side)</h1>
-          <ul class="slide-list"><li><strong>Public-code matching filter</strong> — block suggestions matching ~150 chars of public code (or log them as code references)</li><li><strong>Content exclusion</strong> — Business/Enterprise: hide repos/paths from Copilot (inline + chat, not yet Edit/Agent)</li><li><strong>Data residency</strong> — GHE.com hosted in US, EU, or Australia; <strong>FedRAMP-Moderate</strong> (the US federal cloud-compliance framework) is available on a special policy with +10% multiplier for US gov workloads</li><li><strong>Telemetry controls</strong> — per-IDE; CLI supports <code>COPILOT_OFFLINE=true</code> to disable telemetry entirely</li></ul>
+          <h1 class="slide-title">Cloud Agent deep dive — models + guardrails</h1>
+          <p class="slide-body">Model lineup where a picker is shown (Issue assignment, <code>@copilot</code> on a PR, agents panel, Mobile, Raycast):</p>
+    <ul class="slide-list"><li><strong>Auto · Claude Sonnet 4.5 · Claude Opus 4.7 · GPT-5.2-Codex</strong></li></ul>
+    <p class="slide-body">Where no picker is shown, Cloud Agent falls back to <strong>Auto</strong>.</p>
+    <p class="slide-body">Built-in guardrails:</p>
+    <ul class="slide-list"><li><strong>Session timeout: 1 hour.</strong> The ephemeral VM is torn down after.</li><li><strong>Default-deny firewall</strong> with a recommended allowlist (package registries, container registries, CA hosts). Blocked requests surface as warnings on the PR.</li><li><strong>GitHub Actions do not auto-run</strong> on Copilot&#x27;s pushes by default — you click <em>Approve and run workflows</em>.</li><li><strong>Permissions model</strong> — Copilot can only push to branches it created; the user who kicked off the task cannot approve the resulting PR; existing rulesets, required reviews, and branch protections all apply.</li></ul>
   </div>
-  <aside class="speaker-notes" hidden>Name them; don&#x27;t drill. These are four separate switches in the admin console. FedRAMP-Moderate is the middle-tier US federal authorization level — relevant if you sell to US government agencies; most enterprises don&#x27;t need it.</aside>
+  <aside class="speaker-notes" hidden>Two caveats worth calling out: (1) the firewall only covers processes started by the agent&#x27;s Bash tool — it does <strong>not</strong> cover MCP servers or steps run in <code>copilot-setup-steps.yml</code>. (2) Image inputs are capped at 3 MiB. For governance teams: Cloud Agent is disabled by default at the enterprise level and must be turned on in AI Controls → Agents; third-party agents (Claude, Codex) are separately enabled per org.</aside>
 </article>

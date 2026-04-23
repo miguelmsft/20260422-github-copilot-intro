@@ -1,13 +1,14 @@
-<article class="slide" data-number="33" data-type="list" data-section="CLI">
+<article class="slide" data-number="33" data-type="decision-tree" data-section="Models">
   <div class="slide-bg"></div>
   <div class="slide-content">
-    <h1 class="slide-title">Interactive essentials</h1>
-    <ul class="slide-list">
-      <li><strong>Shift+Tab</strong> — cycle modes (ask → plan → autopilot)</li>
-      <li><strong><code>!cmd</code></strong> — run shell directly (no model call)</li>
-      <li><strong><code>@path/to/file</code></strong> — attach file as context (Tab-completes)</li>
-      <li><strong>Enter</strong> sends a prompt · <strong>Esc</strong> stops a running operation</li>
-    </ul>
+          <h1 class="slide-title">Which model should I pick?</h1>
+          <div class="code-block"><code>Default?                          ──►  Auto  (picks a healthy model for you)
+    Quick edits / autocomplete feel?  ──►  GPT-4.1, GPT-4o, GPT-5 mini, Haiku 4.5
+    Hard reasoning / agentic work?    ──►  GPT-5.x, Claude Sonnet 4.5/4.6,
+                                           Claude Opus 4.7, Gemini 3.1 Pro
+    Speed above all else?             ──►  Haiku 4.5, Grok Code Fast 1,
+                                           GPT-5.4 nano
+    Multimodal (images, screenshots)? ──►  GPT-4o, Claude Sonnet/Opus, Gemini</code></div>
   </div>
-  <aside class="speaker-notes" hidden>Live demo these. The <code>!</code> and <code>@</code> prefixes are what make the CLI feel native to a terminal power user. Additional keys worth mentioning verbally but not putting on the slide: Enter sends a prompt; Esc stops a running operation; <code>copilot --continue</code> resumes the last session; auto-compaction kicks in at 95% context with no user action required. Full slash-command list lives in <code>docs.github.com/en/copilot/reference/copilot-cli-reference</code>.</aside>
+  <aside class="speaker-notes" hidden>&quot;Auto for 80% of the work&quot; is the beginner advice. The reasoning-vs-speed axis is the most useful distinction in day-to-day picking — it maps cleanly to &quot;is this a debugging/architecting task, or a mechanical edit?&quot; Cost considerations are deliberately out of this slide; they live in the Appendix so this decision stays about fit-for-task.</aside>
 </article>

@@ -1,10 +1,9 @@
-<article class="slide" data-number="48" data-type="list" data-section="MCP">
+<article class="slide" data-number="48" data-type="single-point" data-section="Customization">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">What servers expose (3 primitives)</h1>
-          <ul class="slide-list"><li><strong>Tools</strong> — executable functions the agent can call (file ops, API calls, DB queries)</li><li><strong>Resources</strong> — readable data sources (file contents, records, API responses)</li><li><strong>Prompts</strong> — reusable templates (system prompts, few-shots)</li></ul>
-    <p class="slide-body">Discovery via <code>*/list</code>; retrieval via <code>tools/call</code>, <code>resources/read</code>, <code>prompts/get</code>.</p>
-    <p class="slide-body">⚠️ <strong>In the Copilot cloud agent, only <code>tools</code> are supported.</strong></p>
+          <h1 class="slide-title"><code>AGENTS.md</code> — the cross-tool standard</h1>
+          <p class="slide-body">A vendor-neutral <code>AGENTS.md</code> at the repo root (alongside <code>CLAUDE.md</code>, <code>GEMINI.md</code>) carries agent-style instructions recognized by Copilot, Claude Code, Codex, Gemini CLI, Cursor, and others.</p>
+    <p class="slide-body"><strong>Use it when you want one instructions file to serve multiple AI coding tools.</strong></p>
   </div>
-  <aside class="speaker-notes" hidden>VS Code and CLI support all three primitives; cloud agent is tools-only. That&#x27;s an important cross-surface gotcha.</aside>
+  <aside class="speaker-notes" hidden>New convention, rapidly standardizing. GitHub&#x27;s precedence puts <code>AGENTS.md</code> below <code>copilot-instructions.md</code> but above org instructions — useful fallback content.</aside>
 </article>

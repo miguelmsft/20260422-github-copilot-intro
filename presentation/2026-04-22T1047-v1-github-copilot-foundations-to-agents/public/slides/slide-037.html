@@ -1,26 +1,17 @@
-<article class="slide" data-number="37" data-type="boxes" data-section="CLI">
+<article class="slide" data-number="37" data-type="code-example" data-section="CLI">
   <div class="slide-bg"></div>
   <div class="slide-content">
-    <h1 class="slide-title">Built-in sub-agents</h1>
-    <div class="tool-grid cols-2">
-      <div class="tool-card">
-        <div class="tool-card-title">Explore</div>
-        <div class="tool-card-body">Quick codebase Q&amp;A without adding to main context.</div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-card-title">Task</div>
-        <div class="tool-card-body">Run tests / builds; terse on success, verbose on fail.</div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-card-title">General-purpose</div>
-        <div class="tool-card-body">Complex multi-step work in its own context.</div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-card-title">Code-review</div>
-        <div class="tool-card-body">Surfaces genuine issues, minimizes noise.</div>
-      </div>
-    </div>
-    <p class="slide-body">Plus <strong>Research</strong> (added in CLI 1.0.x) and any custom agents you define.</p>
+          <h1 class="slide-title">Install &amp; first launch</h1>
+          <div class="code-block"><code><span class="cmt"># Pick one installer (Node 22+ <span class="kw">for</span> npm):</span>
+    npm install -g @github/copilot
+    brew install copilot-cli          # macOS/Linux
+    winget install GitHub.Copilot     # Windows
+    <span class="cmt"># <span class="kw">cd</span> into a project (not your home dir!), <span class="kw">then</span>:</span>
+    <span class="kw">cd</span> ~/code/my-project
+    copilot                           # interactive REPL
+    <span class="cmt"># On first run:</span>
+    <span class="cmt">#   1. <span class="str">&quot;Trust this folder?&quot;</span>  → Yes</span>
+    <span class="cmt">#   2. /login  → device-code OAuth</span></code></div>
   </div>
-  <aside class="speaker-notes" hidden>The main agent delegates to these — you don&#x27;t invoke them directly. <code>/fleet</code> parallelizes work across sub-agents; we&#x27;ll cover that in the advanced section.</aside>
+  <aside class="speaker-notes" hidden>Windows requires PowerShell 6+ (or WSL); plain cmd.exe is unsupported. On a dev box most people stick with npm.</aside>
 </article>

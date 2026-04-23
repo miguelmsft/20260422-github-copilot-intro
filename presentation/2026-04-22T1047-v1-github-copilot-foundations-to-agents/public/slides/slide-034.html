@@ -1,45 +1,8 @@
-<article class="slide" data-number="34" data-type="list" data-section="CLI">
+<article class="slide" data-number="34" data-type="comparison" data-section="Models">
   <div class="slide-bg"></div>
   <div class="slide-content">
-    <h1 class="slide-title">Key slash commands</h1>
-    <div class="slash-grid">
-      <div class="slash-col">
-        <h3 class="slash-cat">Modes &amp; models</h3>
-        <ul class="slash-list">
-          <li><code>/model</code><span>Pick a model (Sonnet, GPT-5.x, Opus, auto, …)</span></li>
-          <li><code>/plan</code><span>Enter plan mode</span></li>
-          <li><code>/ask</code><span>One-off question (no history)</span></li>
-          <li><code>/agent</code><span>Pick a custom agent for the next turn</span></li>
-        </ul>
-      </div>
-      <div class="slash-col">
-        <h3 class="slash-cat">Context &amp; sessions</h3>
-        <ul class="slash-list">
-          <li><code>/context</code><span>Visual breakdown of context usage</span></li>
-          <li><code>/compact</code><span>Manually compress history</span></li>
-          <li><code>/resume</code><span>Pick a past session to resume</span></li>
-          <li><code>/add-dir</code><span>Add another trusted directory</span></li>
-        </ul>
-      </div>
-      <div class="slash-col">
-        <h3 class="slash-cat">Safety &amp; review</h3>
-        <ul class="slash-list">
-          <li><code>/diff</code><span>Show pending file changes</span></li>
-          <li><code>/undo</code><span>Rewind to an earlier checkpoint</span></li>
-          <li><code>/mcp</code><span>List / add MCP servers</span></li>
-          <li><code>/env</code><span>Show loaded instructions, skills, plugins</span></li>
-        </ul>
-      </div>
-      <div class="slash-col">
-        <h3 class="slash-cat">Account &amp; help</h3>
-        <ul class="slash-list">
-          <li><code>/usage</code><span>Premium requests, tokens, session length</span></li>
-          <li><code>/login</code> · <code>/logout</code><span>OAuth sign-in / sign-out</span></li>
-          <li><code>/share</code><span>Export conversation (markdown / HTML)</span></li>
-          <li><code>/help</code> or <code>?</code><span>Full command list</span></li>
-        </ul>
-      </div>
-    </div>
+          <h1 class="slide-title">CLI vs VS Code — model lineup nuances</h1>
+          <table class="slide-table dense"><thead><tr><th></th><th><strong>VS Code Chat</strong></th><th><strong>Copilot CLI</strong></th><th><strong>Cloud Agent</strong></th></tr></thead><tbody><tr><td>Default</td><td>Auto</td><td><strong>Claude Sonnet 4.5</strong></td><td>Auto</td></tr><tr><td>Breadth</td><td>Broadest (all GA models)</td><td>Most GA models + Auto</td><td><strong>Only 4</strong>: Auto, Sonnet 4.5, Opus 4.7, GPT-5.2-Codex</td></tr><tr><td>Select</td><td>Dropdown in chat</td><td><code>/model</code> slash command or <code>--model</code></td><td>Dropdown on agent launch</td></tr><tr><td><strong>BYOK</strong> (Bring Your Own Key)</td><td>Manage Models → provider</td><td>Env vars: <code>COPILOT_PROVIDER_TYPE</code>, <code>COPILOT_PROVIDER_BASE_URL</code>, <code>COPILOT_PROVIDER_API_KEY</code>, <code>COPILOT_MODEL</code></td><td>Enterprise &quot;Custom models&quot; only</td></tr></tbody></table>
   </div>
-  <aside class="speaker-notes" hidden>Don&#x27;t read every row — point at the four columns and highlight one from each. Most-used in practice: /model, /context, /diff, /usage. /resume is the hidden gem — preserves full history from a prior session. Full reference: docs.github.com/en/copilot/reference/copilot-cli-reference</aside>
+  <aside class="speaker-notes" hidden>Emphasized per directive. The cloud agent picker is deliberately narrow for reliability. CLI BYOK is env-var driven — great for local Ollama or Anthropic-direct use. (Terminology note: earlier drafts used &quot;BYOM / Bring Your Own Model&quot;; we&#x27;ve standardized on <strong>BYOK = Bring Your Own Key</strong> to match GitHub&#x27;s docs, which emphasize the <em>key/credential</em> the customer brings.)<br><br>Concrete CLI BYOK example (local Ollama, OpenAI-compatible):<br><br>``<code>bash export COPILOT_PROVIDER_TYPE=&quot;openai&quot;              # openai | azure | anthropic export COPILOT_PROVIDER_BASE_URL=&quot;http://localhost:11434/v1&quot; export COPILOT_PROVIDER_API_KEY=&quot;not-needed-for-ollama&quot; export COPILOT_MODEL=&quot;llama3.1:70b&quot; copilot </code>`<code><br><br>Swap </code>TYPE=anthropic<code> + a real </code>API_KEY<code> to hit Anthropic directly; swap </code>TYPE=azure<code> + your Azure OpenAI resource URL for an enterprise endpoint. </code>COPILOT_MODEL<code> is also settable via </code>--model`.</aside>
 </article>

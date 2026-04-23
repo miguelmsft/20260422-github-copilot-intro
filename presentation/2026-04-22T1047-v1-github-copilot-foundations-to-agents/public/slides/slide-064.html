@@ -1,8 +1,8 @@
-<article class="slide" data-number="64" data-type="comparison" data-section="Hooks">
+<article class="slide" data-number="64" data-type="single-point" data-section="Hooks">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">CLI vs VS Code vs Cloud — Hooks support</h1>
-          <table class="slide-table dense"><thead><tr><th></th><th><strong>Copilot CLI</strong></th><th><strong>Cloud agent</strong></th><th><strong>VS Code extension</strong></th></tr></thead><tbody><tr><td>Supported</td><td>✅ primary surface</td><td>✅ (repo <code>.github/hooks/</code> on default branch)</td><td>❌ <strong>not listed</strong> as a hook-supporting surface</td></tr><tr><td>Scopes</td><td><code>~/.copilot/hooks/</code> + <code>.github/hooks/</code></td><td><code>.github/hooks/</code> only</td><td>—</td></tr><tr><td>Global disable</td><td><code>disableAllHooks: true</code> in <code>~/.copilot/config.json</code></td><td>—</td><td>—</td></tr><tr><td>Documented VS Code path</td><td>Run Copilot CLI <strong>connected to VS Code</strong>; the CLI&#x27;s hooks then apply by normal CLI loading rules <em>(reasoned from the docs — not an explicit carve-out)</em></td><td></td><td></td></tr></tbody></table>
+          <h1 class="slide-title">Hooks: Instructions <em>ask</em>. Skills <em>guide</em>. **Hooks <em>enforce</em>.**</h1>
+          <p class="slide-body">A hook is a shell command the runtime runs at a lifecycle event. It can <strong>block</strong> an action before it happens — CLI-first, supported on CLI and cloud agent; <strong>not</strong> in the VS Code native extension.</p>
   </div>
-  <aside class="speaker-notes" hidden>Emphasized per directive. The VS Code extension&#x27;s own agent does <em>not</em> evaluate hooks — this is an absence-of-evidence conclusion from the About hooks surface list and the Connecting-CLI-to-VS-Code page, which does not discuss hooks. The &quot;CLI hooks apply when CLI is connected to VS Code&quot; line is a reasoned interpretation in the hooks research (§6.4), not a directly quoted rule. Present it as &quot;the documented path, with the caveat that GitHub hasn&#x27;t explicitly carved this out in writing.&quot;</aside>
+  <aside class="speaker-notes" hidden>~8 minutes. Hooks are the single most powerful governance tool Copilot exposes to developers. The canonical positioning from GitHub&#x27;s own docs. This matters to security and platform teams.</aside>
 </article>

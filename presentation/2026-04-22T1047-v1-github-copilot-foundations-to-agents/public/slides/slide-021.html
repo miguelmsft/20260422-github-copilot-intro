@@ -1,8 +1,10 @@
-<article class="slide" data-number="21" data-type="comparison" data-section="Modes">
+<article class="slide" data-number="21" data-type="single-point" data-section="Modes">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">In-IDE Agent vs Copilot Cloud Agent — do not confuse these</h1>
-          <table class="slide-table"><thead><tr><th></th><th><strong>In-IDE Agent</strong> (VS Code)</th><th><strong>Cloud Agent</strong> (github.com)</th></tr></thead><tbody><tr><td>Runs on</td><td>Your laptop</td><td>GitHub-hosted Actions runner</td></tr><tr><td>You see it</td><td>Real-time, in chat panel</td><td>Async, as commits on a draft PR</td></tr><tr><td>Triggered by</td><td>You, in chat</td><td>Assign issue, <code>@copilot</code> mention, Agents tab, CLI <code>/delegate</code></td></tr><tr><td>Output</td><td>Edits in your open workspace</td><td>A pull request</td></tr><tr><td>Billing</td><td>1 premium req / user prompt</td><td>1 premium req / session (separate SKU)</td></tr></tbody></table>
+          <h1 class="slide-title">Plan mode&#x27;s output — <code>/memories/session/plan.md</code></h1>
+          <p class="slide-body">When you enter Plan mode, Copilot creates a plan file inside a per-session folder.</p>
+    <p class="slide-body">That file — <code>plan.md</code> — is the living source of truth for the work: what was researched, what will change, in what order.</p>
+    <p class="slide-body">You review and edit it before handing off to Agent mode for execution; it persists through the session so the agent keeps referring back to it.</p>
   </div>
-  <aside class="speaker-notes" hidden>This slide alone will prevent half the confusion you will run into at work. Cloud agent is the former &quot;Copilot coding agent&quot; / Project Padawan.</aside>
+  <aside class="speaker-notes" hidden>The reason Plan → Agent beats going straight to Agent: the plan is <em>written down</em>. You can correct bad assumptions before any code is edited. Tell attendees: open it, read it, fix it, <em>then</em> hit Agent. The file lives under Copilot&#x27;s session memory area (<code>/memories/session/</code>), which is also why re-entering Plan mode in the same session picks up where you left off.</aside>
 </article>

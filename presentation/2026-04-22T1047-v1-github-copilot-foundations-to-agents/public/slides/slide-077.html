@@ -1,10 +1,26 @@
-<article class="slide" data-number="77" data-type="single-point" data-section="Security">
+<article class="slide" data-number="77" data-type="code-example" data-section="Advanced Agents">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">BYOK changes the data path</h1>
-          <p class="slide-body">Reminder: <strong>BYOK = Bring Your Own Key</strong> — you supply credentials to a provider GitHub doesn&#x27;t normally broker.</p>
-    <p class="slide-body"><strong>Chat:</strong> prompt still passes GitHub for safety filtering, not retained beyond session. <strong>CLI:</strong> prompt goes <strong>directly to your chosen provider</strong> — does not transit GitHub. Set <code>COPILOT_OFFLINE=true</code> to also disable GitHub telemetry.</p>
-    <p class="slide-body">Your BYOK provider&#x27;s privacy terms become the source of truth.</p>
+          <h1 class="slide-title">Running Copilot CLI inside GitHub Actions</h1>
+          <div class="code-block"><code><span class="cmt"># .github/workflows/copilot-triage.yml</span>
+    <span class="prop">name</span>: Copilot Triage
+    <span class="prop">on</span>:
+      <span class="prop">issues</span>:
+        <span class="prop">types</span>: [opened]
+    <span class="prop">jobs</span>:
+      <span class="prop">triage</span>:
+        <span class="prop">runs-on</span>: ubuntu-latest
+        <span class="prop">steps</span>:
+          - uses: actions/checkout@v4
+    <span class="cmt">      # Pin a known-good CLI version for reproducibility:</span>
+          - run: npm install -g @github/copilot@1.x    # or a specific x.y.z
+          - run: |
+              copilot -p <span class="str">&quot;Read issue #${{ github.event.issue.number }},
+                          add labels, and post a triage comment.&quot;</span> \
+                      --allow-tool=<span class="str">&#x27;shell(gh)&#x27;</span> \
+                      --deny-tool=<span class="str">&#x27;shell(rm)&#x27;</span>
+            <span class="prop">env</span>:
+              <span class="prop">COPILOT_GITHUB_TOKEN</span>: ${{ secrets.COPILOT_TOKEN }}</code></div>
   </div>
-  <aside class="speaker-notes" hidden>Important for EU/regulated teams evaluating CLI + BYOK (e.g., local Ollama, Azure OpenAI, Anthropic direct) as a &quot;no data leaves our network&quot; path.</aside>
+  <aside class="speaker-notes" hidden>Same <code>copilot -p</code> pattern we saw in the CLI section, now in CI. <strong>Version pinning recommendation:</strong> pin <code>@github/copilot</code> to a major or specific version so CI jobs don&#x27;t break on a weekly release. This is how teams build &quot;AI teammates&quot; around their repo.</aside>
 </article>

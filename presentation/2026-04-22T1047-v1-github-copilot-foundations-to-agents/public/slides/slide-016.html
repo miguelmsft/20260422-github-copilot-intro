@@ -1,13 +1,8 @@
-<article class="slide" data-number="16" data-type="single-point" data-section="Surfaces">
+<article class="slide" data-number="16" data-type="boxes" data-section="Coding Environments">
   <div class="slide-bg"></div>
   <div class="slide-content">
-    <h1 class="slide-title">The mental model to teach</h1>
-    <ol class="mental-axes">
-      <li><span class="axis-num">1</span><span class="axis-body"><strong>Where you type</strong> <span class="axis-ex">editor · terminal · browser · phone</span></span></li>
-      <li><span class="axis-num">2</span><span class="axis-body"><strong>Which mode you pick</strong> <span class="axis-ex">completion · ask · edit · agent · cloud agent</span></span></li>
-      <li><span class="axis-num">3</span><span class="axis-body"><strong>Which model</strong> <span class="axis-ex">GPT-5.x · Claude · Gemini · Grok · …</span></span></li>
-    </ol>
-    <p class="slide-body slide-body-sub">Three orthogonal axes. Confusing the first two is the #1 beginner mistake.</p>
+          <h1 class="slide-title">Copilot coding environments — five families + where each shines</h1>
+          <table class="slide-table"><thead><tr><th>Family</th><th>Coding environment(s)</th><th>Optimized for</th></tr></thead><tbody><tr><td><strong>IDEs</strong></td><td>VS Code (flagship), Visual Studio, JetBrains, Xcode, Eclipse, Neovim</td><td>In-flow writing; richest agent features (VS Code)</td></tr><tr><td><strong>Terminal</strong></td><td>Copilot CLI (<code>copilot</code>), Windows Terminal Canary chat</td><td>Scriptable, CI-friendly, terminal-native</td></tr><tr><td><strong>Web</strong></td><td>github.com Chat, PR / issue assist, code review</td><td>Async review, planning, delegating</td></tr><tr><td><strong>Mobile</strong></td><td>GitHub Mobile chat</td><td>Read-mostly chat, approvals on the go</td></tr><tr><td><strong>Cloud Agent</strong></td><td>Runs on GitHub Actions, opens PRs</td><td>&quot;Assign an issue, get a PR&quot;</td></tr></tbody></table>
   </div>
-  <aside class="speaker-notes" hidden>&quot;Agent mode in VS Code&quot; ≠ &quot;Copilot cloud agent&quot; — they both run agents, but one is on your laptop and one is on a GHA runner. We&#x27;ll dedicate a whole slide to that distinction later.</aside>
+  <aside class="speaker-notes" hidden>Terminology note: GitHub itself does not use &quot;surface&quot; in its official docs. The install page calls these <em>coding environments</em> (&quot;Installing the GitHub Copilot extension in your environment … your preferred coding environment&quot;); the Changelog taxonomy calls them <em>client apps</em>. We&#x27;ll say <strong>coding environments</strong> throughout today. All five families share one subscription and one pool of models — but they expose <strong>different subsets of modes</strong> and different config locations. We unpack the mode subset next, and the config differences throughout the rest of the day. Per the customization/hooks research, these environments share <em>concepts</em> (instructions, MCP, skills, hooks) but not identical <em>config locations or support</em> — we&#x27;ll be precise about those differences as they come up.</aside>
 </article>

@@ -5,7 +5,7 @@ companion: presentation-content-creator
 date: 2026-04-22
 target_file: presentation-content.md
 current_verdict: APPROVED
-current_round: 3
+current_round: 5
 round_history:
   - { round: 1, verdict: APPROVED WITH EDITS, critical: 1, important: 7, minor: 2 }
   - { round: 2, verdict: APPROVED WITH EDITS, critical: 0, important: 1, minor: 0 }
@@ -185,3 +185,70 @@ None.
 
 Content phase complete. Ready for Gate 3 and slides phase.
 
+
+## Review Round 4 — 2026-04-22
+
+### Edit Verification
+- ✅ New slides exist: responsible/spec-driven flow (14), `plan.md` (21), approvals trio (23–25), Cloud Agent deep dive (75–76), Agent HQ (79–80), appendix divider + cost slides (94–96).
+- ✅ No slide is missing speaker notes or a `Sources:` line.
+- ✅ Demo slides themselves no longer contain "Presenter fills this in live."
+- ✅ Cloud Agent model list on slide 76 matches the approved deep-dive research.
+- ✅ Bypass slide correctly distinguishes `preToolUse` vs `permissionRequest`.
+- ✅ VS Code wording is softer than CLI on sandboxing.
+- ⚠️ "Appendix-only" cost/premium-request move is not fully complete; cost/billing content remains in the main deck.
+- ⚠️ "Surface" → "coding environments" replacement is not fully complete; slide 53 title still uses "surface."
+- ⚠️ Cloud Agent plan availability on slide 74 conflicts with the approved `2026-04-22-cloud-agent-deep-dive.md` report.
+
+## Presentation Review Summary
+
+| Dimension | Score | Key Finding |
+|-----------|-------|-------------|
+| 1. One-Idea-Per-Slide | 3/5 | A few slides overloaded |
+| 2. Audience Calibration | 4/5 | Beginner-friendly, minor abstraction |
+| 3. Progressive Learning Flow | 4/5 | Minor Cloud Agent overlap |
+| 4. Research Fidelity | 3/5 | Slide 74 source conflict |
+| 5. Coverage Completeness | 4/5 | All approved research represented |
+| 6. Example & Code Validity | 4/5 | No material issues |
+| 7. Pacing & Density | 3/5 | 96 slides heavy for 75 min |
+| 8. Visual Variety | 4/5 | Good mix |
+| 9. Storytelling Arc | 4/5 | Strong arc |
+| 10. Non-Redundancy | 3/5 | Cloud Agent + cost overlap |
+| **Overall** | **36/50** | |
+
+## Issues Summary
+
+| # | Severity | Slide(s) | Issue | Fix |
+|---|----------|----------|-------|-----|
+| 1 | 🟡 | 25, 26, 31, 32 | Premium-request / cost in main deck despite appendix-only rule | Strip cost references; push to 94–96 |
+| 2 | 🟡 | 53 | Title still uses "surface" | Rename to "Configure MCP — where each coding environment reads from" |
+| 3 | 🟡 | 74 | Plan availability conflicts with approved deep-dive research | Reconcile or soften wording |
+| 4 | 🟡 | 74–75, 32 vs 95 | Redundancy | Trim 74–75 overlap; remove cost duplication |
+| 5 | 🟢 | 17 | "Three axes to pick every time" abstract for beginners | Rename "Pick three things each time: environment, mode, model" |
+| 6 | 🟢 | 78 | `gh-aw` jargon-dense | Add plain-English subtitle |
+| 7 | 🟢 | 80 | Value + status mixed | Split or mini status table |
+
+## Verdict: APPROVED WITH EDITS
+Regressions: main deck still has cost/premium-request material that was supposed to move entirely to appendix; slide 53 still violates terminology constraint; slide 74 has unresolved availability conflict.
+
+## Review Round 5 — 2026-04-22
+
+### Edit Verification
+1. ✅ Slides 25, 26, 31, 32, 33 — premium-request / multiplier / quota content removed from main flow.
+2. ✅ Slide 32 now shows model-family grid; no longer duplicates slide 95.
+3. ✅ Slide 53 title: "Configure MCP — where each coding environment reads from."
+4. ✅ Slide 74 is short section opener; trigger list gone.
+5. ✅ Slides 74–76 split: 74 opener / 75 triggers / 76 models + guardrails.
+6. ✅ Slide 17 retitled "Pick three things each time: environment, mode, model."
+7. ✅ Slide 78 opens with plain-English framing before gh-aw details.
+8. ✅ Slide 80: rollout/status in speaker notes; body stays on value.
+
+### Judgment Calls
+- Slide 83 FedRAMP +10%: **OK** (compliance caveat, not model-picking).
+- Slide 86 plan pricing: **OK** (intentional admin-section content).
+- Slide 74 availability "see docs for current list" softening: **Adequate.**
+
+### Remaining cost mentions in 1–93 (intentional, not regressions)
+- 26 notes pointer to appendix; 31/33 notes say cost out of scope here; 69 hooks example; 83 FedRAMP; 86 admin pricing table.
+
+## Verdict: APPROVED
+v5 lands the requested fixes cleanly. Prior regressions resolved; terminology cleanup complete at title level; Cloud Agent sequencing works; remaining cost references are intentional admin-context exceptions.

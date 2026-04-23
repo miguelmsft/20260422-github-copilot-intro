@@ -1,8 +1,12 @@
-<article class="slide" data-number="78" data-type="comparison" data-section="Security">
+<article class="slide" data-number="78" data-type="single-point" data-section="Advanced Agents">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">CLI vs VS Code — governance gaps to know</h1>
-          <table class="slide-table"><thead><tr><th>Governance feature</th><th>VS Code</th><th>Copilot CLI</th></tr></thead><tbody><tr><td>Content exclusion (repo-level)</td><td>✅ inline + chat</td><td>❌ <strong>does not apply</strong></td></tr><tr><td>MCP policies</td><td>✅</td><td>❌ <strong>does not apply</strong></td></tr><tr><td>IDE policies</td><td>✅</td><td>❌</td></tr><tr><td>Public-code &quot;Block&quot; enforcement</td><td>✅ inline suggestions</td><td>⚠️ not enforced the same way</td></tr><tr><td>Hooks for enforcement</td><td>❌</td><td>✅ primary surface</td></tr></tbody></table>
+          <h1 class="slide-title"><code>gh-aw</code> — GitHub Agentic Workflows</h1>
+          <p class="slide-body">Write the workflow intent in Markdown; <code>gh-aw</code> compiles it into a safer GitHub Actions workflow for you.</p>
+    <p class="slide-body">A GitHub-Next extension (<code>gh-aw</code> = &quot;gh agentic workflows&quot;) that lets you write agentic workflows as <strong>Markdown + YAML frontmatter</strong>, then compile them into regular GitHub Actions files.</p>
+    <p class="slide-body">Two features worth knowing by name:</p>
+    <ul class="slide-list"><li><strong>Safe outputs</strong> — sandboxed outputs the agent is allowed to emit (e.g., <em>&quot;create an issue&quot;</em>, <em>&quot;post a comment&quot;</em>) instead of arbitrary shell execution.</li><li><strong>Agent Workflow Firewall</strong> — a network allowlist for what the agent&#x27;s runner can reach.</li></ul>
+    <p class="slide-body">Pick your engine: Copilot · Claude · Codex · Gemini.</p>
   </div>
-  <aside class="speaker-notes" hidden>Emphasized per directive. The CLI is deliberately closer to the metal — governance on the CLI is done with Hooks + org policy (enable/disable the CLI entirely), not with content exclusion.</aside>
+  <aside class="speaker-notes" hidden>Experimental but production-used at GitHub. The value prop: write the <em>intent</em> in Markdown, let <code>gh aw compile</code> produce a hardened Actions workflow with network + output restrictions baked in — so you don&#x27;t have to hand-roll the security-sensitive parts.</aside>
 </article>

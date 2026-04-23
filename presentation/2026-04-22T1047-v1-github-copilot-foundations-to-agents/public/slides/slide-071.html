@@ -1,26 +1,20 @@
-<article class="slide" data-number="71" data-type="code-example" data-section="Advanced Agents">
+<article class="slide" data-number="71" data-type="diagram" data-section="Advanced Agents">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Running Copilot CLI inside GitHub Actions</h1>
-          <div class="code-block"><code><span class="cmt"># .github/workflows/copilot-triage.yml</span>
-    <span class="prop">name</span>: Copilot Triage
-    <span class="prop">on</span>:
-      <span class="prop">issues</span>:
-        <span class="prop">types</span>: [opened]
-    <span class="prop">jobs</span>:
-      <span class="prop">triage</span>:
-        <span class="prop">runs-on</span>: ubuntu-latest
-        <span class="prop">steps</span>:
-          - uses: actions/checkout@v4
-    <span class="cmt">      # Pin a known-good CLI version for reproducibility:</span>
-          - run: npm install -g @github/copilot@1.x    # or a specific x.y.z
-          - run: |
-              copilot -p <span class="str">&quot;Read issue #${{ github.event.issue.number }},
-                          add labels, and post a triage comment.&quot;</span> \
-                      --allow-tool=<span class="str">&#x27;shell(gh)&#x27;</span> \
-                      --deny-tool=<span class="str">&#x27;shell(rm)&#x27;</span>
-            <span class="prop">env</span>:
-              <span class="prop">COPILOT_GITHUB_TOKEN</span>: ${{ secrets.COPILOT_TOKEN }}</code></div>
+          <h1 class="slide-title">Advanced custom agents: one profile, three runtimes</h1>
+          <div class="code-block"><code>┌──────────────────────────────────────────────────────────────────┐
+    │                 Shared profile: .agent.md                        │
+    │   Repo: .github/agents/*.agent.md   Org: .github-private/agents/ │
+    └───────────┬──────────────────┬────────────────────┬─────────────┘
+                │                  │                    │
+          ┌─────▼─────┐      ┌─────▼─────┐      ┌───────▼────────┐
+          │  VS Code  │      │ Copilot   │      │ Cloud Agent    │
+          │  Chat /   │      │   CLI     │      │  (GH Actions   │
+          │  Agent    │      │ /fleet    │      │   runner)      │
+          │  handoffs │      │ autopilot │      │  Issues / PR   │
+          └─────┬─────┘      └─────┬─────┘      └────────┬───────┘
+                └────── Agent HQ / Mission Control ──────┘
+                      (github.com, VS Code, Mobile)</code></div>
   </div>
-  <aside class="speaker-notes" hidden>Same <code>copilot -p</code> pattern we saw in the CLI section, now in CI. <strong>Version pinning recommendation:</strong> pin <code>@github/copilot</code> to a major or specific version so CI jobs don&#x27;t break on a weekly release. This is how teams build &quot;AI teammates&quot; around their repo.</aside>
+  <aside class="speaker-notes" hidden>~12 minutes. Same <code>.agent.md</code> file, three behaviors. Environment-specific fields (e.g., <code>handoffs</code>, <code>hooks</code>) are ignored outside the runtime that supports them. This is the &quot;how teams actually ship with Copilot in 2026&quot; section.</aside>
 </article>

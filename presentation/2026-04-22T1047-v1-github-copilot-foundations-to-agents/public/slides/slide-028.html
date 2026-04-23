@@ -1,33 +1,9 @@
-<article class="slide" data-number="28" data-type="decision-tree" data-section="Models">
+<article class="slide" data-number="28" data-type="single-point" data-section="Modes">
   <div class="slide-bg"></div>
   <div class="slide-content">
-    <h1 class="slide-title">Which model should I pick?</h1>
-    <div class="tree-container">
-      <div class="tree-node">
-        <div class="tree-question">Default?</div>
-        <div class="tree-branches">
-          <div class="tree-branch"><span class="tree-branch-label">→</span><span class="tree-branch-text"><strong>Auto</strong> — 10% discount, healthy pick.</span></div>
-        </div>
-      </div>
-      <div class="tree-node">
-        <div class="tree-question">Want to burn zero quota?</div>
-        <div class="tree-branches">
-          <div class="tree-branch"><span class="tree-branch-label">→</span><span class="tree-branch-text"><strong>GPT-5 mini</strong> · <strong>GPT-4.1</strong> · <strong>GPT-4o</strong> <em>(all 0×)</em></span></div>
-        </div>
-      </div>
-      <div class="tree-node">
-        <div class="tree-question">Hard reasoning / agentic?</div>
-        <div class="tree-branches">
-          <div class="tree-branch"><span class="tree-branch-label">→</span><span class="tree-branch-text"><strong>GPT-5.4</strong> · <strong>Claude Sonnet 4.6</strong> · <strong>Opus 4.7</strong> · <strong>Gemini 3.1 Pro</strong> <em>(1× – 7.5×)</em></span></div>
-        </div>
-      </div>
-      <div class="tree-node">
-        <div class="tree-question">Speed &gt; everything else?</div>
-        <div class="tree-branches">
-          <div class="tree-branch"><span class="tree-branch-label">→</span><span class="tree-branch-text"><strong>Haiku 4.5</strong> · <strong>Grok Code Fast 1</strong> · <strong>5.4 nano</strong> <em>(0.25× – 0.33×)</em></span></div>
-        </div>
-      </div>
-    </div>
+          <h1 class="slide-title">CLI vs VS Code — mode differences</h1>
+          <p class="slide-body"><strong>CLI</strong> exposes the same conceptual modes with different names: <strong>ask/execute</strong> (default), <strong>plan mode</strong>, and <strong>autopilot</strong> — cycled with <code>Shift+Tab</code> or set via <code>--mode / --plan / --autopilot</code> flags.</p>
+    <p class="slide-body">Plan mode and Autopilot exist in both places. <strong>Ask-style &quot;no edits&quot;</strong> on the CLI is approximated with <code>/ask</code> (one-off) or by declining tool approvals.</p>
   </div>
-  <aside class="speaker-notes" hidden>Point out Claude Opus 4.7 is on a 7.5× promotional multiplier through April 30, 2026 — it will rise after. &quot;Auto&quot; for 80% of work is our beginner advice.</aside>
+  <aside class="speaker-notes" hidden>Emphasized per the cross-cutting directive: modes exist in both surfaces but the <em>UX</em> differs. CLI leans keyboard-driven and session-persistent; VS Code is dropdown-driven. We&#x27;ll see concrete CLI ergonomics in the CLI deep-dive.</aside>
 </article>

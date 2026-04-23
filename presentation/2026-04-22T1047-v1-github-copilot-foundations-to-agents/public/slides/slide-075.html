@@ -1,21 +1,10 @@
-<article class="slide" data-number="75" data-type="boxes" data-section="Security">
+<article class="slide" data-number="75" data-type="list" data-section="Advanced Agents">
   <div class="slide-bg"></div>
   <div class="slide-content">
-    <h1 class="slide-title">Data security &amp; privacy: the training split</h1>
-    <div class="tool-grid cols-2">
-      <div class="tool-card">
-        <div class="tool-card-title">Business / Enterprise</div>
-        <div class="tool-card-body">
-          Prompts, context, outputs are covered by the <strong>DPA</strong> (Data Processing Addendum) and <strong>never used for training</strong>.
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-card-title">Free / Pro / Pro+</div>
-        <div class="tool-card-body">
-          Starting <strong>April 24, 2026</strong>, data <strong>may</strong> be used for model training — <strong>unless you opt out</strong> in personal Copilot settings.
-        </div>
-      </div>
-    </div>
+          <h1 class="slide-title">Cloud Agent deep dive — what it is + how to trigger</h1>
+          <p class="slide-body"><strong>Cloud Agent</strong> (current branding; formerly &quot;Copilot coding agent&quot;) is an async, PR-based agent that runs in an ephemeral GitHub Actions sandbox and delivers work as a <strong>draft pull request</strong>.</p>
+    <p class="slide-body">Trigger entry points, per the docs:</p>
+    <ul class="slide-list"><li><strong>Issue assignment</strong> — add <code>Copilot</code> as an assignee (the canonical flow).</li><li><strong><code>@copilot</code> mention</strong> on an open pull request the agent already owns.</li><li><strong>Agents panel / agents tab</strong> on github.com (plus deep research + plan-then-iterate UI, github.com only).</li><li><strong>Copilot CLI</strong> — <code>/delegate &lt;prompt&gt;</code> or the <code>&amp;</code> prefix shorthand.</li><li><strong>IDE Copilot Chat</strong> — VS Code, Visual Studio 2026, JetBrains, Eclipse (mention <code>@github</code> in the prompt).</li><li><strong>GitHub Mobile, Raycast, <code>gh</code> CLI, any MCP-capable client</strong>.</li></ul>
   </div>
-  <aside class="speaker-notes" hidden>~5 slides, ~5 minutes in this section — purpose is to give you the vocabulary to find the right doc, not to be exhaustive. This is the single fact most enterprise buyers care about. The <strong>DPA</strong> (Data Processing Addendum) is the contract GitHub signs with business/enterprise customers that legally forbids training on their data; that&#x27;s why the opt-out toggle is hidden on those seats — it&#x27;s already baked into the contract.</aside>
+  <aside class="speaker-notes" hidden>The &quot;session&quot; is one invocation on a task; the draft PR is the communication surface. Every commit is authored by Copilot with the human who started the task as co-author, signed, and linked back to the session log. Once the PR is merged or closed, Copilot stops responding to mentions on it. Deep research / plan-then-iterate is github.com only — Jira / Linear / Slack integrations go straight to a PR with no planning pass.</aside>
 </article>

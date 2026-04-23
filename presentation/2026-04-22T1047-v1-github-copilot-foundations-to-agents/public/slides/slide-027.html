@@ -1,31 +1,13 @@
-<article class="slide" data-number="27" data-type="boxes" data-section="Models">
+<article class="slide" data-number="27" data-type="decision-tree" data-section="Modes">
   <div class="slide-bg"></div>
   <div class="slide-content">
-    <h1 class="slide-title">Premium requests — the cost unit</h1>
-    <div class="tool-grid cols-2">
-      <div class="tool-card">
-        <div class="tool-card-title">Multiplier — per model</div>
-        <div class="tool-card-body">
-          <ul>
-            <li><strong>0×</strong> included (GPT-4.1, 4o, GPT-5 mini)</li>
-            <li><strong>0.25–1×</strong> most paid models</li>
-            <li><strong>3×</strong> Opus 4.5 / 4.6</li>
-            <li><strong>30×</strong> Opus 4.6 &quot;fast mode&quot; (preview)</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-card-title">Allowance — per plan</div>
-        <div class="tool-card-body">
-          <ul>
-            <li><strong>Free</strong> 50 · <strong>Pro</strong> 300 · <strong>Pro+</strong> 1500</li>
-            <li><strong>Business</strong> 300/user · <strong>Enterprise</strong> 1000/user</li>
-            <li>Overage: <strong>$0.04 / request</strong></li>
-            <li>Auto mode = <strong>10% discount</strong></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+          <h1 class="slide-title">Which mode should I pick?</h1>
+          <div class="code-block"><code>Need to understand something, no edits?         → Ask
+    Want a plan before code changes?                → Plan → hand off to Agent
+    Multi-file implementation, you&#x27;re watching?     → Agent (Default Approvals)
+    Routine, trusted job, want to walk away?        → Agent + Autopilot
+    Want it done while you work on something else?  → Copilot CLI (local)  OR
+                                                      Cloud agent (on GHA, PR)</code></div>
   </div>
-  <aside class="speaker-notes" hidden>One user prompt = 1 request × multiplier. Tool calls the agent makes on its own are free. Cloud agent sessions are billed per session from a separate SKU.</aside>
+  <aside class="speaker-notes" hidden>Post this as a cheat sheet. The Plan → Agent handoff is the single best habit to build.</aside>
 </article>

@@ -1,37 +1,12 @@
 <article class="slide" data-number="13" data-type="diagram" data-section="Agentic Foundations">
   <div class="slide-bg"></div>
   <div class="slide-content">
-    <h1 class="slide-title">The autonomy spectrum</h1>
-    <div class="spectrum-container">
-      <div class="spectrum-bar"></div>
-      <div class="spectrum-items">
-        <div class="spectrum-item">
-          <div class="spectrum-item-title">Suggest</div>
-          <div class="spectrum-item-sub">ghost text</div>
-          <div class="spectrum-item-desc">You type; Copilot completes.</div>
-        </div>
-        <div class="spectrum-item">
-          <div class="spectrum-item-title">Approve each step</div>
-          <div class="spectrum-item-sub">Default Approvals</div>
-          <div class="spectrum-item-desc">Agent pauses before every tool call.</div>
-        </div>
-        <div class="spectrum-item">
-          <div class="spectrum-item-title">Approve at checkpoints</div>
-          <div class="spectrum-item-sub">Autopilot in IDE</div>
-          <div class="spectrum-item-desc">Agent runs; asks only at milestones.</div>
-        </div>
-        <div class="spectrum-item">
-          <div class="spectrum-item-title">Autonomous in sandbox</div>
-          <div class="spectrum-item-sub">Cloud agent on GH Actions</div>
-          <div class="spectrum-item-desc">Runs to completion in isolation.</div>
-        </div>
-        <div class="spectrum-item">
-          <div class="spectrum-item-title">Fully autonomous</div>
-          <div class="spectrum-item-sub">rare; high-trust CI</div>
-          <div class="spectrum-item-desc">No human in the loop.</div>
-        </div>
-      </div>
-    </div>
+          <h1 class="slide-title">The autonomy spectrum</h1>
+          <div class="code-block"><code>Suggest → Approve-each-step → Approve-at-checkpoints → Autonomous-in-sandbox → Fully autonomous
+    (ghost    (agent w/ Default    (agent w/ Autopilot     (cloud agent on         (rare; high-
+     text)     Approvals)           in IDE)                  GitHub Actions)         trust CI)
+        less autonomy ──────────────────────────────────────────────────► more autonomy
+        less risk   ────────────────────────────────────────────────────► more risk</code></div>
   </div>
   <aside class="speaker-notes" hidden>Remember this diagram — we will literally revisit each point when we discuss modes. Copilot exposes knobs for every level. Beginners should start on the left and earn their way right.</aside>
 </article>

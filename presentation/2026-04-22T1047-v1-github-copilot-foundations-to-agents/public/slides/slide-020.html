@@ -1,9 +1,16 @@
-<article class="slide" data-number="20" data-type="comparison" data-section="Modes">
+<article class="slide" data-number="20" data-type="boxes" data-section="Modes">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Permission levels</h1>
-          <table class="slide-table"><thead><tr><th>Level</th><th>Behavior</th><th>Use when</th></tr></thead><tbody><tr><td><strong>Default Approvals</strong></td><td>Asks before every terminal cmd &amp; sensitive edit</td><td>Learning, unfamiliar repos, destructive tasks</td></tr><tr><td><strong>Bypass Approvals</strong></td><td>No per-step prompt; still respects guardrails</td><td>Trusted, well-tested workflows</td></tr><tr><td><strong>Autopilot (Preview)</strong></td><td>Agent runs uninterrupted; auto-answers clarifying Qs</td><td>Long routine jobs you&#x27;d otherwise babysit</td></tr></tbody></table>
-    <p class="slide-body">Autopilot is <strong>not a fourth mode</strong> — it&#x27;s Agent with the handbrake off.</p>
+          <h1 class="slide-title">The three built-in personas</h1>
+          <div class="code-block"><code>┌────────────────────┬────────────────────┬────────────────────┐
+    │  **Ask**           │  **Plan**          │  **Agent**         │
+    │  Q&amp;A, no edits.    │  Research &amp; write  │  Autonomous: edits │
+    │  &quot;Apply in Editor&quot; │  a structured      │  files, runs cmds, │
+    │  is manual.        │  plan. Hands off.  │  self-corrects.    │
+    │                    │  No code changes.  │  Multi-file.       │
+    │  Cheapest, safest. │  `/plan &lt;task&gt;`    │  Default for work. │
+    └────────────────────┴────────────────────┴────────────────────┘</code></div>
+    <p class="slide-body"><strong>Edit</strong> mode is <strong>deprecated</strong> — its behavior folded into Agent. You can un-hide it with <code>chat.editMode.hidden</code>.</p>
   </div>
-  <aside class="speaker-notes" hidden>Most beginners should live on Default Approvals for a month. Tie this back to the autonomy spectrum slide.</aside>
+  <aside class="speaker-notes" hidden>Plan is the under-used hero. For anything touching more than one file, having Plan produce a checklist <em>before</em> Agent implements it drastically improves outcomes. The plan itself lives in a session file — next slide.</aside>
 </article>

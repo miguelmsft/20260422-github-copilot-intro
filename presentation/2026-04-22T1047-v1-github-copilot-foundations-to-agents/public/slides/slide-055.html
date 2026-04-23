@@ -1,18 +1,8 @@
-<article class="slide" data-number="55" data-type="code-example" data-section="Skills">
+<article class="slide" data-number="55" data-type="list" data-section="MCP">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Anatomy of a skill</h1>
-          <div class="file-tree"><span class="ft-dir">my-skill/</span>
-├── <span class="ft-file">SKILL.md</span>              <span class="ft-comment">← required</span>
-└── <span class="ft-file">convert-svg-to-png.sh</span> <span class="ft-comment">← optional bundled scripts</span></div>
-    <div class="code-block"><code><span class="cmt">---</span>
-name: github-actions-failure-debugging
-description: Guide for debugging failing GitHub Actions workflows.
-             Use this when asked to debug failing GH Actions workflows.
-<span class="cmt">---</span>
-To debug a failing workflow:
-1. Use the `list_workflow_runs` tool to look up recent runs...
-2. Use the `summarize_job_log_failures` tool to get an AI summary...</code></div>
+          <h1 class="slide-title">Permission model &amp; the cloud-agent caveat</h1>
+          <ul class="slide-list"><li><strong>VS Code / CLI (interactive):</strong> per-tool approval prompt; you can session-approve</li><li><strong>Cloud agent (autonomous):</strong> <strong>no approval prompts</strong> — GitHub <em>strongly recommends</em> allowlisting only read-only tools</li><li>MCP servers run arbitrary code → treat them as <strong>security-sensitive config</strong> (see Hooks section for how to police this)</li><li>Business/Enterprise: the &quot;MCP servers in Copilot&quot; policy must be enabled (disabled by default)</li></ul>
   </div>
-  <aside class="speaker-notes" hidden>The <code>description</code> is critical — it&#x27;s what Copilot matches against the user&#x27;s prompt. Always include a &quot;Use this when…&quot; clause.</aside>
+  <aside class="speaker-notes" hidden>This is the one slide security teams care about. The cloud agent&#x27;s lack of approval prompts is by design — it&#x27;s async — but it pushes the burden onto allowlists and hooks.</aside>
 </article>

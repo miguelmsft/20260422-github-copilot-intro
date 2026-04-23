@@ -1,8 +1,21 @@
-<article class="slide" data-number="51" data-type="list" data-section="MCP">
+<article class="slide" data-number="51" data-type="diagram" data-section="MCP">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Permission model &amp; the cloud-agent caveat</h1>
-          <ul class="slide-list"><li><strong>VS Code / CLI (interactive):</strong> per-tool approval prompt; you can session-approve</li><li><strong>Cloud agent (autonomous):</strong> <strong>no approval prompts</strong> — GitHub <em>strongly recommends</em> allowlisting only read-only tools</li><li>MCP servers run arbitrary code → treat them as <strong>security-sensitive config</strong> (see Hooks section for how to police this)</li><li>Business/Enterprise: the &quot;MCP servers in Copilot&quot; policy must be enabled (disabled by default)</li></ul>
+          <h1 class="slide-title">Host · Client · Server</h1>
+          <div class="code-block"><code>┌──────────── Host (VS Code / CLI / Cloud Agent) ────────────┐
+    │                                                             │
+    │   ┌─ MCP Client A ─┐  ┌─ MCP Client B ─┐  ┌─ MCP Client C ─┐│
+    │   │ 1 per server;  │  │                 │  │                ││
+    │   │ negotiates     │  │                 │  │                ││
+    └───┤ capabilities   ├──┤                 ├──┤                ├┘
+        │ (JSON-RPC 2.0) │  │                 │  │                │
+        ▼                   ▼                    ▼
+     stdio (local subprocess)  /  Streamable HTTP  (remote)
+        │                   │                    │
+        ▼                   ▼                    ▼
+     Local MCP server   Remote MCP server    GitHub MCP server
+     (Playwright,       (Sentry, Notion,     api.githubcopilot
+      filesystem,…)      Atlassian,…)         .com/mcp/</code></div>
   </div>
-  <aside class="speaker-notes" hidden>This is the one slide security teams care about. The cloud agent&#x27;s lack of approval prompts is by design — it&#x27;s async — but it pushes the burden onto allowlists and hooks.</aside>
+  <aside class="speaker-notes" hidden>Key: the host has one client per server. Two transports — stdio for local, Streamable HTTP for remote. Capability negotiation happens at <code>initialize</code> time.</aside>
 </article>

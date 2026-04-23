@@ -1,18 +1,9 @@
-<article class="slide" data-number="63" data-type="code-example" data-section="Hooks">
+<article class="slide" data-number="63" data-type="demo-placeholder" data-section="Skills">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">A <code>preToolUse</code> hook that blocks <code>rm -rf</code></h1>
-          <div class="code-block"><code><span class="cmt">#!/usr/bin/env bash</span>
-    <span class="cmt"># stdin: {<span class="str">&quot;toolName&quot;</span>:<span class="str">&quot;bash&quot;</span>,<span class="str">&quot;toolArgs&quot;</span>:<span class="str">&quot;{\&quot;</span>command\<span class="str">&quot;:\&quot;</span>rm -rf dist\<span class="str">&quot;, ...}&quot;</span>}</span>
-    <span class="cmt"># toolArgs is a JSON-ENCODED STRING — parse again!</span>
-    event=$(cat)
-    cmd=$(<span class="kw">echo</span> <span class="str">&quot;$event&quot;</span> | jq -r &#x27;.toolArgs | fromjson | .command // <span class="str">&quot;&quot;</span>&#x27;)
-    <span class="kw">case</span> <span class="str">&quot;$cmd&quot;</span> in
-      *<span class="str">&quot;rm -rf /&quot;</span>*|*<span class="str">&quot;sudo rm &quot;</span>*|*<span class="str">&quot;curl | bash&quot;</span>*)
-        <span class="kw">echo</span> &#x27;{<span class="str">&quot;permissionDecision&quot;</span>:<span class="str">&quot;deny&quot;</span>,<span class="str">&quot;reason&quot;</span>:<span class="str">&quot;Destructive command blocked by policy&quot;</span>}&#x27;
-        <span class="kw">exit</span> 0 ;;
-    <span class="kw">esac</span>
-    <span class="cmt"># empty output / <span class="kw">exit</span> 0 == allow</span></code></div>
+          <h1 class="slide-title">🎬 Demo: Skills</h1>
+          <div class="demo-badge">🎬 LIVE DEMO</div>
+          <p class="demo-note">Presenter fills this in live — see speaker notes for suggestions.</p>
   </div>
-  <aside class="speaker-notes" hidden>Two gotchas: (1) <code>toolArgs</code> is a JSON <em>string</em> you must parse twice, (2) &quot;empty response = allow&quot; is the default. Keep hooks fast — they run synchronously and block the agent.</aside>
+  <aside class="speaker-notes" hidden>Suggested demo: create a simple <code>~/.copilot/skills/release-notes/SKILL.md</code>, list via <code>/skills list</code>, invoke via <code>/release-notes</code>, then trigger automatically via a natural prompt.</aside>
 </article>

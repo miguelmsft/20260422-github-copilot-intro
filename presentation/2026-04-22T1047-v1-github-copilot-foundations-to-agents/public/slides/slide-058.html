@@ -1,8 +1,9 @@
-<article class="slide" data-number="58" data-type="list" data-section="Skills">
+<article class="slide" data-number="58" data-type="single-point" data-section="Skills">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Skills vs MCP vs custom agents vs instructions</h1>
-          <ul class="slide-list"><li><strong>Instructions</strong> — <em>always-on rules.</em> &quot;We use pnpm. Prefer named exports.&quot;</li><li><strong>Prompt files</strong> — <em>manual reusable tasks</em> (IDEs). &quot;Scaffold me a React form.&quot;</li><li><strong>Skills</strong> — <em>just-in-time how-tos</em> loaded on relevance. &quot;How to debug a failing GH Actions run.&quot;</li><li><strong>MCP</strong> — <em>new tools and data sources</em> the agent can call.</li><li><strong>Custom agents</strong> — <em>a persona</em> with its own tool allowlist, model, and prompt.</li></ul>
+          <h1 class="slide-title">Skills — mind the terminology trap</h1>
+          <p class="slide-body">The word &quot;skills&quot; in Copilot docs means <strong>three different things</strong>:</p>
+    <ol class="slide-list ordered"><li><em>&quot;MCP skills&quot;</em> — tools on the built-in GitHub MCP server (chat cheat sheet)</li><li><em><code>@github</code> &quot;GitHub skills&quot;</em> — a VS Code chat participant</li><li><strong>Agent Skills</strong> ← <strong>this is what we mean today</strong> — folders with a <code>SKILL.md</code></li></ol>
   </div>
-  <aside class="speaker-notes" hidden>This slide ties the customization surfaces together. Skills occupy the &quot;specific expertise, load-on-demand, don&#x27;t bloat context&quot; niche.</aside>
+  <aside class="speaker-notes" hidden>~8 minutes. Open standard (Anthropic-led), shared with Claude Code/Codex/Cursor. Critical terminology note: when the audience googles &quot;copilot skills&quot; they will find all three. Only #3 is user-authorable <code>SKILL.md</code> folders.</aside>
 </article>

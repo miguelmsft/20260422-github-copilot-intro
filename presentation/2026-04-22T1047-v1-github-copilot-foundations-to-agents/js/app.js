@@ -1,7 +1,7 @@
 import { transitionSlide, animateSlideContent } from './transitions.js';
 import { initAdmin, getHiddenSlides } from './admin.js';
 
-const TOTAL_SLIDES = 86;
+const TOTAL_SLIDES = 96;
 const DESIGN_WIDTH = 1920;
 const DESIGN_HEIGHT = 1080;
 
