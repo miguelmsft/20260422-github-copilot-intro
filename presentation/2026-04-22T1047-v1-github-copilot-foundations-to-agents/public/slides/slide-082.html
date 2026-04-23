@@ -1,22 +1,8 @@
-<!-- HAND-CRAFTED OVERRIDE — do not regenerate from build-slides.mjs -->
-<article class="slide" data-number="82" data-type="boxes" data-section="Security">
+<article class="slide" data-number="82" data-type="list" data-section="Closing">
   <div class="slide-bg"></div>
   <div class="slide-content">
-    <h1 class="slide-title">Data security &amp; privacy: the training split</h1>
-    <div class="tool-grid cols-2">
-      <div class="tool-card">
-        <div class="tool-card-title">Business / Enterprise</div>
-        <div class="tool-card-body">
-          Prompts, context, outputs are covered by the <strong>DPA</strong> (Data Processing Addendum) and <strong>never used for training</strong>.
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-card-title">Free / Pro / Pro+</div>
-        <div class="tool-card-body">
-          Starting <strong>April 24, 2026</strong>, data <strong>may</strong> be used for model training — <strong>unless you opt out</strong> in personal Copilot settings.
-        </div>
-      </div>
-    </div>
+          <h1 class="slide-title">Closing: 7 practical tips to leave with</h1>
+          <ol class="slide-list ordered"><li><strong>Default to Auto</strong> — escalate models only on failure.</li><li><strong>Plan → Agent</strong> for anything multi-file.</li><li><strong>Default Approvals</strong> until you <em>earn</em> Autopilot.</li><li><strong>Commit <code>.github/copilot-instructions.md</code></strong> — highest-leverage file.</li><li><strong>One MCP server at a time</strong> — read-only for cloud agent.</li><li><strong>CLI + VS Code are complements</strong> — not substitutes.</li><li><strong>Hooks = your policy engine.</strong> Enforcement belongs in <code>preToolUse</code>.</li></ol>
   </div>
-  <aside class="speaker-notes" hidden>~5 slides, ~5 minutes in this section — purpose is to give you the vocabulary to find the right doc, not to be exhaustive. This is the single fact most enterprise buyers care about. The <strong>DPA</strong> (Data Processing Addendum) is the contract GitHub signs with business/enterprise customers that legally forbids training on their data; that&#x27;s why the opt-out toggle is hidden on those seats — it&#x27;s already baked into the contract.</aside>
+  <aside class="speaker-notes" hidden>About 10 minutes of content in the closing, then Q&amp;A fills the remaining time. Walk these slowly; they&#x27;re the whole day condensed. Call back each to the section where we covered it: #1 Models, #2–3 Modes, #4 Customization, #5 MCP, #6 CLI, #7 Hooks.</aside>
 </article>

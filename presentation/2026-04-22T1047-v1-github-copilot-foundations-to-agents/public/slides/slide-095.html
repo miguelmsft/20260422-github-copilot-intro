@@ -1,37 +1,18 @@
-<!-- HAND-CRAFTED OVERRIDE — do not regenerate from build-slides.mjs. See also slide-032.html. -->
-<article class="slide" data-number="95" data-type="boxes" data-section="Appendix">
+<article class="slide" data-number="95" data-type="code-example" data-section="Appendix">
   <div class="slide-bg"></div>
   <div class="slide-content">
-    <h1 class="slide-title">Premium requests — the basics</h1>
-    <p class="slide-body">One <strong>user prompt</strong> = 1 request × the model&#x27;s multiplier. Tool calls the agent makes on its own during that prompt are free.</p>
-    <div class="tool-grid">
-      <div class="tool-card">
-        <div class="tool-card-icon">✖️</div>
-        <div class="tool-card-title">Multiplier — per model</div>
-        <div class="tool-card-body">
-          <ul>
-            <li><strong>0×</strong> included (GPT-4.1, GPT-4o, GPT-5 mini)</li>
-            <li><strong>0.25–1×</strong> most paid models</li>
-            <li><strong>3×</strong> Opus 4.5 / 4.6</li>
-            <li><strong>30×</strong> Opus 4.6 &quot;fast mode&quot; (preview)</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-card-icon">📊</div>
-        <div class="tool-card-title">Allowance — per plan</div>
-        <div class="tool-card-body">
-          <ul>
-            <li><strong>Free</strong> 50 / month</li>
-            <li><strong>Pro</strong> 300 · <strong>Pro+</strong> 1500</li>
-            <li><strong>Business</strong> 300 per user</li>
-            <li><strong>Enterprise</strong> 1000 per user</li>
-          </ul>
-        </div>
-        <div class="tool-card-footer">Overage $0.04 / request · Auto mode = 10% discount</div>
-      </div>
-    </div>
-    <p class="slide-body">Cloud Agent is billed per <strong>session</strong> (plus one per real-time steering comment) from a separate SKU.</p>
+          <h1 class="slide-title">Identity, seats, and audit</h1>
+          <div class="code-block"><code># Identity — typically EMU* with SAML/OIDC + SCIM:
+    #   Entra ID ✓ SAML ✓ OIDC ✓ SCIM
+    #   Okta     ✓ SAML      ✓ SCIM
+    #   Ping     ✓ SAML      ✓ SCIM
+    # NOT supported: Okta + Entra combined for SSO+SCIM
+    # Audit-log queries (retention 180 days; stream to SIEM*):
+    action:copilot
+    action:copilot.cfb_seat_assignment_created
+    actor:Copilot action:pull_request.create
+    agent_session_id:&lt;id&gt;</code></div>
+    <p class="slide-body"><strong>Glossary:</strong> <strong>EMU</strong> = Enterprise Managed Users (GitHub accounts controlled by your IdP — users can&#x27;t change email, 2FA, etc.). <strong>SAML</strong> / <strong>OIDC</strong> = SSO protocols (SAML is older/XML-based; OIDC is OAuth2-based). <strong>SCIM</strong> = automated user/group provisioning from your IdP to GitHub. <strong>SIEM</strong> = Security Information and Event Management (Splunk/Sentinel/etc.) — the system that ingests audit logs for alerting.</p>
   </div>
-  <aside class="speaker-notes" hidden>Moved out of the main deck in v4. Reference only — pull up if someone asks about billing. Claude Opus 4.7 was on a 7.5× promotional multiplier through April 30, 2026; expect it to rise after.</aside>
+  <aside class="speaker-notes" hidden>The audit log does <strong>not</strong> include client-side prompts — only platform events (policy changes, seat grants, agent PR creates). For prompt-level audit you need the Hooks we covered earlier.</aside>
 </article>

@@ -1,18 +1,8 @@
-<article class="slide" data-number="88" data-type="code-example" data-section="Admin">
+<article class="slide" data-number="88" data-type="list" data-section="Appendix">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Identity, seats, and audit</h1>
-          <div class="code-block"><code># Identity — typically EMU* with SAML/OIDC + SCIM:
-    #   Entra ID ✓ SAML ✓ OIDC ✓ SCIM
-    #   Okta     ✓ SAML      ✓ SCIM
-    #   Ping     ✓ SAML      ✓ SCIM
-    # NOT supported: Okta + Entra combined for SSO+SCIM
-    # Audit-log queries (retention 180 days; stream to SIEM*):
-    action:copilot
-    action:copilot.cfb_seat_assignment_created
-    actor:Copilot action:pull_request.create
-    agent_session_id:&lt;id&gt;</code></div>
-    <p class="slide-body"><strong>Glossary:</strong> <strong>EMU</strong> = Enterprise Managed Users (GitHub accounts controlled by your IdP — users can&#x27;t change email, 2FA, etc.). <strong>SAML</strong> / <strong>OIDC</strong> = SSO protocols (SAML is older/XML-based; OIDC is OAuth2-based). <strong>SCIM</strong> = automated user/group provisioning from your IdP to GitHub. <strong>SIEM</strong> = Security Information and Event Management (Splunk/Sentinel/etc.) — the system that ingests audit logs for alerting.</p>
+          <h1 class="slide-title">Cost tips</h1>
+          <ul class="slide-list"><li><strong>Default to Auto</strong> — it picks a healthy model and gets a 10% discount on the multiplier.</li><li><strong>Stay on 0× models</strong> for everyday work — GPT-4.1, GPT-4o, GPT-5 mini are included with any paid plan.</li><li><strong>Escalate on failure</strong>, not by default — try a 0× model first; reach for Opus 4.x only when the task genuinely needs it.</li><li><strong>Watch Opus multipliers</strong> — Opus 4.5/4.6 is 3×; Opus 4.6 &quot;fast mode&quot; preview is 30×. Know before you click.</li><li><strong>Cloud Agent is per-session</strong> — long sessions are not proportionally more expensive per prompt; one session = one request × the model rate, plus one per steering comment.</li><li><strong>Use <code>/usage</code></strong> in the CLI to see where your quota is going.</li></ul>
   </div>
-  <aside class="speaker-notes" hidden>The audit log does <strong>not</strong> include client-side prompts — only platform events (policy changes, seat grants, agent PR creates). For prompt-level audit you need the Hooks we covered earlier.</aside>
+  <aside class="speaker-notes" hidden>These tips come out of the old slides 27–28. Keep them in the appendix — they matter, but they&#x27;re not what a beginner coding-first presentation should lead with.</aside>
 </article>
