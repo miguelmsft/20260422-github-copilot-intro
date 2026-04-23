@@ -1,13 +1,30 @@
-<article class="slide" data-number="27" data-type="decision-tree" data-section="Modes">
+<!-- HAND-CRAFTED OVERRIDE — do not regenerate from build-slides.mjs -->
+<article class="slide" data-number="27" data-type="boxes" data-section="Modes">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Which mode should I pick?</h1>
-          <div class="code-block"><code>Need to understand something, no edits?         → Ask
-    Want a plan before code changes?                → Plan → hand off to Agent
-    Multi-file implementation, you&#x27;re watching?     → Agent (Default Approvals)
-    Routine, trusted job, want to walk away?        → Agent + Autopilot
-    Want it done while you work on something else?  → Copilot CLI (local)  OR
-                                                      Cloud agent (on GHA, PR)</code></div>
+    <h1 class="slide-title">Which mode should I pick?</h1>
+    <div class="tool-grid">
+      <div class="tool-card">
+        <div class="tool-card-title">Need to understand something, no edits?</div>
+        <div class="tool-card-footer"><strong>→ Ask</strong></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">Want a plan before code changes?</div>
+        <div class="tool-card-footer"><strong>→ Plan → hand off to Agent</strong></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">Multi-file implementation, you're watching?</div>
+        <div class="tool-card-footer"><strong>→ Agent (Default Approvals)</strong></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">Routine, trusted job, want to walk away?</div>
+        <div class="tool-card-footer"><strong>→ Agent + Autopilot</strong></div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-card-title">Want it done while you work on something else?</div>
+        <div class="tool-card-footer"><strong>→ Copilot CLI</strong> (local) · <strong>Cloud Agent</strong> (on GHA, PR)</div>
+      </div>
+    </div>
   </div>
   <aside class="speaker-notes" hidden>Post this as a cheat sheet. The Plan → Agent handoff is the single best habit to build.</aside>
 </article>
