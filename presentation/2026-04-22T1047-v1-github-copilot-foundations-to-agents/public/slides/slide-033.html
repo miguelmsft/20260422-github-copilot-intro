@@ -1,14 +1,33 @@
 <article class="slide" data-number="33" data-type="decision-tree" data-section="Models">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Which model should I pick?</h1>
-          <div class="code-block"><code>Default?                          ──►  Auto  (picks a healthy model for you)
-    Quick edits / autocomplete feel?  ──►  GPT-4.1, GPT-4o, GPT-5 mini, Haiku 4.5
-    Hard reasoning / agentic work?    ──►  GPT-5.x, Claude Sonnet 4.5/4.6,
-                                           Claude Opus 4.7, Gemini 3.1 Pro
-    Speed above all else?             ──►  Haiku 4.5, Grok Code Fast 1,
-                                           GPT-5.4 nano
-    Multimodal (images, screenshots)? ──►  GPT-4o, Claude Sonnet/Opus, Gemini</code></div>
+    <h1 class="slide-title">Which model should I pick?</h1>
+    <div class="tree-container">
+      <div class="tree-node">
+        <div class="tree-question">Default?</div>
+        <div class="tree-branches">
+          <div class="tree-branch"><span class="tree-branch-label">→</span><span class="tree-branch-text"><strong>Auto</strong> — 10% discount, healthy pick.</span></div>
+        </div>
+      </div>
+      <div class="tree-node">
+        <div class="tree-question">Want to burn zero quota?</div>
+        <div class="tree-branches">
+          <div class="tree-branch"><span class="tree-branch-label">→</span><span class="tree-branch-text"><strong>GPT-5 mini</strong> · <strong>GPT-4.1</strong> · <strong>GPT-4o</strong> <em>(all 0×)</em></span></div>
+        </div>
+      </div>
+      <div class="tree-node">
+        <div class="tree-question">Hard reasoning / agentic?</div>
+        <div class="tree-branches">
+          <div class="tree-branch"><span class="tree-branch-label">→</span><span class="tree-branch-text"><strong>GPT-5.4</strong> · <strong>Claude Sonnet 4.6</strong> · <strong>Opus 4.7</strong> · <strong>Gemini 3.1 Pro</strong> <em>(1× – 7.5×)</em></span></div>
+        </div>
+      </div>
+      <div class="tree-node">
+        <div class="tree-question">Speed &gt; everything else?</div>
+        <div class="tree-branches">
+          <div class="tree-branch"><span class="tree-branch-label">→</span><span class="tree-branch-text"><strong>Haiku 4.5</strong> · <strong>Grok Code Fast 1</strong> · <strong>5.4 nano</strong> <em>(0.25× – 0.33×)</em></span></div>
+        </div>
+      </div>
+    </div>
   </div>
   <aside class="speaker-notes" hidden>&quot;Auto for 80% of the work&quot; is the beginner advice. The reasoning-vs-speed axis is the most useful distinction in day-to-day picking — it maps cleanly to &quot;is this a debugging/architecting task, or a mechanical edit?&quot; Cost considerations are deliberately out of this slide; they live in the Appendix so this decision stays about fit-for-task.</aside>
 </article>

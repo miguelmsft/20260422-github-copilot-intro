@@ -1,21 +1,65 @@
 <article class="slide" data-number="51" data-type="diagram" data-section="MCP">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">Host · Client · Server</h1>
-          <div class="code-block"><code>┌──────────── Host (VS Code / CLI / Cloud Agent) ────────────┐
-    │                                                             │
-    │   ┌─ MCP Client A ─┐  ┌─ MCP Client B ─┐  ┌─ MCP Client C ─┐│
-    │   │ 1 per server;  │  │                 │  │                ││
-    │   │ negotiates     │  │                 │  │                ││
-    └───┤ capabilities   ├──┤                 ├──┤                ├┘
-        │ (JSON-RPC 2.0) │  │                 │  │                │
-        ▼                   ▼                    ▼
-     stdio (local subprocess)  /  Streamable HTTP  (remote)
-        │                   │                    │
-        ▼                   ▼                    ▼
-     Local MCP server   Remote MCP server    GitHub MCP server
-     (Playwright,       (Sentry, Notion,     api.githubcopilot
-      filesystem,…)      Atlassian,…)         .com/mcp/</code></div>
+    <h1 class="slide-title">Host · Client · Server</h1>
+    <div class="layer-stack">
+      <div class="layer-row">
+        <div class="layer-label">Host</div>
+        <div class="layer-host">
+          <div class="layer-host-title">VS Code · CLI · Cloud Agent</div>
+          <div class="layer-cells" style="margin-top:14px;">
+            <div class="layer-cell">
+              <div class="layer-cell-title">MCP Client A</div>
+              <div class="layer-cell-sub">1 per server · negotiates capabilities (JSON-RPC 2.0)</div>
+            </div>
+            <div class="layer-cell">
+              <div class="layer-cell-title">MCP Client B</div>
+              <div class="layer-cell-sub">1 per server · negotiates capabilities</div>
+            </div>
+            <div class="layer-cell">
+              <div class="layer-cell-title">MCP Client C</div>
+              <div class="layer-cell-sub">1 per server · negotiates capabilities</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="layer-conn">▼ ▼ ▼</div>
+      <div class="layer-row">
+        <div class="layer-label">Transport</div>
+        <div class="layer-cells">
+          <div class="layer-cell">
+            <div class="layer-cell-title">stdio</div>
+            <div class="layer-cell-sub">local subprocess</div>
+          </div>
+          <div class="layer-cell">
+            <div class="layer-cell-title">Streamable HTTP</div>
+            <div class="layer-cell-sub">remote</div>
+          </div>
+          <div class="layer-cell">
+            <div class="layer-cell-title">Streamable HTTP</div>
+            <div class="layer-cell-sub">remote (GitHub)</div>
+          </div>
+        </div>
+      </div>
+      <div class="layer-conn">▼ ▼ ▼</div>
+      <div class="layer-row">
+        <div class="layer-label">Server</div>
+        <div class="layer-cells">
+          <div class="layer-cell">
+            <div class="layer-cell-title">Local MCP server</div>
+            <div class="layer-cell-sub">Playwright, filesystem, …</div>
+          </div>
+          <div class="layer-cell">
+            <div class="layer-cell-title">Remote MCP server</div>
+            <div class="layer-cell-sub">Sentry, Notion, Atlassian, …</div>
+          </div>
+          <div class="layer-cell">
+            <div class="layer-cell-title">GitHub MCP server</div>
+            <div class="layer-cell-sub"><code>api.githubcopilot.com/mcp/</code></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <aside class="speaker-notes" hidden>Key: the host has one client per server. Two transports — stdio for local, Streamable HTTP for remote. Capability negotiation happens at <code>initialize</code> time.</aside>
 </article>

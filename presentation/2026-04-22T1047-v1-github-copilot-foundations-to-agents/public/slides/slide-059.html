@@ -2,17 +2,17 @@
   <div class="slide-bg"></div>
   <div class="slide-content">
           <h1 class="slide-title">Anatomy of a skill</h1>
-          <div class="code-block"><code>my-skill/
-    ├── SKILL.md              ← required
-    └── convert-svg-to-png.sh ← optional bundled scripts</code></div>
+          <div class="file-tree"><span class="ft-dir">my-skill/</span>
+├── <span class="ft-file">SKILL.md</span>              <span class="ft-comment">← required</span>
+└── <span class="ft-file">convert-svg-to-png.sh</span> <span class="ft-comment">← optional bundled scripts</span></div>
     <div class="code-block"><code><span class="cmt">---</span>
-    name: github-actions-failure-debugging
-    description: Guide for debugging failing GitHub Actions workflows.
-                 Use this when asked to debug failing GH Actions workflows.
-    <span class="cmt">---</span>
-    To debug a failing workflow:
-    1. Use the `list_workflow_runs` tool to look up recent runs...
-    2. Use the `summarize_job_log_failures` tool to get an AI summary...</code></div>
+name: github-actions-failure-debugging
+description: Guide for debugging failing GitHub Actions workflows.
+             Use this when asked to debug failing GH Actions workflows.
+<span class="cmt">---</span>
+To debug a failing workflow:
+1. Use the `list_workflow_runs` tool to look up recent runs...
+2. Use the `summarize_job_log_failures` tool to get an AI summary...</code></div>
   </div>
   <aside class="speaker-notes" hidden>The <code>description</code> is critical — it&#x27;s what Copilot matches against the user&#x27;s prompt. Always include a &quot;Use this when…&quot; clause.</aside>
 </article>

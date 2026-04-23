@@ -1,25 +1,40 @@
 <article class="slide" data-number="60" data-type="diagram" data-section="Skills">
   <div class="slide-bg"></div>
   <div class="slide-content">
-          <h1 class="slide-title">How Copilot picks a skill</h1>
-          <div class="code-block"><code>Session start
-        │
-        ▼
-    Scan: .github/skills/ · ~/.copilot/skills/ · plugins · COPILOT_SKILLS_DIRS · built-ins
-        │
-        ▼
-    Build catalog of (name, description) pairs   ← only metadata loaded
-        │
-    You prompt: &quot;debug the failing CI on PR #42&quot;
-        │
-        ▼
-    Model matches &quot;github-actions-failure-debugging&quot; description
-        │
-        ▼
-    Built-in `skill` tool injects SKILL.md body into context
-        │
-        ▼
-    Copilot follows the steps (may run bundled scripts)</code></div>
+    <h1 class="slide-title">How Copilot picks a skill</h1>
+    <div class="flow-container">
+      <div class="flow-step">
+        <div class="flow-step-title">Session start</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-title">Scan skill sources</div>
+        <div class="flow-step-desc"><code>.github/skills/</code> · <code>~/.copilot/skills/</code> · plugins · <code>COPILOT_SKILLS_DIRS</code> · built-ins</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-title">Build catalog of (name, description) pairs</div>
+        <div class="flow-step-desc">only metadata loaded</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step flow-highlight">
+        <div class="flow-step-title">You prompt: &quot;debug the failing CI on PR #42&quot;</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-title">Model matches description</div>
+        <div class="flow-step-desc">selects <code>github-actions-failure-debugging</code></div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-title">Built-in <code>skill</code> tool injects SKILL.md body into context</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-title">Copilot follows the steps</div>
+        <div class="flow-step-desc">may run bundled scripts</div>
+      </div>
+    </div>
   </div>
   <aside class="speaker-notes" hidden>Only descriptions load at session start; the body is injected on demand. That&#x27;s how you can have dozens of skills without blowing context.</aside>
 </article>
