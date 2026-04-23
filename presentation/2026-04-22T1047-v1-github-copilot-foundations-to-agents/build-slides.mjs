@@ -346,10 +346,23 @@ ${content.split('\n').filter(l => l.trim()).map(l => '    ' + l).join('\n')}
 
 // Emit
 let written = 0;
+let skipped = 0;
 for (const slide of slides) {
-  const html = buildSlide(slide);
   const padded = String(slide.num).padStart(3, '0');
-  fs.writeFileSync(path.join(OUT_DIR, `slide-${padded}.html`), html, 'utf8');
+  const outPath = path.join(OUT_DIR, `slide-${padded}.html`);
+
+  // Respect hand-crafted overrides
+  if (fs.existsSync(outPath)) {
+    const existing = fs.readFileSync(outPath, 'utf8');
+    if (existing.startsWith('<!-- HAND-CRAFTED OVERRIDE')) {
+      console.log(`Skipping slide ${slide.num} (hand-crafted override)`);
+      skipped++;
+      continue;
+    }
+  }
+
+  const html = buildSlide(slide);
+  fs.writeFileSync(outPath, html, 'utf8');
   written++;
 }
-console.log(`Wrote ${written} slide files to ${OUT_DIR}`);
+console.log(`Wrote ${written} slide files to ${OUT_DIR} (skipped ${skipped} hand-crafted)`);

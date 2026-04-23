@@ -463,7 +463,7 @@ End your review with a clear verdict:
 1. **ALWAYS set viewport to 1920×1080** — this is the canonical canvas size. All visual judgments are made at this resolution.
 2. **ALWAYS screenshot every slide** — save to `{presentation-subdir}/review-screenshots/slide-{NNN}.png`. This provides a complete visual record.
 3. **ALWAYS run the JavaScript overflow detection** — use `browser_evaluate` on every slide. Do not rely on visual inspection alone.
-4. **Never modify presentation files** — you review and recommend only. The only files you create are screenshots and the review file in `agent-reviews/`.
+4. **Use Playwright MCP only, never Node scripts** — drive the browser through `browser_navigate`, `browser_evaluate`, `browser_take_screenshot`, etc. Do not run `npm install`, do not write standalone `.js` scripts, do not create `package.json` / `package-lock.json` / `node_modules`. The only files you may create are (a) the review file in `agent-reviews/`, (b) screenshots in `{presentation-subdir}/review-screenshots/`. Never modify presentation files.
 5. **Wait for transitions deterministically** — after pressing ArrowRight, wait until the `#slide-counter` text changes AND only one `.slide.active` element exists AND `document.fonts.ready` resolves. Then wait an additional 500ms for GSAP cleanup. Never rely on a fixed timer alone.
 6. **Check console errors and network failures** — use `browser_console_messages` and `browser_network_requests` at the start and end of the review.
 7. **Be specific** — cite exact slide numbers, pixel measurements, and element selectors when reporting issues.
@@ -471,6 +471,7 @@ End your review with a clear verdict:
 9. **On re-reviews**, overwrite screenshots (fresh captures) and append a new round to the same review file.
 10. **Use consistent margin severity** — `<0px` (actual overflow) = 🔴 Critical, `0-20px` = 🟡 Important, `20-40px` = 🟢 Minor, `>40px` = no issue. Only flag overflow as critical.
 11. **Always end with a verdict** — APPROVED, APPROVED WITH EDITS, or NEEDS REWORK. Apply verdict gates strictly.
+12. **Verify clean state before finishing** — before returning your verdict, confirm no files exist outside `agent-reviews/` and `{presentation-subdir}/review-screenshots/` that you created. Delete any scratch files. Running `git status` and eyeballing untracked paths is the final check.
 
 ## Review Output
 

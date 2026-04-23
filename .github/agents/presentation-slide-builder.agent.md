@@ -958,6 +958,17 @@ Diagram borders: `rgba(255,255,255,0.25)`. Flow connectors: `rgba(255,255,255,0.
 13. **Honor the image-placeholder contract** — for every slide with `Type: image-placeholder`, extract the declared image filename from the slide's `Sources:` line (or in-body `image:` directive), render an actual `<img src="images/<filename>">`, and fall back to the missing-image placeholder (with a build warning) if the file is not present. Copying PNGs alone is not sufficient — each declared image must be wired into the slide that declared it.
 14. **Render visuals visually, not textually** — for any slide whose intent is a diagram, flow, decision tree, grid of boxes, timeline, stack, or similar conceptual visual, render it as real HTML components (from the Diagram Components library) or inline SVG. NEVER drop ASCII box-drawing characters into `<pre>` and call it done. The only acceptable use of `<pre>` is real source code, terminal output, or literal config snippets. See **Visual-First Rendering** and pitfalls #16–17. If the source file's body is ASCII shorthand, your job is to translate that shorthand into a real visual while preserving the author's labels and semantics.
 
+## Hand-crafted slide protection
+
+Some slides contain hand-crafted HTML visuals (SVG diagrams, styled card grids, timelines, decision trees, etc.) that must NOT be regenerated from markdown. These slides are marked with a `<!-- HAND-CRAFTED OVERRIDE -->` comment on their first line.
+
+**Rules:**
+1. Never overwrite a slide file that starts with `<!-- HAND-CRAFTED OVERRIDE`
+2. When running `build-slides.mjs`, it will automatically skip these slides
+3. If you need to update the TEXT CONTENT of a hand-crafted slide (title, speaker notes, body text), edit the HTML file directly — do not regenerate it from `presentation-content.md`
+4. The visual HTML structure (CSS classes, SVG elements, component layout) must be preserved
+5. Current hand-crafted slides: 4, 7, 10, 11, 13, 19, 20, 32, 33, 41, 44, 51, 59, 60, 71, 82, 95
+
 ## Invocation
 
 When invoked:

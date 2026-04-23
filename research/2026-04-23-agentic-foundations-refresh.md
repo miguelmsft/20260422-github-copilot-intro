@@ -3,17 +3,17 @@
 **Date:** 2026-04-23
 **Researcher:** Copilot Web Researcher Agent
 **Topic slug:** agentic-foundations-refresh
-**Sources consulted:** 12 web pages (Anthropic engineering, Simon Willison weblog — five separate 2025–2026 posts, Hugging Face blog — two posts, Sierra/Anthropic/arXiv papers on τ-bench / τ²-bench, SWE-bench site, Model Context Protocol docs, Claude Code best-practices docs), 0 GitHub repositories (this is a conceptual topic — code examples are embedded via the documentation sources above).
+**Sources consulted:** 14 web pages (Anthropic engineering + MCP announcement, Simon Willison weblog — seven separate 2025–2026 posts including his MCP tag page and OpenAI Agents SDK note, Hugging Face blog — two posts, Sierra/Anthropic/arXiv papers on τ-bench / τ²-bench, SWE-bench site, Model Context Protocol docs, Claude Code best-practices docs), 0 GitHub repositories (this is a conceptual topic — code examples are embedded via the documentation sources above).
 
 ---
 
 ## Executive Summary
 
-The term "AI agent" has finally converged on a working definition in 2025. Simon Willison, who spent two years refusing to use the word without scare quotes, declared in September 2025 that the community has settled on **"an LLM agent runs tools in a loop to achieve a goal"** ([Willison, Sep 18 2025](https://simonwillison.net/2025/Sep/18/agents/)). Anthropic uses almost identical language in its June 2025 engineering post on Claude Research: **"A multi-agent system consists of multiple agents (LLMs autonomously using tools in a loop) working together"** ([Anthropic, Jun 13 2025](https://www.anthropic.com/engineering/built-multi-agent-research-system)). Hugging Face's December 2024/February 2025 agent-framework posts frame it complementarily: agents are **"programs where LLM outputs control the workflow"** ([Hugging Face, Dec 31 2024](https://huggingface.co/blog/smolagents)). For a beginner, this is the mental model to carry forward: give a model a goal, expose some tools, run it in a bounded loop.
+The term "AI agent" has finally converged on a working definition in 2025. Simon Willison, who spent two years refusing to use the word without scare quotes, declared in September 2025 that the community has settled on **"an LLM agent runs tools in a loop to achieve a goal"** ([Willison, Sep 18 2025](https://simonwillison.net/2025/Sep/18/agents/)). Anthropic uses almost identical language in its June 2025 engineering post on Claude Research: **"A multi-agent system consists of multiple agents (LLMs autonomously using tools in a loop) working together"** ([Anthropic, Jun 13 2025](https://www.anthropic.com/engineering/built-multi-agent-research-system)). An earlier pedagogical framing from Hugging Face's smolagents post complements both: agents are "programs where LLM outputs control the workflow" ([Hugging Face, Dec 31 2024](https://huggingface.co/blog/smolagents) — cited here as historical context, since it predates the 2025 convergence). For a beginner, the mental model to carry forward is the 2025 one: give a model a goal, expose some tools, run it in a bounded loop.
 
 The conceptual building blocks carry over from the pre-2025 literature (LLM reasoning, tools, memory, planning, reflection), but 2025–2026 sources have sharpened the *engineering* story around three things. First, **context is the scarcest resource**: agents degrade as their context window fills, so the whole discipline of prompt engineering for agents is really context engineering ([Anthropic Claude Code docs, 2025](https://docs.claude.com/en/docs/claude-code/best-practices); [Willison, Mar 11 2025](https://simonwillison.net/2025/Mar/11/using-llms-for-code/)). Second, **multi-agent orchestrator–worker systems work** but burn 4–15× the tokens of single-agent chats, so they only pay off on high-value, parallelizable tasks ([Anthropic, Jun 13 2025](https://www.anthropic.com/engineering/built-multi-agent-research-system)). Third, **evaluation has caught up with deployment**: SWE-bench Verified (500-instance human-filtered subset) is now the standard coding-agent leaderboard, joined in 2025 by SWE-bench Multilingual, SWE-bench Multimodal, CodeClash, and Sierra's τ²-Bench for conversational dual-control settings ([SWE-bench leaderboards, 2025](https://www.swebench.com/); [Barres et al., Jun 9 2025](https://arxiv.org/abs/2506.07982)).
 
-The practical stance a beginner should adopt is unchanged but now well-evidenced: **use agents only when a deterministic workflow cannot capture the task**. Hugging Face puts it bluntly — "If that deterministic workflow fits all queries, by all means just code everything!... For the sake of simplicity and robustness, it's advised to regularize towards not using any agentic behaviour" ([Hugging Face, Dec 31 2024](https://huggingface.co/blog/smolagents)). When you do go agentic, 2025–2026 best practice emphasizes explicit stopping conditions, verifiable feedback (tests, compilers, screenshots), sandboxed execution, and an explicit awareness that *prompt injection remains an unsolved industry-wide problem* ([Willison on Claude Cowork, Jan 12 2026](https://simonwillison.net/2026/Jan/12/claude-cowork/)). Coding is the flagship domain because code has a built-in oracle — tests either pass or they don't — which is why the November 2025 GPT-5.1 / Claude Opus 4.5 generation has, in Willison's framing, "crossed a threshold" where spinning up a coding agent and asking it to build something now usually works ([Willison, Apr 2 2026](https://simonwillison.net/2026/Apr/2/lennys-podcast/)).
+The practical stance a beginner should adopt is unchanged but now well-evidenced: **use agents only when a deterministic workflow cannot capture the task**. Anthropic's 2025 framing is that agents are right for "open-ended problems where it's very difficult to predict the required steps in advance" and that "a linear, one-shot pipeline cannot handle these tasks" ([Anthropic, Jun 13 2025](https://www.anthropic.com/engineering/built-multi-agent-research-system)); the older Hugging Face smolagents post puts the inverse more bluntly — "If that deterministic workflow fits all queries, by all means just code everything!" ([Hugging Face, Dec 31 2024](https://huggingface.co/blog/smolagents), pedagogical). When you do go agentic, 2025–2026 best practice emphasizes explicit stopping conditions, verifiable feedback (tests, compilers, screenshots), sandboxed execution, and an explicit awareness that *prompt injection remains an unsolved industry-wide problem* ([Willison on Claude Cowork, Jan 12 2026](https://simonwillison.net/2026/Jan/12/claude-cowork/)). Coding is the flagship domain because code has a built-in oracle — tests either pass or they don't — which is why the November 2025 GPT-5.1 / Claude Opus 4.5 generation has, in Willison's framing, "crossed a threshold" where spinning up a coding agent and asking it to build something now usually works ([Willison, Apr 2 2026](https://simonwillison.net/2026/Apr/2/lennys-podcast/)).
 
 ---
 
@@ -45,7 +45,7 @@ Anthropic's own engineering blog uses essentially the same definition when expla
 > "A multi-agent system consists of multiple agents (LLMs autonomously using tools in a loop) working together. Our Research feature involves an agent that plans a research process based on user queries, and then uses tools to create parallel agents that search for information simultaneously."
 > — Source: [How we built our multi-agent research system — Anthropic (Jun 13, 2025)](https://www.anthropic.com/engineering/built-multi-agent-research-system)
 
-Hugging Face's smolagents introduction frames agency as a *spectrum* rather than a binary:
+Hugging Face's smolagents introduction (published late 2024, retained here as historical pedagogical context that predates the 2025 "tools in a loop" convergence) frames agency as a *spectrum* rather than a binary:
 
 > "AI Agents are programs where LLM outputs control the workflow. Any system leveraging LLMs will integrate the LLM outputs into code. The influence of the LLM's input on the code workflow is the level of agency of LLMs in the system. Note that with this definition, 'agent' is not a discrete, 0 or 1 definition: instead, 'agency' evolves on a continuous spectrum, as you give more or less power to the LLM on your workflow."
 > — Source: [Introducing smolagents — Hugging Face (Dec 31, 2024)](https://huggingface.co/blog/smolagents)
@@ -77,7 +77,7 @@ In Willison's April 2026 retrospective (on Lenny Rachitsky's podcast), the pract
 
 ### 2.1 Plain LLM vs chatbot vs agent vs multi-agent
 
-Hugging Face's smolagents post lays out agency as five discrete levels, which is the cleanest beginner-friendly ladder published in 2025:
+The clearest beginner-facing *ladder* of agency is still the one from Hugging Face's late-2024 smolagents post — retained here as pedagogical scaffolding, with the caveat that it predates the 2025 "tools in a loop" convergence:
 
 | Level | Description | Pattern |
 |---|---|---|
@@ -89,28 +89,35 @@ Hugging Face's smolagents post lays out agency as five discrete levels, which is
 
 *— Adapted from [Introducing smolagents — Hugging Face (Dec 31, 2024)](https://huggingface.co/blog/smolagents).*
 
+The 2025 primary sources flatten this ladder: Willison and Anthropic both treat "agent" as specifically the ★★★ multi-step row ("tools in a loop to achieve a goal"), with multi-agent as a separate composition on top ([Willison, Sep 18 2025](https://simonwillison.net/2025/Sep/18/agents/); [Anthropic, Jun 13 2025](https://www.anthropic.com/engineering/built-multi-agent-research-system)). The lower rungs are better called "workflows" or "routers" — a distinction Anthropic's older Dec 2024 "Building effective agents" post was the first to popularize.
+
 ### 2.2 The agentic loop
 
-Hugging Face encodes the loop in pseudocode that makes the pattern concrete:
+The canonical shape of the loop is visible in any agent harness; Hugging Face's smolagents post (Dec 2024, pedagogical) expressed it most compactly in Python:
 
 ```python
-# The canonical "tools in a loop" shape — adapted from the smolagents post.
+# The canonical "tools in a loop" shape — pedagogical pseudocode adapted from the smolagents post.
 memory = [user_defined_task]
 while llm_should_continue(memory):          # loop
     action = llm_get_next_action(memory)    # think → choose tool + args
     observations = execute_action(action)   # act
     memory += [action, observations]        # observe → extend context
 ```
-> — Source: [Introducing smolagents — Hugging Face (Dec 31, 2024)](https://huggingface.co/blog/smolagents) | Provenance: verbatim code block from the post.
+> — Source: [Introducing smolagents — Hugging Face (Dec 31, 2024)](https://huggingface.co/blog/smolagents) | Provenance: verbatim code block from the post, retained here as pedagogical scaffolding.
 
-This is the same shape as the classic Think → Act → Observe framing, just written in Python. Every named pattern below — ReAct, Plan-and-Execute, Reflexion, orchestrator–worker — is a variation on *what* goes inside `llm_get_next_action` and *what* extra structure lives in `memory`.
+This is the same shape as the classic Think → Act → Observe framing; the 2025 primary sources (Anthropic's Jun 13 2025 post, Willison's Sep 18 2025 definition) describe production agents in exactly these terms — a bounded while-loop, a tool surface, and a stopping condition. Every named pattern below — ReAct, Plan-and-Execute, Reflexion, orchestrator–worker — is a variation on *what* goes inside `llm_get_next_action` and *what* extra structure lives in `memory`.
 
 ### 2.3 Tools
 
-Tools are the agent's actuators. In 2025 the ecosystem standardized much of this plumbing via the **Model Context Protocol (MCP)**, an open protocol originally proposed by Anthropic and now supported by Claude, ChatGPT, VS Code, Cursor, and others:
+Tools are the agent's actuators. In 2025 the ecosystem standardized much of this plumbing via the **Model Context Protocol (MCP)**, an open protocol first announced by Anthropic on November 25, 2024 and adopted broadly through 2025:
+
+> "Today, we're open-sourcing the Model Context Protocol (MCP), a new standard for connecting AI assistants to the systems where data lives, including content repositories, business tools, and development environments. … Early adopters like Block and Apollo have integrated MCP into their systems, while development tools companies including Zed, Replit, Codeium, and Sourcegraph are working with MCP to enhance their platforms."
+> — Source: [Introducing the Model Context Protocol — Anthropic (Nov 25, 2024)](https://www.anthropic.com/news/model-context-protocol)
 
 > "MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external systems. Using MCP, AI applications like Claude or ChatGPT can connect to data sources (e.g. local files, databases), tools (e.g. search engines, calculators) and workflows (e.g. specialized prompts)—enabling them to access key information and perform tasks. Think of MCP like a USB-C port for AI applications."
 > — Source: [What is the Model Context Protocol (MCP)? — modelcontextprotocol.io (accessed Apr 2026)](https://modelcontextprotocol.io/introduction)
+
+By late 2025 MCP had moved from vendor protocol to shared industry standard. In December 2025, Anthropic donated MCP to a newly formed Linux Foundation project (the "Agentic AI Foundation"), whose founding platinum members include AWS, Anthropic, Block, Bloomberg, Cloudflare, Google, Microsoft, and OpenAI ([Willison, *model-context-protocol* tag, entry dated Dec 9, 2025](https://simonwillison.net/tags/model-context-protocol/)).
 
 Tool *design* is now recognized as first-class work. Anthropic reports using a dedicated tool-testing agent to iterate descriptions:
 
@@ -161,7 +168,7 @@ Willison makes the same point from the practitioner side:
 
 ### Installation & Setup (minimal reproducer)
 
-The smallest viable agent in the 2025 ecosystem is Hugging Face's smolagents — the entire Phase-1 "hello world" is four lines:
+One of the smallest viable "hello world" agents in the current ecosystem is Hugging Face's smolagents (released Dec 2024; retained here as a pedagogical minimal example — newer 2025 alternatives are listed in §7). The entire first program is four lines:
 
 ```python
 # Source: https://huggingface.co/blog/smolagents
@@ -187,8 +194,9 @@ export HF_TOKEN=...        # for HfApiModel
 # 3. Run the Python script above
 python my_first_agent.py
 ```
+> — Source: [Introducing smolagents — Hugging Face (Dec 31, 2024)](https://huggingface.co/blog/smolagents) | Provenance: synthesized (standard `pip install` + env-var pattern; smolagents package name and `HfApiModel` backend per the post).
 
-The point of starting this small is to watch the loop unfold. A beginner's first useful exercise is to log every `(thought, action, observation)` triple and read the transcript — it makes the "tools in a loop" definition concrete in about ten minutes.
+The point of starting this small is to watch the loop unfold. A beginner's first useful exercise is to log every `(thought, action, observation)` triple and read the transcript — it makes the "tools in a loop" definition concrete in about ten minutes. For a more production-oriented starting point in 2025, see the OpenAI Agents SDK (`openai-agents`, March 2025; [Willison, Mar 11 2025](https://simonwillison.net/2025/Mar/11/openai-agents-sdk/)), LangGraph, or PydanticAI.
 
 ---
 
@@ -226,10 +234,12 @@ Anthropic further notes that *coding* — the domain this report pays attention 
 
 ### 4.3 When to use an agent — and when to just write code
 
-Hugging Face's decision rule is the most quotable beginner guide published in the last 18 months:
+The cleanest pedagogical statement of the decision rule remains Hugging Face's late-2024 smolagents post (retained here as historical context — the 2025 primary sources below give converging but less quotable guidance):
 
 > "Agents are useful when you need an LLM to determine the workflow of an app. But they're often overkill. The question is: do I really need flexibility in the workflow to efficiently solve the task at hand? If the pre-determined workflow falls short too often, that means you need more flexibility. … If that deterministic workflow fits all queries, by all means just code everything! This will give you a 100% reliable system with no risk of error introduced by letting unpredictable LLMs meddle in your workflow. For the sake of simplicity and robustness, it's advised to regularize towards not using any agentic behaviour."
-> — Source: [Introducing smolagents — Hugging Face (Dec 31, 2024)](https://huggingface.co/blog/smolagents)
+> — Source: [Introducing smolagents — Hugging Face (Dec 31, 2024)](https://huggingface.co/blog/smolagents) (pedagogical)
+
+The 2025 primary sources point the same direction. Anthropic reserves agents for cases where you "can't hardcode a fixed path" ([Jun 13 2025](https://www.anthropic.com/engineering/built-multi-agent-research-system)); Willison treats the defining feature of an agent as tools-in-a-loop with a stopping condition, meaning if you can write the fixed path, you don't need the loop ([Sep 18 2025](https://simonwillison.net/2025/Sep/18/agents/)).
 
 A practical rule-of-thumb synthesis from the 2025 sources:
 
@@ -323,7 +333,7 @@ Quoted directly:
 > "On GAIA's public leaderboard, GPT-4 does not even reach 7% on the validation set when used without any agentic setup. On the other side of the spectrum, with Deep Research, OpenAI reached 67.36% score on the validation set, so an order of magnitude better!"
 > — Source: [Open-source DeepResearch — Hugging Face (Feb 4, 2025)](https://huggingface.co/blog/open-deep-research)
 
-The qualitative takeaway across all of these: agent scaffolding contributes *as much or more* than raw model capability — Hugging Face measured "up to 60 points" improvement from dropping the same LLM into a smolagents harness versus calling it directly.
+The qualitative takeaway across all of these: agent scaffolding contributes *as much or more* than raw model capability. Hugging Face's Open Deep Research post reports that dropping the same LLM into a smolagents harness versus calling it directly can bump performance "by up to 60 points" on their comparison benchmark ([Hugging Face, Feb 4 2025](https://huggingface.co/blog/open-deep-research)).
 
 ### 6.3 Coding agent framing (applies to GitHub Copilot, Claude Code, Cursor, Aider, etc.)
 
@@ -352,11 +362,11 @@ All the building blocks from §2 appear in a coding agent concretely:
 
 The 2025–2026 open-source and commercial landscape that a beginner will encounter:
 
-- **Agent harnesses / frameworks** — smolagents (Hugging Face), LangGraph (LangChain), OpenAI Agents SDK (`openai-agents` / `@openai/agents`, launched March 2025), PydanticAI, Microsoft AutoGen, CrewAI, Mastra. All implement variants of the loop from §2.2.
-- **Coding agents** — GitHub Copilot (agent mode), Claude Code / Claude Cowork, Cursor, Aider, Devin, Codeium/Windsurf, SWE-agent (open-source, academic baseline).
-- **Research / web agents** — OpenAI Deep Research (launched Feb 2025), Anthropic Claude Research (described in the Jun 13 2025 post), Hugging Face Open Deep Research (OSS), Perplexity's research modes.
-- **Protocols** — **Model Context Protocol (MCP)** is the clear winner for tool interoperability in 2025, with support from Claude, ChatGPT, VS Code, Cursor, MCPJam and a growing registry of servers ([MCP docs](https://modelcontextprotocol.io/introduction)).
-- **Computer-use / browser agents** — Anthropic Computer Use (late 2024), OpenAI Operator / ChatGPT agent (launched July 2025 per Willison's Sep 18 2025 post).
+- **Agent harnesses / frameworks** — smolagents (Hugging Face, Dec 2024), LangGraph (LangChain), **OpenAI Agents SDK** (`openai-agents` Python + `@openai/agents` JS, launched March 2025 as a replacement for OpenAI's earlier Swarm project; introduces a "handoffs" concept where one agent can delegate execution to another — see [Willison, Mar 11 2025](https://simonwillison.net/2025/Mar/11/openai-agents-sdk/) and [Willison, Sep 18 2025](https://simonwillison.net/2025/Sep/18/agents/)), PydanticAI, Microsoft AutoGen, CrewAI, Mastra. All implement variants of the loop from §2.2.
+- **Coding agents** — GitHub Copilot (agent mode), Claude Code / Claude Cowork (the latter launched Jan 12 2026 as "Claude Code for the rest of your work"; [Willison, Jan 12 2026](https://simonwillison.net/2026/Jan/12/claude-cowork/)), Cursor, Aider, Devin, Codeium/Windsurf, SWE-agent (open-source, academic baseline).
+- **Research / web agents** — OpenAI Deep Research (launched Feb 2025; see [Hugging Face's coverage and open-source reproduction, Feb 4 2025](https://huggingface.co/blog/open-deep-research)), Anthropic Claude Research (described in the Jun 13 2025 engineering post), Hugging Face Open Deep Research (OSS), Perplexity's research modes.
+- **Browser / "computer use" agents** — OpenAI's ChatGPT Agent, launched July 2025 as "a browser automation system—toggle that option on in ChatGPT and it can launch a real web browser and use it to interact with web pages directly" ([Willison, Sep 18 2025](https://simonwillison.net/2025/Sep/18/agents/)). Anthropic first shipped Computer Use in late 2024; by Jan 2026 the Cowork release was running agent sessions inside sandboxed VMs ([Willison, Jan 12 2026](https://simonwillison.net/2026/Jan/12/claude-cowork/)).
+- **Protocols** — **Model Context Protocol (MCP)** is the clear winner for tool interoperability in 2025. Announced by Anthropic on Nov 25, 2024 ([Anthropic MCP announcement](https://www.anthropic.com/news/model-context-protocol)), adopted across Claude, ChatGPT, VS Code, Cursor, Zed, Replit, Codeium, and Sourcegraph during 2025, and donated in Dec 2025 to a new Linux-Foundation project backed by AWS, Anthropic, Block, Bloomberg, Cloudflare, Google, Microsoft, and OpenAI ([Willison, *model-context-protocol* tag, Dec 9 2025](https://simonwillison.net/tags/model-context-protocol/)).
 
 When to pick what, roughly:
 
@@ -386,31 +396,37 @@ When to pick what, roughly:
 
 Dates listed are publication or explicit "last updated" dates where visible on the source page; "accessed" means the page is living documentation without a single visible publication date.
 
-### Anthropic (primary, 2025+)
+### Anthropic (primary, 2024+)
 
 - [How we built our multi-agent research system](https://www.anthropic.com/engineering/built-multi-agent-research-system) — **Published Jun 13, 2025.** Anthropic engineering blog. Orchestrator–worker architecture, token economics (4×/15× token multipliers), tool-description engineering, eval advice.
 - [Best Practices for Claude Code](https://docs.claude.com/en/docs/claude-code/best-practices) — **Accessed Apr 2026** (living docs). Explore → Plan → Implement → Commit workflow, context-window management, verification-first prompting.
+- [Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol) — **Published Nov 25, 2024.** Original MCP announcement listing Block, Apollo, Zed, Replit, Codeium, and Sourcegraph as early adopters.
 
 ### Simon Willison's Weblog (practitioner synthesis, 2025–2026)
 
-- [I think "agent" may finally have a widely enough agreed upon definition to be useful jargon now](https://simonwillison.net/2025/Sep/18/agents/) — **Sep 18, 2025.** Canonical 2025 "tools in a loop to achieve a goal" definition.
-- [Anthropic: How we built our multi-agent research system](https://simonwillison.net/2025/Jun/14/multi-agent-research-system/) — **Jun 14, 2025.** Analytical summary of the Anthropic post with long verbatim quotes.
+- [I think "agent" may finally have a widely enough agreed upon definition to be useful jargon now](https://simonwillison.net/2025/Sep/18/agents/) — **Sep 18, 2025.** Canonical 2025 "tools in a loop to achieve a goal" definition; also covers ChatGPT Agent (July 2025) and Agents SDK.
 - [Here's how I use LLMs to help me write code](https://simonwillison.net/2025/Mar/11/using-llms-for-code/) — **Mar 11, 2025.** "Context is king"; mental model of LLMs as over-confident pair programmers.
+- [OpenAI Agents SDK](https://simonwillison.net/2025/Mar/11/openai-agents-sdk/) — **Mar 11, 2025.** Link-blog entry covering the launch of the `openai-agents` Python SDK and the "handoffs" concept.
+- [Simon Willison — *model-context-protocol* tag page](https://simonwillison.net/tags/model-context-protocol/) — **Accessed Apr 2026; cited entry dated Dec 9, 2025.** Covers Anthropic's donation of MCP to the new Linux-Foundation "Agentic AI Foundation" and the list of founding platinum members.
 - [First impressions of Claude Cowork, Anthropic's general agent](https://simonwillison.net/2026/Jan/12/claude-cowork/) — **Jan 12, 2026.** Includes Anthropic's own quoted guidance on prompt-injection risk and sandboxing via Apple Virtualization Framework.
 - [Highlights from my conversation about agentic engineering on Lenny's Podcast](https://simonwillison.net/2026/Apr/2/lennys-podcast/) — **Apr 2, 2026.** "November 2025 inflection point"; code as a bellwether domain because correctness is checkable.
 
 ### Hugging Face (2024-late / 2025, agent frameworks)
 
-- [Introducing smolagents, a simple library to build agents](https://huggingface.co/blog/smolagents) — **Dec 31, 2024.** Agency-as-a-spectrum table, minimal loop pseudocode, decision rule for when *not* to use agents. (Published at the 2024/2025 boundary; included as the clearest pedagogical 2024→2025 source.)
-- [Open-source DeepResearch — Freeing our search agents](https://huggingface.co/blog/open-deep-research) — **Feb 4, 2025.** CodeAgent pattern, GAIA benchmark, ~60-point lift from agent scaffolding.
+- [Introducing smolagents, a simple library to build agents](https://huggingface.co/blog/smolagents) — **Dec 31, 2024.** Agency-as-a-spectrum table, minimal loop pseudocode, decision rule for when *not* to use agents. (Published at the 2024/2025 boundary; retained as pedagogical scaffolding — demoted in this round from primary source to historical framing.)
+- [Open-source DeepResearch — Freeing our search agents](https://huggingface.co/blog/open-deep-research) — **Feb 4, 2025.** CodeAgent pattern, GAIA benchmark, "up to 60 points" lift from agent scaffolding.
 
 ### Benchmarks / academic (2024–2025)
 
 - [SWE-bench Leaderboards](https://www.swebench.com/) — **Accessed Apr 2026** (news feed dated through Nov 2025). Verified / Multilingual / Multimodal / Lite variants; 2025 news: SWE-agent 1.0 (Mar), SWE-smith (May), mini-SWE-agent (Jul), CodeClash (Nov).
 - [τ²-Bench: Evaluating Conversational Agents in a Dual-Control Environment — arXiv:2506.07982](https://arxiv.org/abs/2506.07982) — **Submitted Jun 9, 2025.** Barres, Dong, Ray, Si, Narasimhan (Sierra).
-- [τ-Bench: Benchmarking AI agents for the real-world — Sierra blog](https://sierra.ai/blog/benchmarking-ai-agents) — **Jun 20, 2024** (predecessor of τ²-Bench; included for lineage).
-- [τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains — arXiv:2406.12045](https://arxiv.org/abs/2406.12045) — **Submitted Jun 17, 2024** (predecessor paper; included for lineage).
 
 ### Protocols
 
 - [What is the Model Context Protocol (MCP)?](https://modelcontextprotocol.io/introduction) — **Accessed Apr 2026** (living docs; protocol first proposed by Anthropic in late 2024, mainstream adoption through 2025). Open standard for connecting AI applications to external data sources, tools, and workflows.
+
+### Consulted but not cited in body (lineage / background)
+
+- [Anthropic: How we built our multi-agent research system (Simon Willison)](https://simonwillison.net/2025/Jun/14/multi-agent-research-system/) — **Jun 14, 2025.** Willison's analytical summary of the Anthropic post; consulted to confirm quote provenance but not separately cited in body.
+- [τ-Bench: Benchmarking AI agents for the real-world — Sierra blog](https://sierra.ai/blog/benchmarking-ai-agents) — **Jun 20, 2024.** Predecessor of τ²-Bench; consulted for historical lineage.
+- [τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains — arXiv:2406.12045](https://arxiv.org/abs/2406.12045) — **Submitted Jun 17, 2024.** Original τ-bench paper; consulted for historical lineage.
