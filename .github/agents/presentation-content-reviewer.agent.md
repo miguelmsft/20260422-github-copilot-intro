@@ -35,7 +35,7 @@ Before evaluating, read and understand:
    - `source_files` — the list of research files used
    - `version` — whether this is a first draft or a revision
 3. **All research files** — every `.md` file listed in `source_files` from the frontmatter. Then **cross-check against the filesystem**: use `glob` to list every `.md` file in `research/`.
-   - If an **allowlist** was declared for this content (typically passed by the orchestrator and surfaced in the frontmatter or a top-of-file comment), scope the cross-check to that allowlist. Files in the allowlist but missing from `source_files` are 🟡 Important ("Silent research omission"). Files on disk but outside the allowlist are **not** flagged unless they are referenced anywhere in the content.
+   - If `research_allowlist.mode` is `selected` in the frontmatter, scope the cross-check to that allowlist. Files in the allowlist but missing from `source_files` are 🟡 Important ("Silent research omission"). Files on disk but outside the allowlist are **not** flagged unless they are referenced anywhere in the content.
    - If no allowlist is declared, flag any file present on disk but absent from `source_files` as 🟡 Important.
    - Files in `source_files` that do not exist on disk are always 🔴 Critical ("Broken source reference"). Read the missing files anyway if they exist — you need full source coverage for fidelity and completeness checks.
 4. **Prior review** (for re-reviews) — if this is version > 1, read your prior review file to verify fixes

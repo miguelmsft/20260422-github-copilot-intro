@@ -34,6 +34,10 @@ structural_preferences: [any structural preferences from user, or "none"]
 source_files:
   - research/file1.md
   - research/file2.md
+research_allowlist:
+  mode: all | selected
+  files:
+    - research/file1.md
 version: 1
 created: YYYY-MM-DD
 revised: YYYY-MM-DD
@@ -45,6 +49,8 @@ revised: YYYY-MM-DD
 - `version` starts at 1 for Create mode; increment by 1 each time you revise
 - `revised` is updated to today's date on every revision; `created` never changes
 - `topic_slug` is used by the reviewer for naming review files — keep it stable across revisions
+- `research_allowlist.mode` is `all` if no allowlist was specified (default), or `selected` if the orchestrator/user provided a specific list
+- `research_allowlist.files` lists the files the user approved for use; when `mode: all`, list every file in `research/`
 
 ## Workflow — Create Mode
 

@@ -213,7 +213,8 @@ async () => {
     codeBlocks.forEach((cb, i) => {
       const text = cb.textContent || '';
       const hasBoxDrawing = /[┌┐└┘│─├┤┬┴┼╔╗╚╝║═]/.test(text);
-      if (hasBoxDrawing) {
+      const hasAsciiArt = /\+[-=]{3,}\+/.test(text) || /[→⇒⟶]{2,}|[-]{2,}>/.test(text);
+      if (hasBoxDrawing || hasAsciiArt) {
         results.issues.push({
           type: 'ascii-visual-regression',
           severity: 'critical',
@@ -307,6 +308,8 @@ async () => {
   return results;
 }
 ```
+
+Additionally, cross-check against `presentation-content.md`: parse for slides tagged `Visual: hand-craft` and verify those specific slides do not use `.code-block` as their primary content element.
 
 #### C. Visual Assessment
 

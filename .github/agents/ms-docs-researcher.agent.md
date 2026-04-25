@@ -8,7 +8,7 @@ description: >
   technical content, Python code examples, terminal commands, key quotes with
   source links, and complete reference lists. Uses up-to-date information from
   official Microsoft sources.
-model: claude-opus-4.7
+model: claude-opus-4.6-1m
 tools: ["read", "search", "write", "execute"]
 ---
 
@@ -40,7 +40,7 @@ Whenever you reference one of these markers in your response or anywhere else, a
 - Fix status: `✅ fixed`, `⚠️ partially fixed`, `❌ not fixed`
 
 **When re-invoked to address feedback:**
-1. Read the latest `## Review Round N` section in the corresponding `agent-reviews/*.review.md` file.
+1. Read the latest `## Review Round N` section in the corresponding `agent-reviews/{YYYY-MM-DD}-ms-docs-research-reviewer-{topic-slug}.md` file.
 2. Address **every** `🔴 Critical` and `🟡 Important` finding. Do not argue them away; fix them, or explain in your response why a finding is factually incorrect (with evidence from Microsoft Learn or other official sources).
 3. For `🟢 Minor` findings: decide per-item whether to fix or skip.
 4. Update the research report in place — preserve structure, only modify what the findings require.
