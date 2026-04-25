@@ -8,7 +8,7 @@ description: >
   provenance, demo placeholders, and rich content types (diagrams, decision
   trees, concept boxes, code examples). Topic-agnostic — works with any
   research content.
-model: claude-opus-4.7
+model: claude-opus-4.6-1m
 tools: ["read", "write", "execute"]
 ---
 
@@ -176,6 +176,16 @@ Use these type labels in the slide metadata comment. Choose the type that best c
 | `transition` | Bridge between sections | Brief connecting statement to the next topic |
 | `recap` | Summary of a section | Key takeaways from the section just covered |
 | `image-placeholder` | Where an image/screenshot would go | Description of what image to include, with alt text. If the image is a file that lives in the project's `presentation-images/` directory (the convention used by `presentation-slide-builder`), declare the target filename with an `image:` line in the slide body (e.g., `image: 01-architecture-diagram.png`) AND add `image: presentation-images/01-architecture-diagram.png` to the slide's `Sources:` line. If the image does not yet exist, the filename serves as a contract for the illustration creator. |
+
+### Visual Slide Tagging
+
+When a slide's body contains a conceptual visual (ASCII diagram, decision tree, timeline, box grid, flow, spectrum, architecture), add `Visual: hand-craft` to the slide comment:
+
+```
+<!-- Slide 11 | Section: Foundations | Type: decision-tree | Visual: hand-craft -->
+```
+
+Your ASCII art is a **wireframe** — a sketch of the intended visual. The slide builder translates it into styled HTML components (`.tool-grid`, `.tree-container`, `.spectrum-container`, SVG, etc.). Write clear labels and logical structure; the ASCII doesn't need to be pretty.
 
 ## Content Guidelines
 

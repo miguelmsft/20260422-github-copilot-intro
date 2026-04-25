@@ -1,4 +1,7 @@
 // Slide generator — reads ../../presentation-content.md, emits public/slides/slide-NNN.html
+// LEGACY — this script is not used by the slide-builder agent workflow.
+// The agent generates slides directly. This script exists only as a
+// manual fallback for non-visual slides. It skips HAND-CRAFTED files.
 // Usage: node build-slides.mjs
 import fs from 'node:fs';
 import path from 'node:path';
@@ -22,12 +25,12 @@ function stripFrontmatter(src) {
 const body = stripFrontmatter(md);
 
 // Split on slide boundaries. Each slide begins with `<!-- Slide N | Section: S | Type: T -->`
-const SLIDE_RE = /<!--\s*Slide\s+(\d+)\s*\|\s*Section:\s*([^|]+?)\s*\|\s*Type:\s*([^\s]+)\s*-->/g;
+const SLIDE_RE = /<!--\s*Slide\s+(\d+)\s*\|\s*Section:\s*([^|]+?)\s*\|\s*Type:\s*(\S+)(?:\s*\|[^>]*)?\s*-->/g;
 const slides = [];
 let m;
 const matches = [];
 while ((m = SLIDE_RE.exec(body)) !== null) {
-  matches.push({ num: parseInt(m[1], 10), section: m[2].trim(), type: m[3].trim(), start: m.index, hdrEnd: m.index + m[0].length });
+  matches.push({ num: parseInt(m[1], 10), section: m[2].trim(), type: m[3].trim(), start: m.index, hdrEnd: m.index + m[0].length, visual: m[0].includes('Visual:') });
 }
 for (let i = 0; i < matches.length; i++) {
   const cur = matches[i];
@@ -35,7 +38,7 @@ for (let i = 0; i < matches.length; i++) {
   const chunk = body.slice(cur.hdrEnd, end);
   // Strip trailing --- separator
   const clean = chunk.replace(/\n---\s*$/, '').trim();
-  slides.push({ num: cur.num, section: cur.section, type: cur.type, raw: clean });
+  slides.push({ num: cur.num, section: cur.section, type: cur.type, raw: clean, visual: cur.visual });
 }
 
 console.log(`Parsed ${slides.length} slides`);
@@ -359,6 +362,14 @@ for (const slide of slides) {
       skipped++;
       continue;
     }
+  }
+
+  // Skip visual slides — these require the slide-builder agent
+  const hasBoxDrawing = /[┌┐└┘│─├┤┬┴┼╔╗╚╝║═]/.test(slide.raw);
+  if (slide.visual || hasBoxDrawing) {
+    console.log(`Skipping slide ${slide.num} (visual — requires slide-builder agent)`);
+    skipped++;
+    continue;
   }
 
   const html = buildSlide(slide);

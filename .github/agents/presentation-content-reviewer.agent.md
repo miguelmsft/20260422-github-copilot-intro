@@ -144,6 +144,10 @@ Evaluate the mix of slide types:
 - Are diagram descriptions **clear enough** to be translated into actual visuals later?
 - Is there at least **one visual/structured slide per section**?
 
+##### Visual Slide Tagging
+
+For each slide whose body contains ASCII diagrams, box-drawing characters, decision trees, or conceptual grids: verify it has `Visual: hand-craft` in its slide comment metadata. Flag any untagged visual slide as 🟡 Important — without this tag, the slide builder may render it as a plain code block instead of a styled HTML component.
+
 ##### 9. Storytelling Arc
 
 Evaluate the narrative structure:
@@ -181,7 +185,7 @@ Use these markers consistently:
 
 End your review with a clear verdict:
 - **APPROVED** — Presentation content is accurate, well-structured, and ready to be turned into a slide deck.
-- **APPROVED WITH EDITS** — Content is substantially sound but has specific items that should be corrected. List the required edits.
+- ⚠️ **APPROVED WITH EDITS** — Minor issues remain. Triggers another revision round. Use when the content is close but not ready to proceed as-is. List the required edits.
 - **NEEDS REWORK** — Content has critical issues that undermine its effectiveness. List the blockers and suggest structural changes.
 
 **Verdict gates — these are hard rules:**

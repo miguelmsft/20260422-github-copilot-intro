@@ -38,8 +38,8 @@ All reviewers emit one of three verdicts:
 
 | Verdict | Meaning | Loop action |
 |---|---|---|
-| ✅ **APPROVED** | Success. Output is ready to move to the next phase. | Exit loop, mark pair done. |
-| ⚠️ **APPROVED WITH EDITS** | Success with minor remaining issues. Can proceed. | Exit loop, but record the remaining items in the pair's `Notes` column in `presentation-status.md` and surface them at the next user gate. |
+| ✅ **APPROVED** | Output is ready to move to the next phase. No issues remain. | Exit loop, mark pair done. |
+| ⚠️ **APPROVED WITH EDITS** | Minor issues remain that must be resolved before proceeding. | Trigger another round (up to the cap of 3). |
 | 🔴 **NEEDS REWORK** | Substantive issues block progression. | Trigger another round (up to the cap of 3). |
 
 If a reviewer emits a verdict outside this vocabulary, treat it as **NEEDS REWORK** and log the anomaly in the Revision log.
@@ -85,10 +85,11 @@ After `presentation-slide-reviewer` returns APPROVED (or paused at round 3):
 
 ```
 Round 1: delegate to creator → delegate to reviewer
-  If the normalized verdict is ✅ Success or ⚠️ Minor issues (see **Verdict normalization**): exit loop, mark done.
-  Else: continue.
+  If verdict is ✅ APPROVED: exit loop, mark done.
+  If verdict is ⚠️ APPROVED WITH EDITS or 🔴 NEEDS REWORK: continue to next round.
 Round 2: delegate to creator in "Revise" mode with reviewer's report → delegate to reviewer
-  Same exit logic.
+  If verdict is ✅ APPROVED: exit loop, mark done.
+  If verdict is ⚠️ APPROVED WITH EDITS or 🔴 NEEDS REWORK: continue to next round.
 Round 3: repeat once more.
   If still not approved after round 3 → PAUSE. Hand back to user with:
     - Path to the creator's latest output

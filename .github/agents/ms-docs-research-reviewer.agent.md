@@ -194,7 +194,7 @@ Append `(must-fix)` or `(nice-to-have)` to each finding when you list it so the 
 
 End your review with a clear verdict based on **must-fix** findings only:
 - **APPROVED** — All must-fix findings are resolved. Any remaining `🟢 Minor` items are acceptable to skip. Report is accurate, well-sourced from official Microsoft documentation, and ready for use.
-- **APPROVED WITH EDITS** — Must-fix findings still exist, but the report is substantially sound. List the required edits.
+- ⚠️ **APPROVED WITH EDITS** — Minor issues remain. Triggers another revision round. Use when the report is close but not ready to proceed as-is. List the required edits.
 - **NEEDS REWORK** — Critical accuracy or sourcing problems undermine trustworthiness (e.g., fabricated Learn URLs, wrong Azure CLI commands, systemic misattribution). List the blockers.
 
 **Do NOT withhold `APPROVED` because of remaining `🟢 Minor` items.** If all `🔴 Critical` and `🟡 Important` findings are resolved, issue `APPROVED`, even if some nice-to-haves are still open.

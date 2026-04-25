@@ -6,7 +6,7 @@ description: >
   animations, 4 switchable themes (GitHub Cosmos dark default, Warm, Corporate,
   Cyberpunk), admin panel for hiding slides / toggling notes / switching themes,
   and keyboard navigation. Serves on localhost.
-model: claude-opus-4.7
+model: claude-opus-4.6-1m
 tools: ["read", "write", "execute"]
 ---
 
@@ -59,6 +59,18 @@ When the source `presentation-content.md` contains a conceptual visual — indic
 - ✅ Literal config file snippets
 
 When in doubt, ask: "If I printed this slide and handed it to someone who's never seen the source markdown, would they see a polished diagram or a wall of text characters?" If the answer is the latter, rebuild it as a real visual.
+
+## Direct Rendering — No Intermediate Scripts
+
+Generate each `slide-NNN.html` directly from `presentation-content.md` using your visual-first rendering logic. Do NOT create or use a `build-slides.mjs` or similar batch regeneration script. You are the authoritative slide generator.
+
+## Hand-Crafted Override Protocol
+
+1. When rendering a slide tagged `Visual: hand-craft` (or matching any visual signal — ASCII box-drawing, arrows, grids, trees), render it using the Diagram Components library or inline SVG.
+2. Add `<!-- HAND-CRAFTED OVERRIDE — do not regenerate -->` as the **first line** of every visual slide file.
+3. **Revise mode:** Before writing any slide file, check if it exists and starts with `HAND-CRAFTED OVERRIDE`. If yes:
+   - **Default:** Make surgical text-only edits (title, speaker notes, body labels) — never regenerate the HTML structure.
+   - **Exception:** If the user explicitly requests a visual/structural change to a specific hand-crafted slide (e.g., "redesign slide 11's decision tree"), you may modify the HTML structure for that slide only. Preserve the `HAND-CRAFTED OVERRIDE` marker and re-render using Diagram Components or inline SVG — never downgrade to ASCII.
 
 ## Tech Stack
 
@@ -957,17 +969,6 @@ Diagram borders: `rgba(255,255,255,0.25)`. Flow connectors: `rgba(255,255,255,0.
 12. **Create `plan.md`** in the presentation directory before building
 13. **Honor the image-placeholder contract** — for every slide with `Type: image-placeholder`, extract the declared image filename from the slide's `Sources:` line (or in-body `image:` directive), render an actual `<img src="images/<filename>">`, and fall back to the missing-image placeholder (with a build warning) if the file is not present. Copying PNGs alone is not sufficient — each declared image must be wired into the slide that declared it.
 14. **Render visuals visually, not textually** — for any slide whose intent is a diagram, flow, decision tree, grid of boxes, timeline, stack, or similar conceptual visual, render it as real HTML components (from the Diagram Components library) or inline SVG. NEVER drop ASCII box-drawing characters into `<pre>` and call it done. The only acceptable use of `<pre>` is real source code, terminal output, or literal config snippets. See **Visual-First Rendering** and pitfalls #16–17. If the source file's body is ASCII shorthand, your job is to translate that shorthand into a real visual while preserving the author's labels and semantics.
-
-## Hand-crafted slide protection
-
-Some slides contain hand-crafted HTML visuals (SVG diagrams, styled card grids, timelines, decision trees, etc.) that must NOT be regenerated from markdown. These slides are marked with a `<!-- HAND-CRAFTED OVERRIDE -->` comment on their first line.
-
-**Rules:**
-1. Never overwrite a slide file that starts with `<!-- HAND-CRAFTED OVERRIDE`
-2. When running `build-slides.mjs`, it will automatically skip these slides
-3. If you need to update the TEXT CONTENT of a hand-crafted slide (title, speaker notes, body text), edit the HTML file directly — do not regenerate it from `presentation-content.md`
-4. The visual HTML structure (CSS classes, SVG elements, component layout) must be preserved
-5. Current hand-crafted slides: 4, 7, 10, 11, 13, 19, 20, 32, 33, 41, 44, 51, 59, 60, 71, 82, 95
 
 ## Invocation
 
