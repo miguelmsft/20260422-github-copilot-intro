@@ -322,6 +322,48 @@ Based on the screenshot, also check:
 
 If the programmatic checks found issues, take an **accessibility snapshot** (`browser_snapshot`) to investigate the DOM structure for additional context.
 
+#### Speaker Notes Overlay Check
+
+When speaker notes are toggled visible, verify the overlay does not obstruct bottom-corner controls:
+
+```javascript
+// Toggle notes visible
+const notesBtn = document.querySelector('#notes-toggle');
+if (notesBtn) {
+  notesBtn.click();
+  await new Promise(r => setTimeout(r, 300));
+  const overlay = document.querySelector('.speaker-notes-overlay.visible');
+  if (overlay) {
+    const overlayRect = overlay.getBoundingClientRect();
+    const counter = document.querySelector('#slide-counter');
+    const toggle = document.querySelector('#notes-toggle');
+    if (counter) {
+      const counterRect = counter.getBoundingClientRect();
+      if (overlayRect.bottom > counterRect.top && overlayRect.left < counterRect.right) {
+        results.issues.push({
+          type: 'notes-obscures-counter',
+          severity: 'important',
+          detail: 'Speaker notes overlay covers the slide counter'
+        });
+      }
+    }
+    if (toggle) {
+      const toggleRect = toggle.getBoundingClientRect();
+      if (overlayRect.bottom > toggleRect.top && overlayRect.right > toggleRect.left) {
+        results.issues.push({
+          type: 'notes-obscures-toggle',
+          severity: 'important',
+          detail: 'Speaker notes overlay covers the notes toggle button'
+        });
+      }
+    }
+  }
+  notesBtn.click(); // toggle back off
+}
+```
+
+Run this check on slide 1 only (not every slide) to avoid slowing the review.
+
 #### D. Navigate to Next Slide
 
 1. **Record the current slide number** from `#slide-counter` text

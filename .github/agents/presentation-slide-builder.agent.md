@@ -258,6 +258,20 @@ These sizes are proven correct at presentation scale. **Do not deviate.**
 - All titles: `background: var(--gradient-title)` with `-webkit-background-clip: text`
 - **Centered by default**: `.slide-title` uses `text-align: center`; `.slide-content` is horizontally centered via `margin: 0 auto`; tables inside slides use `margin: 0 auto` as well. Individual slide types may override if left-alignment is clearly better (e.g., code walkthroughs), but the default for body-text and title slides is centered.
 
+### Speaker Notes Overlay
+
+The speaker notes panel is a floating overlay at the bottom of the screen. It must NOT span the full viewport width — it must leave the slide counter (bottom-left) and notes toggle button (bottom-right) visible.
+
+**Required styling:**
+- `position: fixed; bottom: 68px` — sits above the bottom control bar
+- `max-width: 960px; margin: 0 auto` — centered, never full-width
+- `left: 28px; right: 28px` — inset from edges
+- `max-height: 30vh; overflow-y: auto` — scrollable, never covers more than 30% of the slide
+- `z-index: 200` — above slide content, below admin panel
+- Semi-transparent dark background with rounded corners and subtle border
+
+This pattern ensures the slide number and toggle controls remain accessible when notes are visible.
+
 ---
 
 ## Theme System
