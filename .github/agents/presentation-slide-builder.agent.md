@@ -672,6 +672,16 @@ Demo placeholder slides (`data-type="demo-placeholder"`) render with a minimal, 
 
 ---
 
+### Break Slide Rendering
+
+Break slides (`data-type="break"` or `data-section="Break"`) render with a minimal, centered layout:
+- Title only: `Break &mdash; [duration]` — use `&mdash;` HTML entity for the em-dash, not the raw `—` character (avoids encoding issues)
+- One short body line teasing the next section
+- Do not number breaks (no "Break 1", "Break 2") — just "Break"
+- No icons or emojis in the title
+
+---
+
 ## Image Placeholder Rendering
 
 For slides with `Type: image-placeholder`, the builder is expected to render an actual `<img>` element — not just the placeholder description. The image filename comes from the content file's contract (see Phase 2 parsing).

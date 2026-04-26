@@ -98,6 +98,11 @@ Preferences to gather:
    - No (pure content, no demo breaks)
    - Default: Yes
 
+7. **Break slides** — Should the presentation include break slides between sections?
+   - Yes, with duration (e.g., "10 minutes") — include breaks at natural section boundaries
+   - No breaks
+   - Default: Yes for presentations 60+ minutes; No for shorter talks
+
 ### Phase 2: Read & Analyze Research
 
 1. **Determine the file set**:
@@ -213,6 +218,22 @@ Demo slides should be minimal on-screen — the slide itself shows only the demo
 - Setup prerequisites
 - Key points to highlight during the demo
 - Transition to next topic
+
+### Break Slides
+
+Break slides use a minimal format with just a title and a short teaser for what comes next.
+
+**Title format:** `Break &mdash; [duration]` (e.g., `Break &mdash; 10 minutes`). Do not number breaks — use just "Break" even if there are multiple breaks in the deck.
+
+**On the slide:**
+- Title with duration
+- One line teasing the next section (e.g., "Next up: models, the CLI deep-dive, and all the customization layers.")
+
+**In speaker notes:**
+- Approximate time mark in the presentation
+- Brief context on pacing
+
+Use slide type `break` and section `Break`.
 
 ### For Beginner Audiences
 - Start with "why this matters" before "how it works"
