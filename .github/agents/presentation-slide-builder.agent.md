@@ -662,6 +662,16 @@ Syntax highlighting spans: `.kw` `.str` `.cmt` `.fn` `.num` `.op` `.prop` `.tag`
 
 ---
 
+### Demo Slide Rendering
+
+Demo placeholder slides (`data-type="demo-placeholder"`) render with a minimal, centered layout:
+- A pulsing `🎬 LIVE DEMO` badge (`.demo-badge`, 22px, uppercase, with pulse animation)
+- The slide title only
+- **No body text on the slide** — all demo context lives exclusively in speaker notes
+- Do not add descriptions, bullet points, or "Presenter fills this in live" text to the visible slide
+
+---
+
 ## Image Placeholder Rendering
 
 For slides with `Type: image-placeholder`, the builder is expected to render an actual `<img>` element — not just the placeholder description. The image filename comes from the content file's contract (see Phase 2 parsing).

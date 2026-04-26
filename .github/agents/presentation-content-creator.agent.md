@@ -93,6 +93,11 @@ Preferences to gather:
 
 5. **Research file allowlist (optional)** — If the caller (typically the orchestrator) provides a list of research files to draw from, treat it as the primary source set. Default when no list is provided: **read every `.md` file in `research/`**. The allowlist is **guidance, not a hard wall** — you may still read another research file if it is genuinely needed for fidelity or to avoid a gap, but you must (a) note the deviation briefly in the speaker notes or `Sources:` line of any slide that uses the extra file, and (b) still list that file in the frontmatter's `source_files`.
 
+6. **Demo slides** — Should the presentation include live demo placeholder slides?
+   - Yes (include demo placeholders at natural points)
+   - No (pure content, no demo breaks)
+   - Default: Yes
+
 ### Phase 2: Read & Analyze Research
 
 1. **Determine the file set**:
@@ -194,6 +199,20 @@ When a slide's body contains a conceptual visual (ASCII diagram, decision tree, 
 Your ASCII art is a **wireframe** — a sketch of the intended visual. The slide builder translates it into styled HTML components (`.tool-grid`, `.tree-container`, `.spectrum-container`, SVG, etc.). Write clear labels and logical structure; the ASCII doesn't need to be pretty.
 
 ## Content Guidelines
+
+### Demo Placeholder Slides
+
+Demo slides should be minimal on-screen — the slide itself shows only the demo badge icon and a title. All demo context (what to demo, setup needed, key points to show) goes in **Speaker Notes only**.
+
+**On the slide:**
+- Title describing what will be demoed (e.g., "Demo: Agent Mode in VS Code")
+- No body text, no bullet points, no descriptions
+
+**In speaker notes:**
+- What to demo and key steps
+- Setup prerequisites
+- Key points to highlight during the demo
+- Transition to next topic
 
 ### For Beginner Audiences
 - Start with "why this matters" before "how it works"
